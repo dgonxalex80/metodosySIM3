@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Métodos y Simulación Estadística" />
+
+
+<title> Análisis de correlación</title>
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Modelación Estadística</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="recurso301.html">Análisis de correlación</a>
+</li>
+<li>
+  <a href="recurso302.html">Regresión lineal simple</a>
+</li>
+<li>
+  <a href="recurso303.html">Predicción</a>
+</li>
+<li>
+  <a href="recurso304.html">Software R</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore"><span style="color:#034a94">
+<strong>Análisis de correlación</strong></span></h1>
+<h4 class="author">Métodos y Simulación Estadística</h4>
+
+</div>
+
+
+<p></br></br></p>
+<div id="qué-es-el-análisis-de-correlación" class="section level1">
+<h1><strong>¿Qué es el análisis de correlación?</strong></h1>
+<p></br></p>
+<p>El análisis de correlación es una técnica estadística que se puede
+usar para describir el grado de relación entre un par de variables
+cuantitativas. Para este análisis se dispone de una variable <span
+class="math inline">\(Y\)</span>, que se supondrá que está relacionada
+con otra variable <span class="math inline">\(X\)</span>, a partir de
+una muestra de <span class="math inline">\(n\)</span> pares de
+observaciones, es decir:</p>
+<p></br></p>
+<p><img src="img/correlacion1.png" width="100%" style="display: block; margin: auto;" /></p>
+<p></br></p>
+<p><strong>Ejemplos</strong> :</p>
+<ul>
+<li><p>¿Existe relación entre la inversión en publicidad de una empresa
+y sus ventas mensuales?</p></li>
+<li><p>¿El número de metros cuadrados en una casa está relacionado con
+su costo de venta?</p></li>
+<li><p>¿Existe relación entre los kilómetros por galón consumidos y el
+peso del auto?</p></li>
+<li><p>¿Hay relación entre el número de horas que estudian los alumnos
+para un examen y la calificación que obtienen?</p></li>
+<li><p>¿Qué relación existe entre el peso y la estatura de los
+estudiantes?</p></li>
+<li><p>¿Existe relación entre la tasa de desempleo y la tasa de
+homicidios?</p></li>
+<li><p>¿Hay relación entre la cantidad de medidas preventivas de
+tránsito y el número de accidentes de tránsito?</p></li>
+<li><p>¿Son fuertes o débiles estas asociaciones? ¿Son directas o
+indirectas?</p></li>
+</ul>
+<p></br></p>
+<p><strong>Entre las principales herramientas del análisis de
+correlación se encuentran:</strong></p>
+<p><strong>Gráficos de dispersión</strong>: “Representación gráfica
+simultanea del par de variables estudiadas”.</p>
+<p><strong>Coeficiente de correlación</strong>: “Indicador que mide la
+fuerza de la relación lineal entre un par de variables”.</p>
+<p></br></br></p>
+<div id="gráfico-de-dispersión" class="section level2">
+<h2><strong>Gráfico de dispersión</strong></h2>
+<p>Es un gráfico en el cual se representan las parejas (<span
+class="math inline">\(X,Y\)</span>) de las variables observadas. La
+forma que toman los puntos, ilustra acerca de la posible asociación
+existe entre las variables.</p>
+<p>GRAFICA MATRIZ DE GRAFICAS DE PUNTOS 2x2</p>
+<p>Figura 1: Gráfico de dispersión y relaciones entre variables.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Relación lineal positiva (directa o creciente)</li>
+<li>Relación lineal negativa (indirecta o decreciente)</li>
+<li>Relación no lineal d, No relación lineal</li>
+</ol>
+<p><strong>Ejemplo</strong>:</p>
+<p>Identificar la posible relación lineal observada entre las variables:
+* <span class="math inline">\(X\)</span> : Cantidad de horas trabajadas
+en una empresa. * <span class="math inline">\(Y\)</span> : Cantidad de
+unidades producidas en la empresa.</p>
+<p>GRAFICO CANTIDAD DE HORAS TRAVAJADAS VS CANTIDAD DE UNIDADES
+PRODUCIDAS</p>
+<p>Figura 2: Diagrama de dispersión entre las horas trabajadas y las
+unidades producidas en una empresa.</p>
+<p>De acuerdo con el gráfico de dispersión de la figura 2, se observa
+una falta de relación lineal entre las variables cantidad de horas
+trabajadas en una empresa y la cantidad de unidades producidas en la
+empresa.</p>
+<p></br></br></p>
+<p><strong>Ejemplo</strong>:</p>
+<p>Identificar la posible relación lineal observada entre las
+variables:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> : Tiempo de la duración de
+una conferencia (en minutos).</li>
+<li><span class="math inline">\(Y\)</span> : Índice de la capacidad de
+atención en la conferencia (1: Poca,…, 10: Mucha).</li>
+</ul>
+<p>Figura 3: Diagrama de dispersión entre el tiempo de duración de una
+conferencia y el índice de capacidad de atención en la misma.</p>
+<p></br></br></p>
+</div>
+<div id="coeficiente-de-correlación" class="section level2">
+<h2><strong>Coeficiente de correlación</strong></h2>
+<p>Es una medida de la magnitud de la asociación lineal entre dos
+variables. Indica si los puntos tienen una tendencia a disponerse
+alineadamente y es útil para determinar si hay relación lineal entre las
+variables. El coeficiente de correlación presenta las siguientes
+características:</p>
+<ul>
+<li>Sólo toma valores entre -1 y 1.</li>
+<li>Cuanto más cerca esté de 1 o -1 mejor será el grado de relación
+lineal. Siempre y cuando no existan observaciones anómalas.</li>
+</ul>
+<p></br></p>
+<p><img src="img/correlacion2.png" width="100%" style="display: block; margin: auto;" /></p>
+<p></br></p>
+<p>Un valor cercano a 1 indica asociación directa o positiva y un valor
+cercano a -1 indica asociación inversa o negativa. Si el valor es
+cercano a 0 indica una asociación débil.</p>
+<ul>
+<li>Se denota con la letra 𝑟𝑟 y su fórmula de cálculo es la
+siguiente:</li>
+</ul>
+<p><span class="math display">\[r = \dfrac{n
+\Bigg(\displaystyle\sum_{i=1}^{n} x_{i}y_{i} \Bigg)
+\Bigg(\displaystyle\sum_{i=1}^{n} x_{i} \Bigg)
+\Bigg(\displaystyle\sum_{i=1}^{n} y_{i}\Bigg)}{
+{\sqrt{n \Bigg(\displaystyle\sum_{i=1}^{n} x_{i}^{2} \Bigg) -
+\Bigg(\displaystyle\sum_{i=1}^{n} x_{i} \Bigg)^{2}} } {\sqrt{n
+\Bigg(\displaystyle\sum_{i=1}^{n} y_{i}^{2} \Bigg) -
+\Bigg(\displaystyle\sum_{i=1}^{n} y_{i} \Bigg)^{2}}}}\]</span></p>
+<p><span class="math display">\[r =
+\dfrac{cov(xy)}{\sqrt{s_{x}^{2}\hspace{0.1cm} s_{y}^{2}}}\]</span></p>
+<p>Los valores obtenidos del coeficiente de correlación permiten
+clasificar la relación lineal entre las variables de la siguiente
+forma:</p>
+<p></br></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Coeficiente de corelación</th>
+<th align="center">Relación lineal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(0.8 \leq r &lt;
+1.0\)</span></td>
+<td align="center">Positiva fuerte</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(0.3 \leq r &lt;
+0.8\)</span></td>
+<td align="center">Positiva debil</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(-0.3 &lt; r &lt;
+3\)</span></td>
+<td align="center">No existe</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(-0.8 &lt; r \leq
+-0.3\)</span></td>
+<td align="center">Negativa debil</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(-1.0 \leq r \leq
+-0.8\)</span></td>
+<td align="center">Negativa fuerte</td>
+</tr>
+</tbody>
+</table>
+<p>Tabla 1: Clasificación de la relación lineal entre variables por
+medio del coeficiente de correlación.</p>
+<p></br></p>
+<p><strong>Ejemplo</strong>:</p>
+<p>Se cuenta con la información de una muestra aleatoria de 6 pueblos
+del</p>
+<p>departamento, donde se observaron las variables número de policías y
+número de delitos registrados durante el mes pasado, la información
+obtenida se presenta a continuación:</p>
+<p>Mediante el coeficiente de correlación identificar el tipo de
+relación que pueda existir entre estas dos variables.</p>
+<p>Sea <span class="math inline">\(X\)</span> la variable que representa
+el número de policías y sea <span class="math inline">\(Y\)</span> la
+variable que representa el número de delitos. Para construir el
+coeficiente se requieren las sumatorias de <span
+class="math inline">\(x_{i}\)</span>, <span
+class="math inline">\(y_{i}\)</span>, <span
+class="math inline">\(x_{i}^{2}\)</span>, <span
+class="math inline">\(y_{i}^{2}\)</span> y de <span
+class="math inline">\(x_{i}y_{i}\)</span></p>
+<pre>
+x=c(15,   17,   25,   27,   17,   12)
+y=c(17,   13,    5,    7,    7,   21)
+
+n           #    6
+sum(x)      #  113 
+sum(y)      #   70
+sum(x^2)    # 2301
+sum(y^2)    # 1022
+sum(x*y)    # 1161
+
+cor(x,y)    # [1] -0.8351746
+</pre>
+<p><span class="math display">\[r=\dfrac{6
+(1161)-(113)(70)}{\sqrt{6(2301)-(113)^2}\sqrt{6(1022)-(70)^2}} =
+-0.80352\]</span></p>
+<p>Por lo tanto, el resultado obtenido del coeficiente de correlación
+<span class="math inline">\(r = −0.8352\)</span>, se busca en la tabla
+1, y se observa que existe una <strong>asociación lineal negativa y
+fuerte</strong> entre el número de policías y el número de delitos, es
+decir que entre más policías en un pueblo menor será el número de
+delitos en los pueblos.</p>
+</div>
+</div>
+<div id="qué-es-el-análisis-de-regresión" class="section level1">
+<h1><strong>¿Qué es el análisis de regresión?</strong></h1>
+<p>El análisis de regresión es la búsqueda de una expresión que permita
+predecir los valores de una variable a través del conocimiento de los
+valores de otra. La relación entre las dos variables puede ser
+representada mediante la línea recta de mejor ajuste a los datos. Esta
+línea se denomina recta de regresión o modelo de regresión. Para este
+análisis se dispone de una muestra de 𝒏𝒏 pares de observaciones de una
+variable 𝑌𝑌,</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
