@@ -1,17 +1,14 @@
 name: " "
 output_dir: "docs"
 navbar:
-  title: "Modelación Estadística"
+  title: " "
   left:
     - text: "Análisis de correlación"
-      href: recurso301.html
+      href: recurso100.html
     - text: "Regresión lineal simple"
-      href: recurso302.html
+      href: recurso200.html
     - text: "Predicción"
-      href: recurso303.html
-    - text: "Software R"
-      href: recurso304.html
-
+      href: recurso300.html
 output:
   html_document:
     css: style.css
