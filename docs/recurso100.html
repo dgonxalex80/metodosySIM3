@@ -244,14 +244,74 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="recurso100.html">Análisis de correlación</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Correlación
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso100.html">Análisis de Correlación</a>
+    </li>
+    <li>
+      <a href="recurso110.html">Coeficiente de Pearson</a>
+    </li>
+    <li>
+      <a href="recurso120.html">Otros coeficientes</a>
+    </li>
+    <li>
+      <a href="recurso130.html">Código R - correlación</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="recurso200.html">Regresión lineal simple</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Modelo
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso200.html">Modelo de Regresión Lineal Simple</a>
+    </li>
+    <li>
+      <a href="recurso210.html">Estimación Mínimos Cuadrados Ordinarios</a>
+    </li>
+    <li>
+      <a href="recurso220.html">Estimación de Máxima Verosimilitud</a>
+    </li>
+    <li>
+      <a href="recurso230.html">Supuestos del modelo</a>
+    </li>
+    <li>
+      <a href="recurso240.html">Transformaciones</a>
+    </li>
+    <li>
+      <a href="recurso250.html">Código R - estimación</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="recurso300.html">Predicción</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Predicción
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="recurso300.html">Inferencia sobre el modelo</a>
+    </li>
+    <li>
+      <a href="recurso310.html">Inferencia sobre los parámetros</a>
+    </li>
+    <li>
+      <a href="recurso320.html">Inferencia sobre la variable respuesta</a>
+    </li>
+    <li>
+      <a href="recurso330.html">Código R - inferencia</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -372,306 +432,6 @@ atención en la conferencia (1: Poca,…, 10: Mucha).</li>
 <p>Figura 3: Diagrama de dispersión entre el tiempo de duración de una
 conferencia y el índice de capacidad de atención en la misma.</p>
 <p></br></br></p>
-</div>
-</div>
-<div id="coeficiente-de-correlación" class="section level2">
-<h2><strong>Coeficiente de correlación</strong></h2>
-<p>Es una medida de la magnitud de la *asociación lineal** entre dos
-variables. Indica si los puntos tienen una tendencia a disponerse
-alineadamente y es útil para determinar si hay relación lineal entre las
-variables. El coeficiente de correlación presenta las siguientes
-características:</p>
-<p></br></p>
-<ul>
-<li>Sólo toma valores entre <span class="math inline">\(-1\)</span> y
-<span class="math inline">\(1\)</span>.</li>
-<li>Cuanto más cerca esté de <span class="math inline">\(1\)</span> o
-<span class="math inline">\(-1\)</span> mejor será el grado de relación
-lineal. Siempre y cuando no existan observaciones anómalas.</li>
-</ul>
-<p></br></br></p>
-<center>
-<p><img src="img/correlacion2.png" width="100%" style="display: block; margin: auto;" /></p>
-</center>
-<p></br></br></p>
-<p>Un valor cercano a 1 indica asociación directa o positiva y un valor
-cercano a -1 indica asociación inversa o negativa. Si el valor es
-cercano a 0 indica una asociación débil.</p>
-<ul>
-<li>Se denota con la letra <span class="math inline">\(r\)</span> y su
-fórmula de cálculo es la siguiente:</li>
-</ul>
-<p><span class="math display">\[r = \dfrac{n
-\Bigg(\displaystyle\sum_{i=1}^{n} x_{i}y_{i} \Bigg)
-\Bigg(\displaystyle\sum_{i=1}^{n} x_{i} \Bigg)
-\Bigg(\displaystyle\sum_{i=1}^{n} y_{i}\Bigg)}{
-{\sqrt{n \Bigg(\displaystyle\sum_{i=1}^{n} x_{i}^{2} \Bigg) -
-\Bigg(\displaystyle\sum_{i=1}^{n} x_{i} \Bigg)^{2}} } {\sqrt{n
-\Bigg(\displaystyle\sum_{i=1}^{n} y_{i}^{2} \Bigg) -
-\Bigg(\displaystyle\sum_{i=1}^{n} y_{i} \Bigg)^{2}}}}\]</span></p>
-<p><span class="math display">\[r =
-\dfrac{cov(xy)}{\sqrt{s_{x}^{2}\hspace{0.1cm} s_{y}^{2}}}\]</span></p>
-<p></br></p>
-<p>Este indicador fué propuesto por Karl Pearson por lo que se conoce
-como <strong>coeficiente de correlación de Pearson</strong> y exige que
-las variables <span class="math inline">\(X\)</span> y <span
-class="math inline">\(Y\)</span> sean variables cuantitavas en escala de
-intervalo o de razón y normalidad de las variables.</p>
-<p>Los valores obtenidos del coeficiente de correlación permiten
-clasificar la relación lineal entre las variables de la siguiente
-forma:</p>
-<p></br></br></p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">Coeficiente de corelación</th>
-<th align="center">Relación lineal</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><span class="math inline">\(0.8 \leq r &lt;
-1.0\)</span></td>
-<td align="center">Positiva fuerte</td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math inline">\(0.3 \leq r &lt;
-0.8\)</span></td>
-<td align="center">Positiva debil</td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math inline">\(-0.3 &lt; r &lt;
-3\)</span></td>
-<td align="center">No existe</td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math inline">\(-0.8 &lt; r \leq
--0.3\)</span></td>
-<td align="center">Negativa debil</td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math inline">\(-1.0 \leq r \leq
--0.8\)</span></td>
-<td align="center">Negativa fuerte</td>
-</tr>
-</tbody>
-</table>
-<p>Tabla 1: Clasificación de la relación lineal entre variables por
-medio del coeficiente de correlación.</p>
-<p></br></br></p>
-<p><img src="img/Rho1.png" width="100%" style="display: block; margin: auto;" /></p>
-<p></br></p>
-<p><img src="img/Rho2.png" width="100%" style="display: block; margin: auto;" /></p>
-<p></br></br></p>
-<div id="ejemplo-2" class="section level3">
-<h3><strong>Ejemplo</strong>:</h3>
-<p>Se cuenta con la información de una muestra aleatoria de 6 pueblos
-del departamento, donde se observaron las variables número de policías y
-número de delitos registrados durante el mes pasado, la información
-obtenida se presenta a continuación:</p>
-<p>Mediante el coeficiente de correlación identificar el tipo de
-relación que pueda existir entre estas dos variables.</p>
-<p>Sea <span class="math inline">\(X\)</span> la variable que representa
-el número de policías y sea <span class="math inline">\(Y\)</span> la
-variable que representa el número de delitos. Para construir el
-coeficiente se requieren las sumatorias de <span
-class="math inline">\(x_{i}\)</span>, <span
-class="math inline">\(y_{i}\)</span>, <span
-class="math inline">\(x_{i}^{2}\)</span>, <span
-class="math inline">\(y_{i}^{2}\)</span> y de <span
-class="math inline">\(x_{i}y_{i}\)</span></p>
-<p></br></p>
-<pre>
-x=c(15,   17,   25,   27,   17,   12)
-y=c(17,   13,    5,    7,    7,   21)
-
-n           #    6
-sum(x)      #  113 
-sum(y)      #   70
-sum(x^2)    # 2301
-sum(y^2)    # 1022
-sum(x*y)    # 1161
-
-cor(x,y)    # [1] -0.8351746
-</pre>
-<p></br></p>
-<p><span class="math display">\[\widehat{\rho_{_{x,y}}}=r=\dfrac{6
-(1161)-(113)(70)}{\sqrt{6(2301)-(113)^2}\sqrt{6(1022)-(70)^2}} =
--0.80352\]</span></p>
-<p></br></br></p>
-<p>Por lo tanto, el resultado obtenido del coeficiente de correlación
-<span class="math inline">\(r = −0.8352\)</span>, se busca en la tabla
-1, y se observa que existe una <strong>asociación lineal negativa y
-fuerte</strong> entre el número de policías y el número de delitos, es
-decir que entre más policías en un pueblo menor será el número de
-delitos en los pueblos.</p>
-<p></br></br></p>
-</div>
-</div>
-<div id="pruebas-de-hipótesis-sobre-rho" class="section level2">
-<h2><strong>Pruebas de hipótesis sobre <span
-class="math inline">\(\rho\)</span></strong></h2>
-<p>Es importante verificar si de <span
-class="math inline">\(\rho\)</span> es igual a cero o se puede
-considerar diferente de cero, a partir de la muestra de estudio. Para
-ello se utiliza un estadístico de prueba con distribución t-Studen con
-<span class="math inline">\(v=n-2\)</span> grados de libertad</p>
-<p><span class="math inline">\(Ho: \rho =0\)</span> <span
-class="math inline">\(Ha: \rho \neq 0\)</span></p>
-<p>Estadístico de prueba</p>
-<span class="math display">\[U = \dfrac{r \sqrt{n-2}}{\sqrt{1-r^{2}}}
-\sim t_{v:n-2}\]</span>
-<pre>
-x=c(15,   17,   25,   27,   17,   12)
-y=c(17,   13,    5,    7,    7,   21)
-
-r=cor(x,y)
-r*sqrt(6-2)/sqrt(1-r^2)              # [1] -3.037082
-
-cor.test(x,y, method = "pearson")
-
-Pearson's product-moment correlation
-
-data:  x and y
-t = -3.0371, df = 4, p-value = 0.03851
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- -0.98148791 -0.07328662
-sample estimates:
-       cor 
--0.8351746 
-</pre>
-<p></br></p>
-<p>Suponiendo que el valor p obtenido es pequeño, se concluye que <span
-class="math inline">\(\rho \neq 0\)</span></p>
-<p></br></br></p>
-<p>En caso de variables no normales, con presencia de datos atípicos o
-procedentes de variables cualitativas que son cuantificadas a través de
-escalas de intervalos, se recomienda el uso del <strong>coeficiente de
-correlación de Spearman</strong></p>
-<p></br></br></p>
-</div>
-<div id="otros-indicadores-de-correlación" class="section level2">
-<h2><strong>Otros indicadores de correlación</strong></h2>
-<p></br></p>
-<p><strong>Coeficiente de correlación de Spearman</strong></p>
-<p>Se considera como un coeficiente no paramétrico ( no requiere
-verificación de supuestos), propuesto por Charles Spearman y se basa en
-los rangos obtenidos para las variables X y Y.</p>
-<p></br></br></p>
-<div id="nota" class="section level3">
-<h3><strong>Nota</strong></h3>
-<p>Los rangos se optienen al ordenar los datos y asignarles a cada valor
-el número del orden correspondiente (<span
-class="math inline">\(1,2,3,4,5...n\)</span>) <span
-class="math inline">\(R_{i}(x)\)</span> y <span
-class="math inline">\(R_{i}(y)\)</span></p>
-<p></br></p>
-<p><span class="math display">\[\gamma_{s} = \dfrac{
-\sum_{i=1}^{n}\Big[\big(  R_{i}(x) - \overline{R}(x)\big)
-\Big]}{\sqrt{\Bigg[ \sum_{i=1}^{n} \Big(R_{i}(x) -
-\overline{R}(x)\Big)^{2} \Bigg] \Bigg[ \sum_{i=1}^{n} \Big(R_{i}(y) -
-\overline{R}(y)\Big)^{2} \Bigg]}}\]</span></p>
-<p></br></br></p>
-</div>
-<div id="nota-1" class="section level3">
-<h3><strong>Nota</strong></h3>
-<p></br></p>
-<p>Para el caso de variables cualitativas existen varios indicadores
-para medir el grado de asociación entre ellas como son:</p>
-<ul>
-<li><p><strong>Phi</strong>, <strong>Coeficiente de
-contingencia</strong>, <strong>V de Cramer</strong>,
-<strong>Lambda</strong>, <strong>Kappa</strong> : para tablas de
-contingencia con variables cualitativas en escala nominal.</p></li>
-<li><p><strong>Gamma</strong>, <strong>Tau b de Kendall</strong>,
-<strong>Tau c de Kendal</strong>, <strong>D de Somers</strong> : para
-variables cualitativas en escala ordinal</p></li>
-<li><p><strong>Eta</strong> : para tablas con variables de intervalo y
-nominal</p></li>
-</ul>
-<p></br></br></p>
-</div>
-<div id="código-r" class="section level3">
-<h3><strong>Código R</strong></h3>
-<pre class="r"><code>library(paqueteMET)
-data(biomasa) # data contenida en  paqueteMET
-head(biomasa) # primeros 6 registros de la data</code></pre>
-<pre><code># A tibble: 6 × 8
-  finca   mg         bio_aerea bio_sub bio_total area_foliar diametro altura
-  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
-1 FINCA_1 GENOTIPO_1     12.8     0.93     13.7         44.5      4.7    5  
-2 FINCA_1 GENOTIPO_1     13.9     0.69     14.6         39.7      5.3    5.6
-3 FINCA_1 GENOTIPO_1     15.1     0.78     15.9         45.6      4.8    5.8
-4 FINCA_1 GENOTIPO_1      8.08    0.91      8.99        29.5      3.2    4.3
-5 FINCA_1 GENOTIPO_1      5.58    1.41      6.99        22.5      2.2    3.3
-6 FINCA_1 GENOTIPO_2     18.5     0.84     19.3         34.2      6.3    7.9</code></pre>
-<pre class="r"><code>cor(biomasa[,3:8]) %&gt;%  # matriz de correlaciones 
-  round(.,3      )</code></pre>
-<pre><code>            bio_aerea bio_sub bio_total area_foliar diametro altura
-bio_aerea       1.000  -0.561     0.999       0.865    0.914  0.861
-bio_sub        -0.561   1.000    -0.534      -0.590   -0.652 -0.550
-bio_total       0.999  -0.534     1.000       0.860    0.908  0.858
-area_foliar     0.865  -0.590     0.860       1.000    0.736  0.572
-diametro        0.914  -0.652     0.908       0.736    1.000  0.936
-altura          0.861  -0.550     0.858       0.572    0.936  1.000</code></pre>
-<p></br></br></p>
-</div>
-<div id="nota-2" class="section level3">
-<h3><strong>Nota</strong></h3>
-<p></br></p>
-<ul>
-<li>Los resultados se presenta como matriz simetrica que tiene identicos
-valores arriba y debajo de la diagonal. (<span
-class="math inline">\(\rho_{ij} = \rho_{ji}\)</span>)</li>
-<li>Los valores de la diagonal son unos, debido a que <span
-class="math inline">\(Cor(x,x)=1\)</span></li>
-<li>Existen relaciones positivas y negativas, fuertes y medias</li>
-</ul>
-<p></br></br></p>
-<pre class="r"><code>library(GGally)
-ggpairs(biomasa[,5:8], title=&quot;Biomasa&quot;) </code></pre>
-<p><img src="recurso100_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p></br></p>
-<p>En esta matriz gráfica ademas de los diagramas de puntos que permiten
-visualizar el tipo de relación lineal entre las variables, permite
-visualizar la distribución de cada variable, el valor de la correlación
-entre cada par de variables y su significancia sobre la prueba de
-hipótesis <span class="math inline">\(Ho: \rho =0\)</span> frente a
-<span class="math inline">\(Ha: \rho \neq 0\)</span>.</p>
-<p>En este caso todos los valores obtenidos son significativamente
-diferententes de cero.</p>
-<p></br></br></p>
-<p>Para el caso de variables cualitativas podemos utilizar los
-coeficientes <span class="math inline">\(Phi\)</span> o el de <span
-class="math inline">\(Cramer\)</span>, a través de una tabla de
-contingencia o de doble entrada, por ejemplo:</p>
-<p></br></p>
-<center>
-<pre class="r"><code>tabla = c(80,9,30,21) %&gt;% 
-           matrix(., nrow = 2) 
-colnames(tabla)=c(&quot;Africa&quot;, &quot;America&quot;)
-rownames(tabla)=c(&quot;si&quot;, &quot;no&quot;)
-
-
-mosaicplot(tabla, cex = 1.1, col = c(c1,c3,c4), main = &quot;Proyectos aprobados sistema alimentario&quot;)</code></pre>
-<p><img src="recurso100_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p>Fuente : Ejemplo simulado para fines académicos</p>
-</center>
-<p></br></br></p>
-<!-- |           |   $y =1$      |  $y=0$         |  total           | -->
-<!-- |:---------:|:-------------:|:--------------:|:----------------:| -->
-<!-- | $x = 1$   |  $n_{11}$     | $n_{10}$       |  $n_{1*}$        | -->
-<!-- | $x =0$    |  $n_{01}$     | $n_{00}$       |  $n_{0*}$        | -->
-<!-- | **total** |  $n_{*1}$     | $n_{*0}$       |   $n$            | -->
-<p></br></br></p>
-</div>
-<div id="coeficiente-phi" class="section level3">
-<h3><strong>Coeficiente Phi</strong></h3>
-<p></br></p>
-<p><img src="img/tabla.png" width="60%" style="display: block; margin: auto;" /></p>
-<p><span class="math display">\[\phi =
-\dfrac{n_{11}\hspace{.1cm}n_{00}-n_{10}\hspace{.1cm}n_{01}}{\sqrt{n_{1*}\hspace{.1cm}n_{0*}\hspace{.1cm}n_{*0}\hspace{.1cm}n_{*1}}}\]</span></p>
 <ul>
 <li><p>Se aplica a tablas de contingencia 2x2</p></li>
 <li><p>Si los elementos estan concentrados en la diagonal de la tabla de
@@ -682,45 +442,6 @@ contingencia 2x2. <span class="math inline">\(\phi =
 \sqrt{\chi^2/n}\)</span></p></li>
 </ul>
 <p></br></br></p>
-</div>
-<div id="coeficiente-v-de-cramer" class="section level3">
-<h3><strong>Coeficiente V de Cramer</strong></h3>
-<p></br></p>
-<p>Mide la inensidad de la relación entre dos variables categóricas</p>
-<ul>
-<li>Es debil para valores inferiores a <span
-class="math inline">\(0.2\)</span></li>
-<li>Moderado para valores entre <span class="math inline">\(0.2\)</span>
-y <span class="math inline">\(0.6\)</span></li>
-<li>Es fuerte para valores superiores a <span
-class="math inline">\(0.6\)</span></li>
-</ul>
-<p><span class="math display">\[V =
-\sqrt{\dfrac{\chi^2}{n(k-1)}}\]</span></p>
-<p>Donde :</p>
-<p><span class="math inline">\(n\)</span> : total de observaciones en la
-tabla <span class="math inline">\(k\)</span> : menor valor entre el
-número de filas menos 1 y el número de columnas menos 1</p>
-<ul>
-<li>Volor de cero indica que no hay relación entre las variables</li>
-<li>Valor de uno indica que existe una relación perfecta</li>
-<li>Valores entre 0.6 y 1 , indica que existe una relación fuerte entre
-las variables</li>
-</ul>
-<p></br></br></p>
-<pre class="r"><code># install.packages(&quot;DescTools&quot;)
-library(DescTools)
-cat(&quot;Coeficiente Phi : &quot;, Phi(tabla), &quot;\n&quot;) 
-cat(&quot;Coeficiente V de Cramer :&quot;, CramerV(tabla)) </code></pre>
-<p></br></br></p>
-<pre>
-Coeficiente Phi         :  0.3643192 
-Coeficiente V de Cramer : 0.3643192
-</pre>
-<p>Estos coeficientes varia entre <span
-class="math inline">\(-1\)</span> y <span
-class="math inline">\(1\)</span>, en este caso presentan un nivel bajo
-en relación entre las variables.</p>
 </div>
 </div>
 </div>

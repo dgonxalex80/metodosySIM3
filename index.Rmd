@@ -23,7 +23,8 @@ knitr::include_graphics("img/banner2.png")
 
 
 </br>
-En esta unidad se introduce el modelo de regresión lineal simple como aplicación de los temas anterios : 
+
+En esta unidad se introduce el **modelo de regresión lineal simple** como aplicación de los temas anterios : 
 
 * Analisis exploratorio de datos
 * Concepto de probabilidad

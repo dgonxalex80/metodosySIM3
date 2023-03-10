@@ -1,0 +1,242 @@
+---
+title: "Codigo R - MRLS"
+author: "dgonzalez"
+date: "2023-03-10"
+output: html_document
+---
+---
+title: <span style="color:#034a94"> **Código R - Modelo**</span>
+author: "Métodos y Simulación Estadística"
+output: html_document
+css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1="#FF7F00"
+c2="#=EB0C6"
+c3="#034A94"
+c4="#686868"
+
+library(ggplot2)
+library(paqueteMET)
+data(biomasa)
+modelo=lm(log(bio_total) ~ diametro, data=biomasa)
+```
+
+</br></br>
+
+A continuación se presenta el código en R para estimar el modelo y validar los supuestos más importantes
+
+</br>
+
+### **Estimación MCO**
+
+```{r, eval=FALSE}
+library(paqueteMET)
+data(biomasa)
+modelo=lm(bio_total ~ diametro, data=biomasa)
+summary(modelo)
+```
+
+Los resultados se presentan en cuatro partes :
+
+</br></br>
+
+**Formula del modelo**
+
+$$\widehat{\text{bio_total}_{i}} = \widehat{\beta}_{0} + \widehat{\beta}_{1} \hspace{.2cm}\text{diametro}_{i}$$
+
+
+<pre>
+Call:
+lm(formula = log(bio_total) ~ diametro, data = biomasa)
+</pre>
+
+</br></br>
+
+**Estadística de los residuales**
+
+<pre>
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.3775 -2.6594  0.0237  1.8758 11.9876 
+</pre>
+
+</br></br>
+
+**Coeficientes estimados**
+<pre>
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -9.0203     1.4129  -6.384 7.86e-09 ***
+diametro      5.1026     0.2508  20.346  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</pre>
+
+</br>
+
+$$\widehat{\text{bio_total}_{i}} = -9.0203 + 5.1026 \hspace{.2cm} \text{diametro}_{i}$$
+Además se presentan los resultados de las pruebas de hipótesis individuales sobre los coeficientes:
+
+<!-- | Hipótesis             |  Estadístico de prueba        |   valor p            | -->
+<!-- |:----------------------|:------------------------------|:---------------------| -->
+<!-- $Ho: \beta_{0} = 0$     |   -6.384                      |  0.0000              | -->
+<!-- $Ha: \beta_{0} \neq 0$  |                               |                      | -->
+<!-- |                       |                               |                      | -->
+<!-- |$Ho: \beta_{1} = 0$    |   20.346                      |  0.0000              | -->
+<!-- |$Ha: \beta_{1} \neq 0$ |                               |                      | -->
+
+```{r, echo=FALSE, out.width="50%", fig.align = "center"}
+knitr::include_graphics("img/pruebas1.png")
+```
+
+</br></br>
+
+**Indicadores de ajuste**
+
+<pre>
+Residual standard error: 3.435 on 88 degrees of freedom
+Multiple R-squared:  0.8247,	Adjusted R-squared:  0.8227 
+F-statistic:   414 on 1 and 88 DF,  p-value: < 2.2e-16
+</pre>
+
+
+Este resultado muestra el valor del coeficiente de determinación ($R^2$) que corresponde al porcentaje de la variabilidad de $Y$ explicada por el modelo. Para el ejemplo $R^{2} = 0.8227$. indicando que el modelo explica un 82.27% de la variación de $Y$.
+
+</br></br>
+
+### **Validación de supuestos**
+
+</br></br>
+
+### **Normalidad**
+
+</br>
+
+$H_o:  \varepsilon \sim Normal$
+
+$H_a:  \varepsilon \hspace{.2cm} \text{ no } \sim Normal$
+
+</br></br>
+
+#### **Test de Shapiro - Wilk**
+
+</br>
+
+```{r, message=FALSE, warning=FALSE}
+shapiro.test(modelo$residuals)
+
+```
+
+</br></br>
+
+#### **Test de Jarque-Bera**
+
+</br>
+
+```{r, message=FALSE, warning=FALSE}
+# install.packages("normtets")
+ library(normtest)
+normtest::jb.norm.test(modelo$residuals)
+```
+
+</br></br>
+
+#### **Test de Anderson-Darling**
+
+</br>
+
+```{r, message=FALSE, warning=FALSE}
+# install.packages("nortets")
+ library(nortest)
+ad.test(modelo$residuals)
+```
+
+</br></br>
+
+#### **Test de  Lilliefors (Kolmogorov-Smirnov)**
+
+</br>
+
+```{r}
+lillie.test(modelo$residuals)
+```
+
+</br></br>
+
+### **Varianza contante**
+
+</br>
+
+$Ho : V[\varepsilon_{i}] = \sigma^2$
+
+$Ha : V[\varepsilon_{i}] \neq \sigma^2$
+
+</br></br>
+
+#### **Test de Breusch-Pagan**
+
+</br>
+
+```{r, message=FALSE, warning=FALSE}
+library(lmtest)
+bptest(modelo)
+```
+
+</br></br>
+
+#### **Test de Goldfeld-Quandt**
+
+</br>
+
+```{r, message=FALSE, warning=FALSE}
+library(lmtest)
+gqtest(modelo)
+```
+
+</br></br>
+
+#### **No autocorrelación de errores**
+
+</br>
+
+$Ho : E[\varepsilon_{i}, \varepsilon_{j}] = 0$
+
+$Ha : E[\varepsilon_{i}, \varepsilon_{j}] \neq  0$
+
+</br>
+
+#### **Test de Durbin-Watson**
+
+</br>
+
+```{r, message=FALSE, warning=FALSE}
+dwtest(modelo)
+```
+
+</br></br>
+
+#### **Transformación de variables**
+
+```{r}
+library(paqueteMET)
+data("biomasa")
+modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
+modelo2=lm(bio_total ~ log(diametro), data=biomasa)      # Lin - Log
+modelo3=lm(log(bio_total) ~ diametro, data=biomasa)      # Log - Lin
+modelo4=lm(log(bio_total) ~ log(diametro), data=biomasa) # Log - Log
+```
+
+
+```{r, message=FALSE, warning=FALSE}
+library(stargazer)
+stargazer(modelo1, modelo2, modelo3, modelo4, type="text", df=FALSE)
+```
+
+
+
+
+

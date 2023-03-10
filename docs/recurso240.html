@@ -12,7 +12,7 @@
 <meta name="author" content="Métodos y Simulación Estadística" />
 
 
-<title> Software R</title>
+<title> Transformaciones</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -326,13 +326,127 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore"><span style="color:#034a94">
-<strong>Software R</strong></span></h1>
+<strong>Transformaciones</strong></span></h1>
 <h4 class="author">Métodos y Simulación Estadística</h4>
 
 </div>
 
 
-
+<p></br></br></p>
+<div id="transformación-de-variables" class="section level2">
+<h2><strong>Transformación de variables</strong></h2>
+<p></br></p>
+<p>En algunos casos el modelo lineal no es apropiado para ajutar los
+datos y por tanto no cumple los supuestos sobre los errores. Es
+necesario entonces probar otro tipo de modelo transformando las
+variables.</p>
+<p>Dentro de las transformaciones más empleadas estan:</p>
+<center>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="39%" />
+<col width="14%" />
+<col width="16%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Modelo</th>
+<th align="center">Regresión</th>
+<th align="center">Variable dependiente</th>
+<th align="center">Variable independiente</th>
+<th align="center">Interpretación de <span
+class="math inline">\(\beta_{1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>Lin-Lin</code></td>
+<td align="center"><span class="math inline">\(Y_{i} = \beta_{0}+
+\beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
+<td align="center"><span class="math inline">\(Y\)</span></td>
+<td align="center"><span class="math inline">\(X\)</span></td>
+<td align="center"><span class="math inline">\(\Delta Y = \beta_{1}
+\Delta X\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><code>Lin-Log</code></td>
+<td align="center"><span class="math inline">\(Y_{i} = \beta_{0}+
+\beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
+<td align="center"><span class="math inline">\(Y\)</span></td>
+<td align="center"><span class="math inline">\(\log(X)\)</span></td>
+<td align="center"><span class="math inline">\(\Delta Y =
+\Bigg(\dfrac{\beta_{1}}{100}\Bigg) \% \Delta X\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>Log-Lin</code></td>
+<td align="center"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
+\beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
+<td align="center"><span class="math inline">\(\log(Y)\)</span></td>
+<td align="center"><span class="math inline">\(X\)</span></td>
+<td align="center"><span class="math inline">\(\%\Delta Y = (100
+\beta_{1}) \Delta X\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><code>Log-Log</code></td>
+<td align="center"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
+\beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
+<td align="center"><span class="math inline">\(\log(Y)\)</span></td>
+<td align="center"><span class="math inline">\(\log(X)\)</span></td>
+<td align="center"><span class="math inline">\(\%\Delta Y = \beta_{1}\%
+\Delta X\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<!--```{r, echo=FALSE, out.width="100%", fig.align = "center"} -->
+<!--knitr::include_graphics("img/interpreta.png") -->
+<!--``` -->
+</center>
+<p></br></br></p>
+<div id="transformación-de-variables-1" class="section level4">
+<h4><strong>Transformación de variables</strong></h4>
+<pre class="r"><code>library(paqueteMET)
+data(&quot;biomasa&quot;)
+modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
+modelo2=lm(bio_total ~ log(diametro), data=biomasa)      # Lin - Log
+modelo3=lm(log(bio_total) ~ diametro, data=biomasa)      # Log - Lin
+modelo4=lm(log(bio_total) ~ log(diametro), data=biomasa) # Log - Log</code></pre>
+<pre class="r"><code>library(stargazer)
+stargazer(modelo1, modelo2, modelo3, modelo4, type=&quot;text&quot;, df=FALSE)</code></pre>
+<pre><code>
+===============================================================
+                                Dependent variable:            
+                    -------------------------------------------
+                          bio_total          log(bio_total)    
+                       (1)        (2)        (3)        (4)    
+---------------------------------------------------------------
+diametro             5.103***              0.278***            
+                     (0.251)               (0.011)             
+                                                               
+log(diametro)                  23.369***              1.344*** 
+                                (1.564)               (0.058)  
+                                                               
+Constant            -9.020***  -19.909***  1.328***   0.618*** 
+                     (1.413)    (2.629)    (0.060)    (0.098)  
+                                                               
+---------------------------------------------------------------
+Observations            90         90         90         90    
+R2                    0.825      0.717      0.887      0.858   
+Adjusted R2           0.823      0.714      0.885      0.857   
+Residual Std. Error   3.435      4.362      0.145      0.162   
+F Statistic         413.961*** 223.224*** 687.562*** 532.232***
+===============================================================
+Note:                               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
 
 
 

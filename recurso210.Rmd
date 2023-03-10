@@ -1,0 +1,112 @@
+---
+title: <span style="color:#034a94">**Método de Mínimos Cuadrados Ordinarios**</span>
+author: "Métodos y Simulación Estadística"
+output: html_document
+css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1="#FF7F00"
+c2="#=EB0C6"
+c3="#034A94"
+c4="#686868"
+
+library(ggplot2)
+library(paqueteMET)
+data(biomasa)
+modelo=lm(log(bio_total) ~ diametro, data=biomasa)
+```
+
+</br></br>
+
+## **Estimación de los parámetros** 
+
+</br>
+
+Este método se base en la selección de los dos valores que conformen la recta (intercepto y pendiente) que mejor se ajuste a los datos. Para ello debe dar solución a un sistema de ecuaciones, denominadas ecuaciones normales. A continuación se plantea como funciona el métodos
+
+
+
+<!-- ```{r, echo = F, message = F, fig.align = 'center', out.width = '100%'} -->
+<!-- data(biomasa)  -->
+<!-- ggplot(biomasa, aes(x=altura , y=bio_total))+ -->
+<!--   geom_point(size=2, colour=c3)+ -->
+<!--   geom_smooth(method = "lm",se=FALSE)+ -->
+<!--   labs(title = "", y= "biomasa total (tn) ", x= "altura (m) ") -->
+<!--  -->
+<!-- ``` -->
+
+
+</br>
+
+```{r, echo=FALSE, out.width="80%", fig.align = "center"}
+knitr::include_graphics("img/plotlm1.png")
+```
+
+La diferencia entre el valor de $y$ asociado con un valor de $x_{0}$ y el valor estimado por la recta de regresión $\widehat{y}_{0}$ se denomina **resudual** y constituye una muestra de la variable aleatoria $\varepsilon$ 
+
+</br>
+
+$$e_i = y_{i} -\widehat{y}_{i}$$
+
+</br>
+
+El método consiste en encontrar los valores de $\beta_{0}$ y $\beta_{1}$ que minimice la suma de los cuadrados de los residuales
+
+</br></br>
+
+$$SCE = \sum_{i=1}^{n} e_{i}^2  = \sum_{i=1}^{n} \big(y_{i} - \widehat{y}_{i}\big)^2  = \sum_{i=1}^{n} \big( y_{i} - \widehat{\beta}_{0} - \beta_{1} x_{i}\big)^2$$
+</br></br>
+
+El objetivo del método es:
+
+
+$$\min SCE = \dfrac{\partial SCE}{\partial \beta_{0}} = 0$$
+
+$$\min SCE = \dfrac{\partial SCE}{\partial \beta_{1}} = 0$$
+</br></br>
+
+$$\dfrac{\partial \hspace{.2cm} \sum_{i=1}^{n} \big( y_{i} - \widehat{\beta}_{0} - \beta_{1} x_{i}\big)^2}{\partial \beta_{0}} = -2 \sum(y_{i} - \beta_{0}- \beta_{1} x_{i}) = 0$$
+
+</br></br>
+
+$$\dfrac{\partial \hspace{.2cm} \sum_{i=1}^{n} \big( y_{i} - \widehat{\beta}_{0} - \beta_{1} x_{i}\big)^2}{\partial \beta_{1}} = -2 \sum(y_{i} - \beta_{0}- \beta_{1} x_{i}) x_{i} = 0$$
+</br></br>
+
+Constituyendo un sistema de dos ecuaciones y dos incognitas, 
+
+$$\sum_{i=1}^{n} y_{i} = n \widehat{\beta}_{0} + \widehat{\beta}_{1} \sum_{i=1}^{n} x_{i}$$
+
+$$\sum_{i=1}^{n} y_{i} x_{i}= n \widehat{\beta}_{0} x_{i}+ \widehat{\beta}_{1} \sum_{i=1}^{n} x_{i}^{2}$$
+</br></br>
+
+Convirtiendose en el sistema :
+
+
+$$
+\begin{aligned}
+n \widehat{\beta}_{0} + \widehat{\beta}_{1} \sum_{i=1}^{n} x_{i} & = & \sum_{i=1}^{n} y_{i} \hspace{1cm}\text{(1)}\\
+\widehat{\beta}_{0} \sum_{i=1}^{n} x_{i} + \widehat{\beta}_{1} \sum_{i=1}^{n} x_{i}^{2} & = & \sum_{i=1}^{n} y_{i} x_{i}  \hspace{1cm}\text{(2)}
+\end{aligned}
+$$
+
+</br></br>
+
+De la ecuación $(1)$ se obtiene :
+
+$$
+\begin{aligned}
+\widehat\beta_{0} & = &   \bar{y} - \widehat{\beta}_{1} \bar{x}\\
+\end{aligned}
+$$
+</br></br>
+
+
+$$
+\begin{aligned}
+\widehat\beta_{1} & =  \dfrac{n \displaystyle\sum_{i=1} x_{i}y_{i}  - \displaystyle\sum_{i=1}^{n} x_{i}  \displaystyle\sum_{i=1}^{n} y_{i}}{n \displaystyle\sum_{i=1}^{n} x_{i}^{2} - \bigg(\displaystyle\sum_{i=1}^{n}  x_{i}\bigg)^{2}} &   
+\end{aligned}
+$$
+</br></br>

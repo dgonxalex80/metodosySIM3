@@ -12,7 +12,7 @@
 <meta name="author" content="Métodos y Simulación Estadística" />
 
 
-<title> Software R</title>
+<title>Método de Mínimos Cuadrados Ordinarios</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -325,14 +325,100 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><span style="color:#034a94">
-<strong>Software R</strong></span></h1>
+<h1 class="title toc-ignore"><span style="color:#034a94"><strong>Método
+de Mínimos Cuadrados Ordinarios</strong></span></h1>
 <h4 class="author">Métodos y Simulación Estadística</h4>
 
 </div>
 
 
-
+<p></br></br></p>
+<div id="estimación-de-los-parámetros" class="section level2">
+<h2><strong>Estimación de los parámetros</strong></h2>
+<p></br></p>
+<p>Este método se base en la selección de los dos valores que conformen
+la recta (intercepto y pendiente) que mejor se ajuste a los datos. Para
+ello debe dar solución a un sistema de ecuaciones, denominadas
+ecuaciones normales. A continuación se plantea como funciona el
+métodos</p>
+<!-- ```{r, echo = F, message = F, fig.align = 'center', out.width = '100%'} -->
+<!-- data(biomasa)  -->
+<!-- ggplot(biomasa, aes(x=altura , y=bio_total))+ -->
+<!--   geom_point(size=2, colour=c3)+ -->
+<!--   geom_smooth(method = "lm",se=FALSE)+ -->
+<!--   labs(title = "", y= "biomasa total (tn) ", x= "altura (m) ") -->
+<!--  -->
+<!-- ``` -->
+<p></br></p>
+<p><img src="img/plotlm1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>La diferencia entre el valor de <span
+class="math inline">\(y\)</span> asociado con un valor de <span
+class="math inline">\(x_{0}\)</span> y el valor estimado por la recta de
+regresión <span class="math inline">\(\widehat{y}_{0}\)</span> se
+denomina <strong>resudual</strong> y constituye una muestra de la
+variable aleatoria <span class="math inline">\(\varepsilon\)</span></p>
+<p></br></p>
+<p><span class="math display">\[e_i = y_{i}
+-\widehat{y}_{i}\]</span></p>
+<p></br></p>
+<p>El método consiste en encontrar los valores de <span
+class="math inline">\(\beta_{0}\)</span> y <span
+class="math inline">\(\beta_{1}\)</span> que minimice la suma de los
+cuadrados de los residuales</p>
+<p></br></br></p>
+<p><span class="math display">\[SCE = \sum_{i=1}^{n} e_{i}^2  =
+\sum_{i=1}^{n} \big(y_{i} - \widehat{y}_{i}\big)^2  = \sum_{i=1}^{n}
+\big( y_{i} - \widehat{\beta}_{0} - \beta_{1} x_{i}\big)^2\]</span>
+</br></br></p>
+<p>El objetivo del método es:</p>
+<p><span class="math display">\[\min SCE = \dfrac{\partial SCE}{\partial
+\beta_{0}} = 0\]</span></p>
+<p><span class="math display">\[\min SCE = \dfrac{\partial SCE}{\partial
+\beta_{1}} = 0\]</span> </br></br></p>
+<p><span class="math display">\[\dfrac{\partial \hspace{.2cm}
+\sum_{i=1}^{n} \big( y_{i} - \widehat{\beta}_{0} - \beta_{1}
+x_{i}\big)^2}{\partial \beta_{0}} = -2 \sum(y_{i} - \beta_{0}- \beta_{1}
+x_{i}) = 0\]</span></p>
+<p></br></br></p>
+<p><span class="math display">\[\dfrac{\partial \hspace{.2cm}
+\sum_{i=1}^{n} \big( y_{i} - \widehat{\beta}_{0} - \beta_{1}
+x_{i}\big)^2}{\partial \beta_{1}} = -2 \sum(y_{i} - \beta_{0}- \beta_{1}
+x_{i}) x_{i} = 0\]</span> </br></br></p>
+<p>Constituyendo un sistema de dos ecuaciones y dos incognitas,</p>
+<p><span class="math display">\[\sum_{i=1}^{n} y_{i} = n
+\widehat{\beta}_{0} + \widehat{\beta}_{1} \sum_{i=1}^{n}
+x_{i}\]</span></p>
+<p><span class="math display">\[\sum_{i=1}^{n} y_{i} x_{i}= n
+\widehat{\beta}_{0} x_{i}+ \widehat{\beta}_{1} \sum_{i=1}^{n}
+x_{i}^{2}\]</span> </br></br></p>
+<p>Convirtiendose en el sistema :</p>
+<p><span class="math display">\[
+\begin{aligned}
+n \widehat{\beta}_{0} + \widehat{\beta}_{1} \sum_{i=1}^{n} x_{i} &amp; =
+&amp; \sum_{i=1}^{n} y_{i} \hspace{1cm}\text{(1)}\\
+\widehat{\beta}_{0} \sum_{i=1}^{n} x_{i} + \widehat{\beta}_{1}
+\sum_{i=1}^{n} x_{i}^{2} &amp; = &amp; \sum_{i=1}^{n} y_{i}
+x_{i}  \hspace{1cm}\text{(2)}
+\end{aligned}
+\]</span></p>
+<p></br></br></p>
+<p>De la ecuación <span class="math inline">\((1)\)</span> se obtiene
+:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat\beta_{0} &amp; = &amp;   \bar{y} - \widehat{\beta}_{1}
+\bar{x}\\
+\end{aligned}
+\]</span> </br></br></p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat\beta_{1} &amp; =  \dfrac{n \displaystyle\sum_{i=1}
+x_{i}y_{i}  - \displaystyle\sum_{i=1}^{n}
+x_{i}  \displaystyle\sum_{i=1}^{n} y_{i}}{n \displaystyle\sum_{i=1}^{n}
+x_{i}^{2} - \bigg(\displaystyle\sum_{i=1}^{n}  x_{i}\bigg)^{2}} &amp;   
+\end{aligned}
+\]</span> </br></br></p>
+</div>
 
 
 

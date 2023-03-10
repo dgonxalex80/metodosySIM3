@@ -12,7 +12,7 @@
 <meta name="author" content="Métodos y Simulación Estadística" />
 
 
-<title> Software R</title>
+<title> Estimación de Máxima Verosimilitud</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -326,13 +326,105 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore"><span style="color:#034a94">
-<strong>Software R</strong></span></h1>
+<strong>Estimación de Máxima Verosimilitud</strong></span></h1>
 <h4 class="author">Métodos y Simulación Estadística</h4>
 
 </div>
 
 
-
+<p></br></br></p>
+<p>Este método optimiza la probabilidad asociada a una distribución de
+probabilidad, seleccionando los valores de <span
+class="math inline">\(\beta_{0}\)</span> y <span
+class="math inline">\(\beta_{1}\)</span> que hace tanga la mayor
+probabilidad.</p>
+<p>Parte del supuesto :</p>
+<ul>
+<li><p>Se tiene una muestra de tamaño <span
+class="math inline">\(n\)</span></p></li>
+<li><p>Los valores la variable <span
+class="math inline">\(Y_{i}\)</span> se ajusta al modelo <span
+class="math inline">\(Y_{i} = \beta_{0} + \beta_{1} X_{i} +
+\varepsilon_{i}\)</span></p></li>
+<li><p>Los valores de <span class="math inline">\(\varepsilon_{i} \sim
+N( 0, \sigma^{2}\)</span>, e independientes</p></li>
+<li><p><span class="math inline">\(Y \sim N(\beta_{0}+ \beta_{1}X_{i},
+\sigma_{\varepsilon}^{2})\)</span></p></li>
+<li><p>Para cada valor fijo de <span
+class="math inline">\(x_{0}\)</span> : <span
+class="math inline">\(E[Y|X_{i}=x_{0}] =
+\beta_{0}+\beta_{1}x_{0}\)</span></p></li>
+<li><p>La función de <span class="math inline">\(Y\)</span> cuando <span
+class="math inline">\(X = x_{i}\)</span>:</p></li>
+</ul>
+<p></br></br></p>
+<p><span class="math display">\[
+f(y|_{X=x_{i}}) = \dfrac{1}{\sigma \sqrt{2 \pi}} \exp\Bigg\{
+-\dfrac{1}{2\sigma_{\varepsilon}^2} \bigg(
+y-\beta_{0}-\beta_{1}x_{i}\bigg)^{2}  \Bigg\}
+\]</span> </br></br></p>
+<p>Por tanto la función de distribución conjunta</p>
+<p><span class="math display">\[
+L(\beta_{0}, \beta_{1}, \sigma_{\varepsilon}) =  \Pi_{i=1}^{n} \Bigg(
+\dfrac{1}{\sigma_{\varepsilon}\sqrt{2\pi}}  \Bigg)^n
+\exp\Bigg\{-\dfrac{1}{2} \displaystyle\sum_{i=1}^{n}
+\Bigg(\dfrac{y_{i}-(\beta_{0}-\beta_{1}x_{i})}{\sigma_{\varepsilon}}\Bigg)^{2}
+\Bigg\}
+\]</span></p>
+<p></br></br></p>
+<p>Para encontrar los valores de <span
+class="math inline">\(\beta_{0}\)</span> y <span
+class="math inline">\(\beta_{1}\)</span> que maximizan <span
+class="math inline">\(L(\beta_{0}, \beta_{1},
+\sigma_{\varepsilon})\)</span>, se utiliza la derivada parcial del <span
+class="math inline">\(\log (L(\beta_{0}, \beta_{1},
+\sigma_{\varepsilon}))\)</span></p>
+<p></br></br></p>
+<p><span class="math display">\[
+\log \big(L(\beta_{0}, \beta_{1}, \sigma_{\varepsilon})\big) = -n
+\hspace{.2cm} \log(\sigma_{\varepsilon}) - n \log(\sqrt{2\pi}) -
+\dfrac{1}{2 \sigma_{\varepsilon}} \sum_{i=1}^{n} \big(y_{i}-
+\beta_{0}-\beta_{1}x_{i}\big)^{2}
+\]</span></p>
+<p></br></br></p>
+<p>Al derivar la función e igualarlo a cero tenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dfrac{\partial}{\partial \beta_{0}} \log (L) &amp;=&amp;
+\dfrac{1}{\sigma_{\varepsilon}} \sum_{i=1}^{n} (y_{i} - \beta_{0} -
+\beta_{1} x_{i}) \hspace{.2cm} = 0  \hspace{.5cm}\text{(3)}
+\end{aligned}
+\]</span></p>
+<p></br></br></p>
+<p><span class="math display">\[
+\begin{aligned}
+\dfrac{\partial}{\partial \beta_{1}} \log (L) &amp;=&amp;
+\dfrac{1}{\sigma_{\varepsilon}} \sum_{i=1}^{n} (y_{i} - \beta_{0} -
+\beta_{1} x_{i}) x_{i} = 0  \hspace{.5cm}\text{(4)}
+\end{aligned}
+\]</span></p>
+<p></br></br></p>
+<p>Que conincide con las ecuaciones normales <span
+class="math inline">\((1)\)</span> y <span
+class="math inline">\((2)\)</span> .</p>
+<p>En conclusión la solución obtenida por el método de mínimos cuadrados
+y la obtenida por el método de máxima verosimilitud son iguales</p>
+<p>De la ecuación <span class="math inline">\((1)\)</span> se obtiene
+:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat\beta_{0} &amp; = &amp;   \bar{y} - \widehat{\beta}_{1}
+\bar{x}\\
+\end{aligned}
+\]</span> </br></br></p>
+<p><span class="math display">\[
+\begin{aligned}
+\widehat\beta_{1} &amp; =  \dfrac{n \displaystyle\sum_{i=1}
+x_{i}y_{i}  - \displaystyle\sum_{i=1}^{n}
+x_{i}  \displaystyle\sum_{i=1}^{n} y_{i}}{n \displaystyle\sum_{i=1}^{n}
+x_{i}^{2} - \bigg(\displaystyle\sum_{i=1}^{n}  x_{i}\bigg)^{2}} &amp;   
+\end{aligned}
+\]</span></p>
 
 
 

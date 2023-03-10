@@ -1,0 +1,73 @@
+---
+title: <span style="color:#034a94"> **Transformaciones**</span>
+author: "Métodos y Simulación Estadística"
+output: html_document
+css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1="#FF7F00"
+c2="#=EB0C6"
+c3="#034A94"
+c4="#686868"
+
+library(ggplot2)
+library(paqueteMET)
+data(biomasa)
+modelo=lm(log(bio_total) ~ diametro, data=biomasa)
+```
+
+</br></br>
+
+
+## **Transformación de variables**
+
+</br>
+
+En algunos casos el modelo lineal no es apropiado para ajutar los datos y por tanto no cumple los supuestos sobre los errores. Es necesario entonces probar otro tipo de modelo transformando las variables. 
+
+Dentro de las transformaciones más empleadas estan:
+
+<center>
+| Modelo   |  Regresión                                             | Variable dependiente| Variable independiente| Interpretación de $\beta_{1}$  |
+|:--------:|:------------------------------------------------------:|:------------------:|:---------------------:|:------------------------------:|
+| `Lin-Lin`  | $Y_{i} = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $Y$                 |  $X$                  | $\Delta Y = \beta_{1} \Delta X$|
+| `Lin-Log`  | $Y_{i} = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $Y$           |  $\log(X)$            | $\Delta Y = \Bigg(\dfrac{\beta_{1}}{100}\Bigg) \% \Delta X$|
+| `Log-Lin`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $\log(Y)$     |  $X$                  | $\%\Delta Y = (100 \beta_{1}) \Delta X$|
+| `Log-Log`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $\log(Y)$|  $\log(X)$           | $\%\Delta Y = \beta_{1}\% \Delta X$||
+||||||
+
+<!--```{r, echo=FALSE, out.width="100%", fig.align = "center"} -->
+<!--knitr::include_graphics("img/interpreta.png") -->
+<!--``` -->
+
+</center>
+
+
+
+
+</br></br>
+
+#### **Transformación de variables**
+
+```{r}
+library(paqueteMET)
+data("biomasa")
+modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
+modelo2=lm(bio_total ~ log(diametro), data=biomasa)      # Lin - Log
+modelo3=lm(log(bio_total) ~ diametro, data=biomasa)      # Log - Lin
+modelo4=lm(log(bio_total) ~ log(diametro), data=biomasa) # Log - Log
+```
+
+
+```{r, message=FALSE, warning=FALSE}
+library(stargazer)
+stargazer(modelo1, modelo2, modelo3, modelo4, type="text", df=FALSE)
+```
+
+
+
+
+

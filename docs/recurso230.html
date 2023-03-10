@@ -12,7 +12,7 @@
 <meta name="author" content="Métodos y Simulación Estadística" />
 
 
-<title> Software R</title>
+<title> Supuestos del modelo</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -326,13 +326,51 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore"><span style="color:#034a94">
-<strong>Software R</strong></span></h1>
+<strong>Supuestos del modelo</strong></span></h1>
 <h4 class="author">Métodos y Simulación Estadística</h4>
 
 </div>
 
 
-
+<p></br></br></p>
+<p>El método <strong>MCO</strong>, es un método matemático que tiene
+solución única, sin embargo, si se desea realizar inferencia estadística
+como intervalos de confianzay pruebas de hipótesis es necesario validar
+los siguientes supuestos:</p>
+<p></br></p>
+<ul>
+<li><strong>Normalidad</strong>, los errores siguen una distribución
+normal (<span class="math inline">\(\varepsilon_{i} \sim N(0,
+\sigma^2)\)</span>)</li>
+</ul>
+<p></br></p>
+<ul>
+<li><strong>Homoscedasticidad</strong>, la varianza al rededor de la
+linea de regresión, para cualquier valor constante (<span
+class="math inline">\(V[\varepsilon] = \sigma^2\)</span>)</li>
+</ul>
+<p></br></p>
+<ul>
+<li><strong>Linealidad</strong>, la relación entre la variable
+dependiente y las variables independientes y el error es lineal. Es
+decir que las variables pueden tener cualquier forma pero los parametros
+deben garantizar una relacion lineal (<span class="math inline">\(y_{i}=
+\beta_{0}+ \beta_{1} x_{i} + \varepsilon_{i}\)</span>)</li>
+</ul>
+<p></br></p>
+<ul>
+<li><strong>No autocorrelación</strong>, los errores que corresponden a
+diferentes individuos o difente tiempo deben ser independintes unos de
+otros (<span class="math inline">\(Cov[\varepsilon_{i}, \varepsilon_{j}]
+= 0\)</span>)</li>
+</ul>
+<p></br></p>
+<ul>
+<li><strong>Outliers</strong>, aunque no es un supuesto formal, se
+espera que la data no contenga datos atípicos que generen sesgos en los
+estimadores de los coeficientes</li>
+</ul>
+<p></br></br></p>
 
 
 

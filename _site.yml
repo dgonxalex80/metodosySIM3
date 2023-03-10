@@ -3,12 +3,40 @@ output_dir: "docs"
 navbar:
   title: " "
   left:
-    - text: "Análisis de correlación"
-      href: recurso100.html
-    - text: "Regresión lineal simple"
-      href: recurso200.html
+    - text: "Correlación"
+      menu:
+        - text: "Análisis de Correlación"
+          href: recurso100.html
+        - text: "Coeficiente de Pearson"
+          href: recurso110.html  
+        - text: "Otros coeficientes"
+          href: recurso120.html  
+        - text: "Código R - correlación"
+          href: recurso130.html  
+    - text: "Modelo"
+      menu:
+        - text: "Modelo de Regresión Lineal Simple"
+          href: recurso200.html
+        - text: "Estimación Mínimos Cuadrados Ordinarios"
+          href: recurso210.html            
+        - text: "Estimación de Máxima Verosimilitud"
+          href: recurso220.html            
+        - text: "Supuestos del modelo"
+          href: recurso230.html 
+        - text: "Transformaciones"
+          href: recurso240.html
+        - text: "Código R - estimación"
+          href: recurso250.html         
     - text: "Predicción"
-      href: recurso300.html
+      menu:
+        - text: "Inferencia sobre el modelo"
+          href: recurso300.html
+        - text: "Inferencia sobre los parámetros"
+          href: recurso310.html             
+        - text: "Inferencia sobre la variable respuesta"
+          href: recurso320.html
+        - text: "Código R - inferencia"
+          href: recurso330.html          
 output:
   html_document:
     css: style.css

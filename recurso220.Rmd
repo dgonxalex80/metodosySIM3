@@ -1,0 +1,106 @@
+---
+title: <span style="color:#034a94"> **Estimación de Máxima Verosimilitud**</span>
+author: "Métodos y Simulación Estadística"
+output: html_document
+css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+
+c1="#FF7F00"
+c2="#=EB0C6"
+c3="#034A94"
+c4="#686868"
+
+library(ggplot2)
+library(paqueteMET)
+data(biomasa)
+modelo=lm(log(bio_total) ~ diametro, data=biomasa)
+```
+
+</br></br>
+
+
+Este método optimiza la probabilidad asociada a una distribución de probabilidad, seleccionando los valores de $\beta_{0}$ y $\beta_{1}$ que hace tanga la mayor probabilidad.
+
+Parte del supuesto  : 
+
+* Se tiene una muestra de tamaño $n$
+
+* Los valores la variable $Y_{i}$ se ajusta al modelo $Y_{i} = \beta_{0} + \beta_{1} X_{i} + \varepsilon_{i}$
+
+* Los valores de $\varepsilon_{i} \sim N( 0, \sigma^{2}$, e independientes
+
+* $Y \sim  N(\beta_{0}+ \beta_{1}X_{i}, \sigma_{\varepsilon}^{2})$
+
+* Para cada valor fijo de $x_{0}$ : $E[Y|X_{i}=x_{0}] = \beta_{0}+\beta_{1}x_{0}$
+
+* La función de $Y$ cuando $X = x_{i}$:
+
+</br></br>
+
+$$
+f(y|_{X=x_{i}}) = \dfrac{1}{\sigma \sqrt{2 \pi}} \exp\Bigg\{ -\dfrac{1}{2\sigma_{\varepsilon}^2} \bigg( y-\beta_{0}-\beta_{1}x_{i}\bigg)^{2}  \Bigg\}
+$$
+</br></br>
+
+Por tanto la función de distribución conjunta 
+
+$$
+L(\beta_{0}, \beta_{1}, \sigma_{\varepsilon}) =  \Pi_{i=1}^{n} \Bigg( \dfrac{1}{\sigma_{\varepsilon}\sqrt{2\pi}}  \Bigg)^n \exp\Bigg\{-\dfrac{1}{2} \displaystyle\sum_{i=1}^{n} \Bigg(\dfrac{y_{i}-(\beta_{0}-\beta_{1}x_{i})}{\sigma_{\varepsilon}}\Bigg)^{2} \Bigg\}
+$$ 
+
+</br></br>
+
+Para encontrar los valores de $\beta_{0}$ y $\beta_{1}$ que maximizan $L(\beta_{0}, \beta_{1}, \sigma_{\varepsilon})$, se utiliza la derivada parcial del $\log (L(\beta_{0}, \beta_{1}, \sigma_{\varepsilon}))$
+
+</br></br>
+
+$$
+\log \big(L(\beta_{0}, \beta_{1}, \sigma_{\varepsilon})\big) = -n \hspace{.2cm} \log(\sigma_{\varepsilon}) - n \log(\sqrt{2\pi}) - \dfrac{1}{2 \sigma_{\varepsilon}} \sum_{i=1}^{n} \big(y_{i}- \beta_{0}-\beta_{1}x_{i}\big)^{2} 
+$$
+
+</br></br>
+
+Al derivar la función e igualarlo a cero tenemos
+
+$$
+\begin{aligned}
+\dfrac{\partial}{\partial \beta_{0}} \log (L) &=& \dfrac{1}{\sigma_{\varepsilon}} \sum_{i=1}^{n} (y_{i} - \beta_{0} - \beta_{1} x_{i}) \hspace{.2cm} = 0  \hspace{.5cm}\text{(3)}
+\end{aligned}
+$$
+
+</br></br>
+
+
+$$
+\begin{aligned}
+\dfrac{\partial}{\partial \beta_{1}} \log (L) &=& \dfrac{1}{\sigma_{\varepsilon}} \sum_{i=1}^{n} (y_{i} - \beta_{0} - \beta_{1} x_{i}) x_{i} = 0  \hspace{.5cm}\text{(4)}
+\end{aligned}
+$$
+
+</br></br>
+
+Que conincide con las ecuaciones normales $(1)$ y $(2)$ . 
+
+En conclusión la solución obtenida por el método de mínimos cuadrados y la obtenida por el método de máxima verosimilitud son iguales
+
+De la ecuación $(1)$ se obtiene :
+
+$$
+\begin{aligned}
+\widehat\beta_{0} & = &   \bar{y} - \widehat{\beta}_{1} \bar{x}\\
+\end{aligned}
+$$
+</br></br>
+
+
+$$
+\begin{aligned}
+\widehat\beta_{1} & =  \dfrac{n \displaystyle\sum_{i=1} x_{i}y_{i}  - \displaystyle\sum_{i=1}^{n} x_{i}  \displaystyle\sum_{i=1}^{n} y_{i}}{n \displaystyle\sum_{i=1}^{n} x_{i}^{2} - \bigg(\displaystyle\sum_{i=1}^{n}  x_{i}\bigg)^{2}} &   
+\end{aligned}
+$$
+
+
+
