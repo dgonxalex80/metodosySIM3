@@ -1,5 +1,5 @@
 ---
-title : <span style="color:#034a94"> **Experiencia**</span>
+title : <span style="color:#686868"> **Experiencia**</span>
 author: "Métodos y Simulación Estadística"
 css: style.css
 ---
@@ -15,22 +15,22 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 
 
-</br>
+</br></br>
 
 ```{r, echo=FALSE, out.width="100%", fig.align = "center"}
 knitr::include_graphics("img/banner2.png")
 ```
 
-
 </br>
 
-En esta unidad se introduce el **modelo de regresión lineal simple** como aplicación de los temas anterios : 
+En esta unidad se introduce el **modelo de regresión lineal simple** como aplicación de los temas anteriores : 
 
-* Analisis exploratorio de datos
+* Análisis exploratorio de datos
 * Concepto de probabilidad
 * Concepto de variable aleatoria
 * Inferencia estadística : intervalos de confianza y pruebas de hipótesis paramétricas y no paramétricas
 
+</br>
 
 Finalmente a través de una actividad se aplican los conceptos tratados
 

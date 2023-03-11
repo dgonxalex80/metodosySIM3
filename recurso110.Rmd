@@ -68,7 +68,7 @@ tabla <- table(X, Y)
 
 </br></br>
 
-## **Coeficiente de correlación**
+## <span style="color:#034a94">**Coeficiente de correlación**</span>
 
 Es una medida de la magnitud de la *asociación lineal** entre dos variables. Indica si los puntos tienen una tendencia a disponerse alineadamente y es útil para determinar si hay relación lineal entre las variables. El coeficiente de correlación presenta las siguientes características:
 
@@ -94,11 +94,15 @@ Un valor cercano a 1 indica asociación directa o positiva y un valor cercano a 
 
 * Se denota con la letra $r$ y su fórmula de cálculo es la siguiente:
 
+<div class="content-box-blue">
 
 $$r = \dfrac{n \Bigg(\displaystyle\sum_{i=1}^{n} x_{i}y_{i} \Bigg) \Bigg(\displaystyle\sum_{i=1}^{n} x_{i} \Bigg) \Bigg(\displaystyle\sum_{i=1}^{n} y_{i}\Bigg)}{
 {\sqrt{n \Bigg(\displaystyle\sum_{i=1}^{n} x_{i}^{2} \Bigg) - \Bigg(\displaystyle\sum_{i=1}^{n} x_{i} \Bigg)^{2}} } {\sqrt{n \Bigg(\displaystyle\sum_{i=1}^{n} y_{i}^{2} \Bigg) - \Bigg(\displaystyle\sum_{i=1}^{n} y_{i} \Bigg)^{2}}}}$$
 
+</br>
+
 $$r = \dfrac{cov(xy)}{\sqrt{s_{x}^{2}\hspace{0.1cm} s_{y}^{2}}}$$
+</div>
 
 </br>
 
@@ -134,7 +138,7 @@ knitr::include_graphics("img/Rho2.png")
 
 </br></br>
 
-### **Ejemplo**: 
+### <span style="color:#FF7F00">**Ejemplo**</span> 
 
 Se cuenta con la información de una muestra aleatoria de 6 pueblos del departamento, donde se observaron las variables número de policías y número de delitos
 registrados durante el mes pasado, la información obtenida se presenta a continuación:
@@ -161,8 +165,9 @@ cor(x,y)    # [1] -0.8351746
 
 </br>
 
-
+<div class="content-box-blue">
 $$\widehat{\rho_{_{x,y}}}=r=\dfrac{6 (1161)-(113)(70)}{\sqrt{6(2301)-(113)^2}\sqrt{6(1022)-(70)^2}} = -0.80352$$
+</div>
 
 </br></br>
 
@@ -175,12 +180,16 @@ Por lo tanto, el resultado obtenido del coeficiente de correlación $r = −0.83
 Es importante verificar si de $\rho$ es igual a cero o se puede considerar diferente de cero, a partir de la muestra de estudio. Para ello se utiliza un estadístico de prueba con distribución t-Studen con $v=n-2$ grados de libertad
 
 
+<div class="content-box-blue">
 $Ho: \rho =0$
 $Ha: \rho \neq 0$
 
 Estadístico de prueba
 
 $$U = \dfrac{r \sqrt{n-2}}{\sqrt{1-r^{2}}} \sim t_{v:n-2}$$
+
+</div>
+
 <pre>
 x=c(15,   17,   25,   27,   17,   12)
 y=c(17,   13,    5,    7,    7,   21)

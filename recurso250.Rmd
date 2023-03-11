@@ -31,7 +31,7 @@ A continuación se presenta el código en R para estimar el modelo y validar los
 
 </br>
 
-### **Estimación MCO**
+### <span style="color:#034a94">**Estimación MCO**</span>
 
 ```{r, eval=FALSE}
 library(paqueteMET)
@@ -44,7 +44,7 @@ Los resultados se presentan en cuatro partes :
 
 </br></br>
 
-**Formula del modelo**
+### <span style="color:#034A94">**Formula del modelo**</span>
 
 $$\widehat{\text{bio_total}_{i}} = \widehat{\beta}_{0} + \widehat{\beta}_{1} \hspace{.2cm}\text{diametro}_{i}$$
 
@@ -56,7 +56,7 @@ lm(formula = log(bio_total) ~ diametro, data = biomasa)
 
 </br></br>
 
-**Estadística de los residuales**
+### <span style="color:#034A94">**Estadística de los residuales**</span>
 
 <pre>
 Residuals:
@@ -66,7 +66,8 @@ Residuals:
 
 </br></br>
 
-**Coeficientes estimados**
+### <span style="color:#034A94">**Coeficientes estimados**</span>
+
 <pre>
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
@@ -95,7 +96,7 @@ knitr::include_graphics("img/pruebas1.png")
 
 </br></br>
 
-**Indicadores de ajuste**
+### <span style="color:#034A94">**Indicadores de ajuste**</span>
 
 <pre>
 Residual standard error: 3.435 on 88 degrees of freedom
@@ -108,11 +109,11 @@ Este resultado muestra el valor del coeficiente de determinación ($R^2$) que co
 
 </br></br>
 
-### **Validación de supuestos**
+## <span style="color:#034a94">**Validación de supuestos**</span>
 
 </br></br>
 
-### **Normalidad**
+### <span style="color:#FF7F00">**Normalidad**</span>
 
 </br>
 
@@ -122,7 +123,7 @@ $H_a:  \varepsilon \hspace{.2cm} \text{ no } \sim Normal$
 
 </br></br>
 
-#### **Test de Shapiro - Wilk**
+#### <span style="color:#686868">**Test de Shapiro - Wilk**</span>
 
 </br>
 
@@ -133,7 +134,7 @@ shapiro.test(modelo$residuals)
 
 </br></br>
 
-#### **Test de Jarque-Bera**
+#### <span style="color:#686868">**Test de Jarque-Bera**</span>
 
 </br>
 
@@ -145,7 +146,7 @@ normtest::jb.norm.test(modelo$residuals)
 
 </br></br>
 
-#### **Test de Anderson-Darling**
+#### <span style="color:#686868">**Test de Anderson-Darling**</span>
 
 </br>
 
@@ -157,7 +158,7 @@ ad.test(modelo$residuals)
 
 </br></br>
 
-#### **Test de  Lilliefors (Kolmogorov-Smirnov)**
+#### <span style="color:#686868">**Test de  Lilliefors (Kolmogorov-Smirnov)**</span>
 
 </br>
 
@@ -167,7 +168,7 @@ lillie.test(modelo$residuals)
 
 </br></br>
 
-### **Varianza contante**
+### <span style="color:#FF7F00">**Varianza contante**</span>
 
 </br>
 
@@ -177,7 +178,7 @@ $Ha : V[\varepsilon_{i}] \neq \sigma^2$
 
 </br></br>
 
-#### **Test de Breusch-Pagan**
+#### <span style="color:#686868">**Test de Breusch-Pagan**</span>
 
 </br>
 
@@ -188,7 +189,7 @@ bptest(modelo)
 
 </br></br>
 
-#### **Test de Goldfeld-Quandt**
+#### <span style="color:#686868">**Test de Goldfeld-Quandt**</span>
 
 </br>
 
@@ -199,7 +200,7 @@ gqtest(modelo)
 
 </br></br>
 
-#### **No autocorrelación de errores**
+### <span style="color:#FF7F00">**No autocorrelación de errores**</span>
 
 </br>
 
@@ -209,7 +210,7 @@ $Ha : E[\varepsilon_{i}, \varepsilon_{j}] \neq  0$
 
 </br>
 
-#### **Test de Durbin-Watson**
+#### <span style="color:#686868">**Test de Durbin-Watson**</span>
 
 </br>
 
@@ -219,7 +220,7 @@ dwtest(modelo)
 
 </br></br>
 
-#### **Transformación de variables**
+### <span style="color:#034a94">**Transformación de variables**</span>
 
 ```{r}
 library(paqueteMET)

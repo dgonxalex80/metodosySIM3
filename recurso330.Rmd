@@ -1,30 +1,62 @@
 ---
-title: "Codigo R - Prediccion"
-author: "dgonzalez"
-date: "2023-03-10"
+title: <span style="color:#034a94"> **Código R - Predicción**</span>
+author: "Métodos y Simulación Estadística"
 output: html_document
+css: style.css
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, comment =NA )
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+</br></br>
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### <span style="color:#FF7F00">**Ejemplo**</span> 
 
-```{r cars}
-summary(cars)
+</br>
+
+
+Para el modelo $\text{bio_total} = \beta_{0} + \beta_{1} \hspace{.3cm} \text{diametro} + \varepsilon$
+
+</br>
+
+```{r}
+library(paqueteMET)
+data(biomasa)
+modelo1=lm(bio_total ~ diametro, data=biomasa)
+summary(modelo1)
 ```
 
-## Including Plots
+</br></br>
 
-You can also embed plots, for example:
+### **Intervalos de confianza del 95%**
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+confint(modelo1)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+</br></br>
+
+### **Inferencia sobre los parámetros**
+
+```{r}
+confint(object = modelo1, parm="diametro", level = 0.95)
+```
+
+</br></br>
+
+### **Predicción de $E[Y|x_{o}]$**
+
+```{r}
+predict(modelo1, data.frame(diametro=20), interval = "confidence", level = 0.95)
+```
+
+</br></br>
+
+### **Predicción de  $Y_{0}$**
+
+
+```{r}
+predict(modelo1, data.frame(diametro=20), interval = "prediction", level = 0.95)
+```

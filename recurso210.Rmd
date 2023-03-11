@@ -21,7 +21,7 @@ modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 
 </br></br>
 
-## **Estimación de los parámetros** 
+## <span style="color:#034a94">**Estimación de los parámetros** </span>
 
 </br>
 
@@ -48,8 +48,9 @@ knitr::include_graphics("img/plotlm1.png")
 La diferencia entre el valor de $y$ asociado con un valor de $x_{0}$ y el valor estimado por la recta de regresión $\widehat{y}_{0}$ se denomina **resudual** y constituye una muestra de la variable aleatoria $\varepsilon$ 
 
 </br>
-
+<div class="content-box-blue">
 $$e_i = y_{i} -\widehat{y}_{i}$$
+</div>
 
 </br>
 
@@ -96,17 +97,26 @@ $$
 
 De la ecuación $(1)$ se obtiene :
 
+<div class="content-box-blue">
+
 $$
 \begin{aligned}
 \widehat\beta_{0} & = &   \bar{y} - \widehat{\beta}_{1} \bar{x}\\
 \end{aligned}
 $$
+</div>
+
 </br></br>
 
-
+<div class="content-box-blue">
 $$
 \begin{aligned}
 \widehat\beta_{1} & =  \dfrac{n \displaystyle\sum_{i=1} x_{i}y_{i}  - \displaystyle\sum_{i=1}^{n} x_{i}  \displaystyle\sum_{i=1}^{n} y_{i}}{n \displaystyle\sum_{i=1}^{n} x_{i}^{2} - \bigg(\displaystyle\sum_{i=1}^{n}  x_{i}\bigg)^{2}} &   
 \end{aligned}
 $$
+</div>
+
 </br></br>
+
+
+### <span style="color:#FF7F00">**Ejemplo**</span> 

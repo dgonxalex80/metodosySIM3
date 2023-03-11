@@ -68,7 +68,7 @@ tabla <- table(X, Y)
 
 </br></br>
 
-# **¿Qué es el análisis de correlación?**
+# <span style="color:#034A94">**¿Qué es el análisis de correlación?**</span>
 
 </br>
 
@@ -82,7 +82,9 @@ knitr::include_graphics("img/correlacion1.png")
 
 </br></br>
 
-### **Ejemplos** :
+
+
+### <span style="color:#FF7F00">**Ejemplos**</span> 
 
 * ¿Existe relación entre la inversión en publicidad de una empresa y sus ventas mensuales?
 
@@ -111,7 +113,7 @@ knitr::include_graphics("img/correlacion1.png")
 
 </br></br>
 
-## **Gráfico de dispersión** 
+## <span style="color:#034A94">**Gráfico de dispersión**</span> 
 
 </br>
 
@@ -179,7 +181,7 @@ d, No relación lineal
 
 </br></br>
 
-### **Ejemplo**:
+### <span style="color:#FF7F00">**Ejemplo**</span> 
 
 
  Identificar la posible relación lineal observada entre las variables:
@@ -212,25 +214,25 @@ De acuerdo con el gráfico de dispersión de la figura 2, se observa una falta d
 
 </br></br>
 
-### **Ejemplo**:
+<!-- ### <span style="color:#FF7F00">**Ejemplo**</span>  -->
 
-Identificar la posible relación lineal observada entre las variables:
+<!-- Identificar la posible relación lineal observada entre las variables: -->
 
-* $X$ : Tiempo  de la duración de una conferencia (en minutos).
-* $Y$ : Índice de la capacidad de atención en la conferencia  (1: Poca,..., 10: Mucha).
-
-
-
-Figura 3: Diagrama de dispersión entre el tiempo de duración de una conferencia y el índice de capacidad de atención en la misma.
+<!-- * $X$ : Tiempo  de la duración de una conferencia (en minutos). -->
+<!-- * $Y$ : Índice de la capacidad de atención en la conferencia  (1: Poca,..., 10: Mucha). -->
 
 
-</br></br>
+
+<!-- Figura 3: Diagrama de dispersión entre el tiempo de duración de una conferencia y el índice de capacidad de atención en la misma. -->
 
 
-* Se aplica a tablas de contingencia 2x2
+<!-- </br></br> -->
 
-* Si los elementos estan concentrados en la diagonal de la tabla de contingencia, su valor será positivo, mientras que si se salen de esta diagonal su valor será negativo.
 
-* Está relacionado con el estadístico chi-cuadrado de las tablas de contingencia 2x2. $\phi = \sqrt{\chi^2/n}$
+<!-- * Se aplica a tablas de contingencia 2x2 -->
 
-</br></br>
+<!-- * Si los elementos estan concentrados en la diagonal de la tabla de contingencia, su valor será positivo, mientras que si se salen de esta diagonal su valor será negativo. -->
+
+<!-- * Está relacionado con el estadístico chi-cuadrado de las tablas de contingencia 2x2. $\phi = \sqrt{\chi^2/n}$ -->
+
+<!-- </br></br> -->

@@ -21,7 +21,7 @@ modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 
 </br></br>
 
-# **¿Qué es el análisis de regresión?**
+# <span style="color:#034a94">**¿Qué es el análisis de regresión?**</span>
 
 </br>
 
@@ -31,7 +31,7 @@ Para este análisis se dispone de una muestra de $n$ pares de observaciones de u
 
 </br></br>
 
-### **Ejemplos**:
+### <span style="color:#FF7F00">**Ejemplos**</span> 
 
 </br>
 
@@ -48,11 +48,15 @@ El establecimiento de la correlación entre las dos variables es importante, per
 
 </br></br>
 
-## **La ecuación de la recta de regresión**
+## <span style="color:#034a94">**La ecuación de la recta de regresión**</span>
 
 </br>
 
+<div class="content-box-blue">
+
 $$Y = \beta_{0} + \beta_{1} X +  \varepsilon $$
+</div>
+
 Donde :
 
 * $Y$ : variable dependiente o respuesta
@@ -75,8 +79,11 @@ El objetivo principal se centra en :
 * predecir el valor de la variable dependiente $Y$ a partir de un valor de la variable independiente $X$
 * estimar el valor de la pendiente $\beta_{1}$, lo que permite valorar el efecto generado sobre la variable dependiente $Y$, al realizar cambios en la variable independiente $X$
 
+</br></br>
 
-### **Ejemplo**
+### <span style="color:#FF7F00">**Ejemplo**</span> 
+
+</br>
 
 Se requiere estimar la cantidad de biomasa contenida en un bosque, para lo cual se construye un modelo que permite estimar el valor de la biomasa para un árbol utilizando para ello el diámetro del árbol
 

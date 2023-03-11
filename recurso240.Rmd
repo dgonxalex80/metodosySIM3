@@ -26,10 +26,11 @@ modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 
 </br>
 
-En algunos casos el modelo lineal no es apropiado para ajutar los datos y por tanto no cumple los supuestos sobre los errores. Es necesario entonces probar otro tipo de modelo transformando las variables. 
+En algunos casos el modelo lineal no es apropiado para ajustar los datos y por tanto no cumple los supuestos sobre los errores. Es necesario entonces probar otro tipo de modelo transformando las variables. 
 
-Dentro de las transformaciones más empleadas estan:
+Dentro de las transformaciones más empleadas están:
 
+<div class="content-box-blue">
 <center>
 | Modelo   |  Regresión                                             | Variable dependiente| Variable independiente| Interpretación de $\beta_{1}$  |
 |:--------:|:------------------------------------------------------:|:------------------:|:---------------------:|:------------------------------:|
@@ -45,10 +46,15 @@ Dentro de las transformaciones más empleadas estan:
 
 </center>
 
+</div>
 
 
 
 </br></br>
+
+
+### <span style="color:#FF7F00">**Ejemplo**</span> 
+
 
 #### **Transformación de variables**
 

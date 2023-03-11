@@ -339,14 +339,18 @@ R - Modelo</strong></span></h1>
 validar los supuestos más importantes</p>
 <p></br></p>
 <div id="estimación-mco" class="section level3">
-<h3><strong>Estimación MCO</strong></h3>
+<h3><span style="color:#034a94"><strong>Estimación
+MCO</strong></span></h3>
 <pre class="r"><code>library(paqueteMET)
 data(biomasa)
 modelo=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo)</code></pre>
 <p>Los resultados se presentan en cuatro partes :</p>
 <p></br></br></p>
-<p><strong>Formula del modelo</strong></p>
+</div>
+<div id="formula-del-modelo" class="section level3">
+<h3><span style="color:#034A94"><strong>Formula del
+modelo</strong></span></h3>
 <p><span class="math display">\[\widehat{\text{bio_total}_{i}} =
 \widehat{\beta}_{0} + \widehat{\beta}_{1}
 \hspace{.2cm}\text{diametro}_{i}\]</span></p>
@@ -355,14 +359,20 @@ Call:
 lm(formula = log(bio_total) ~ diametro, data = biomasa)
 </pre>
 <p></br></br></p>
-<p><strong>Estadística de los residuales</strong></p>
+</div>
+<div id="estadística-de-los-residuales" class="section level3">
+<h3><span style="color:#034A94"><strong>Estadística de los
+residuales</strong></span></h3>
 <pre>
 Residuals:
     Min      1Q  Median      3Q     Max 
 -6.3775 -2.6594  0.0237  1.8758 11.9876 
 </pre>
 <p></br></br></p>
-<strong>Coeficientes estimados</strong>
+</div>
+<div id="coeficientes-estimados" class="section level3">
+<h3><span style="color:#034A94"><strong>Coeficientes
+estimados</strong></span></h3>
 <pre>
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
@@ -385,7 +395,10 @@ coeficientes:</p>
 <!-- |$Ha: \beta_{1} \neq 0$ |                               |                      | -->
 <p><img src="img/pruebas1.png" width="50%" style="display: block; margin: auto;" /></p>
 <p></br></br></p>
-<p><strong>Indicadores de ajuste</strong></p>
+</div>
+<div id="indicadores-de-ajuste" class="section level3">
+<h3><span style="color:#034A94"><strong>Indicadores de
+ajuste</strong></span></h3>
 <pre>
 Residual standard error: 3.435 on 88 degrees of freedom
 Multiple R-squared:  0.8247,    Adjusted R-squared:  0.8227 
@@ -399,19 +412,20 @@ por el modelo. Para el ejemplo <span class="math inline">\(R^{2} =
 variación de <span class="math inline">\(Y\)</span>.</p>
 <p></br></br></p>
 </div>
-<div id="validación-de-supuestos" class="section level3">
-<h3><strong>Validación de supuestos</strong></h3>
+<div id="validación-de-supuestos" class="section level2">
+<h2><span style="color:#034a94"><strong>Validación de
+supuestos</strong></span></h2>
 <p></br></br></p>
-</div>
 <div id="normalidad" class="section level3">
-<h3><strong>Normalidad</strong></h3>
+<h3><span style="color:#FF7F00"><strong>Normalidad</strong></span></h3>
 <p></br></p>
 <p><span class="math inline">\(H_o: \varepsilon \sim Normal\)</span></p>
 <p><span class="math inline">\(H_a: \varepsilon \hspace{.2cm} \text{ no
 } \sim Normal\)</span></p>
 <p></br></br></p>
 <div id="test-de-shapiro---wilk" class="section level4">
-<h4><strong>Test de Shapiro - Wilk</strong></h4>
+<h4><span style="color:#686868"><strong>Test de Shapiro -
+Wilk</strong></span></h4>
 <p></br></p>
 <pre class="r"><code>shapiro.test(modelo$residuals)</code></pre>
 <pre><code>
@@ -422,7 +436,8 @@ W = 0.98394, p-value = 0.3338</code></pre>
 <p></br></br></p>
 </div>
 <div id="test-de-jarque-bera" class="section level4">
-<h4><strong>Test de Jarque-Bera</strong></h4>
+<h4><span style="color:#686868"><strong>Test de
+Jarque-Bera</strong></span></h4>
 <p></br></p>
 <pre class="r"><code># install.packages(&quot;normtets&quot;)
  library(normtest)
@@ -435,7 +450,8 @@ JB = 2.081, p-value = 0.2525</code></pre>
 <p></br></br></p>
 </div>
 <div id="test-de-anderson-darling" class="section level4">
-<h4><strong>Test de Anderson-Darling</strong></h4>
+<h4><span style="color:#686868"><strong>Test de
+Anderson-Darling</strong></span></h4>
 <p></br></p>
 <pre class="r"><code># install.packages(&quot;nortets&quot;)
  library(nortest)
@@ -448,7 +464,8 @@ A = 0.29771, p-value = 0.5818</code></pre>
 <p></br></br></p>
 </div>
 <div id="test-de-lilliefors-kolmogorov-smirnov" class="section level4">
-<h4><strong>Test de Lilliefors (Kolmogorov-Smirnov)</strong></h4>
+<h4><span style="color:#686868"><strong>Test de Lilliefors
+(Kolmogorov-Smirnov)</strong></span></h4>
 <p></br></p>
 <pre class="r"><code>lillie.test(modelo$residuals)</code></pre>
 <pre><code>
@@ -460,7 +477,8 @@ D = 0.0623, p-value = 0.5281</code></pre>
 </div>
 </div>
 <div id="varianza-contante" class="section level3">
-<h3><strong>Varianza contante</strong></h3>
+<h3><span style="color:#FF7F00"><strong>Varianza
+contante</strong></span></h3>
 <p></br></p>
 <p><span class="math inline">\(Ho : V[\varepsilon_{i}] =
 \sigma^2\)</span></p>
@@ -468,7 +486,8 @@ D = 0.0623, p-value = 0.5281</code></pre>
 \sigma^2\)</span></p>
 <p></br></br></p>
 <div id="test-de-breusch-pagan" class="section level4">
-<h4><strong>Test de Breusch-Pagan</strong></h4>
+<h4><span style="color:#686868"><strong>Test de
+Breusch-Pagan</strong></span></h4>
 <p></br></p>
 <pre class="r"><code>library(lmtest)
 bptest(modelo)</code></pre>
@@ -480,7 +499,8 @@ BP = 3.879, df = 1, p-value = 0.04889</code></pre>
 <p></br></br></p>
 </div>
 <div id="test-de-goldfeld-quandt" class="section level4">
-<h4><strong>Test de Goldfeld-Quandt</strong></h4>
+<h4><span style="color:#686868"><strong>Test de
+Goldfeld-Quandt</strong></span></h4>
 <p></br></p>
 <pre class="r"><code>library(lmtest)
 gqtest(modelo)</code></pre>
@@ -492,17 +512,19 @@ GQ = 1.1538, df1 = 43, df2 = 43, p-value = 0.3206
 alternative hypothesis: variance increases from segment 1 to 2</code></pre>
 <p></br></br></p>
 </div>
-<div id="no-autocorrelación-de-errores" class="section level4">
-<h4><strong>No autocorrelación de errores</strong></h4>
+</div>
+<div id="no-autocorrelación-de-errores" class="section level3">
+<h3><span style="color:#FF7F00"><strong>No autocorrelación de
+errores</strong></span></h3>
 <p></br></p>
 <p><span class="math inline">\(Ho : E[\varepsilon_{i}, \varepsilon_{j}]
 = 0\)</span></p>
 <p><span class="math inline">\(Ha : E[\varepsilon_{i}, \varepsilon_{j}]
 \neq 0\)</span></p>
 <p></br></p>
-</div>
 <div id="test-de-durbin-watson" class="section level4">
-<h4><strong>Test de Durbin-Watson</strong></h4>
+<h4><span style="color:#686868"><strong>Test de
+Durbin-Watson</strong></span></h4>
 <p></br></p>
 <pre class="r"><code>dwtest(modelo)</code></pre>
 <pre><code>
@@ -513,8 +535,10 @@ DW = 0.67803, p-value = 1.716e-13
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p></br></br></p>
 </div>
-<div id="transformación-de-variables" class="section level4">
-<h4><strong>Transformación de variables</strong></h4>
+</div>
+<div id="transformación-de-variables" class="section level3">
+<h3><span style="color:#034a94"><strong>Transformación de
+variables</strong></span></h3>
 <pre class="r"><code>library(paqueteMET)
 data(&quot;biomasa&quot;)
 modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
