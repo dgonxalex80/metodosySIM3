@@ -98,8 +98,6 @@ Los rangos se obtienen al ordenar los datos y asignarles a cada valor el número
 
 </br></br>
 
-<div class="content-box-yellow">
-### <span style="color:#686868">**Nota**</span> 
 
 
 Para el caso de variables cualitativas existen varios indicadores para medir el grado de asociación entre ellas como son:
@@ -110,7 +108,6 @@ Para el caso de variables cualitativas existen varios indicadores para medir el 
 
 * **Eta** : para tablas con variables de intervalo y nominal 
 
-</div>
 
 </br></br>
 
@@ -190,6 +187,9 @@ Fuente : Ejemplo simulado para fines académicos
 
 </br>
 
+Tambien llamado coeficiente de Mathews, corresponde a un indicador de asociación entre dos variables binarias y está basado en el estadístico chi-cuadrado producto de una tabla cruzada o tabla de contingencia $2 \times 2$
+
+
 ```{r, echo=FALSE, out.width="60%", fig.align = "center"}
 knitr::include_graphics("img/tabla.png")
 ```
@@ -208,11 +208,21 @@ $$\phi = \dfrac{n_{11}\hspace{.1cm}n_{00}-n_{10}\hspace{.1cm}n_{01}}{\sqrt{n_{1*
 
 </br></br>
 
+```{r}
+
+# install.packages("DescTools")
+library(DescTools)
+cat("Coeficiente Phi : ", Phi(tabla)) 
+```
+
+
+
 ## <span style="color:#034a94">**Coeficiente V de Cramer**</span>
 
 </br>
 
-Mide la inensidad de la relación entre dos variables categóricas 
+
+Mide la inensidad de la relación entre dos variables categóricas en terminos del tamaño de la chi-cuadrado de independencia.
 
 * Es debil para valores inferiores a $0.2$ 
 * Moderado para valores entre $0.2$ y $0.6$
@@ -235,19 +245,12 @@ $k$ : menor valor entre el número de filas menos 1 y el número de columnas men
 
 </br></br>
 
-```{r, eval=FALSE}
+```{r}
 
 # install.packages("DescTools")
 library(DescTools)
-cat("Coeficiente Phi : ", Phi(tabla), "\n") 
 cat("Coeficiente V de Cramer :", CramerV(tabla)) 
 ```
 
-</br></br>
-
-<pre>
-Coeficiente Phi         :  0.3643192 
-Coeficiente V de Cramer : 0.3643192
-</pre>
 
 Estos coeficientes varia entre $-1$  y $1$,  en este caso presentan un nivel bajo en  relación entre las variables.

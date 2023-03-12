@@ -12,6 +12,9 @@ c1="#FF7F00"
 c2="#=EB0C6"
 c3="#034A94"
 c4="#686868"
+library(vembedr)
+library(tidyverse)
+library(MASS)
 
 library(ggplot2)
 library(paqueteMET)
@@ -22,7 +25,7 @@ modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 </br></br>
 
 
-## **Transformación de variables**
+## <span style="color:#034a94">**Transformación de variables**</span>
 
 </br>
 
@@ -30,14 +33,14 @@ En algunos casos el modelo lineal no es apropiado para ajustar los datos y por t
 
 Dentro de las transformaciones más empleadas están:
 
-<div class="content-box-blue">
+
 <center>
 | Modelo   |  Regresión                                             | Variable dependiente| Variable independiente| Interpretación de $\beta_{1}$  |
-|:--------:|:------------------------------------------------------:|:------------------:|:---------------------:|:------------------------------:|
-| `Lin-Lin`  | $Y_{i} = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $Y$                 |  $X$                  | $\Delta Y = \beta_{1} \Delta X$|
-| `Lin-Log`  | $Y_{i} = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $Y$           |  $\log(X)$            | $\Delta Y = \Bigg(\dfrac{\beta_{1}}{100}\Bigg) \% \Delta X$|
-| `Log-Lin`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $\log(Y)$     |  $X$                  | $\%\Delta Y = (100 \beta_{1}) \Delta X$|
-| `Log-Log`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $\log(Y)$|  $\log(X)$           | $\%\Delta Y = \beta_{1}\% \Delta X$||
+|:---------|:-------------------------------------------------------|:------------------:|:---------------------:|:-------------------------------|
+| `Lin-Lin`  | $Y_{i} = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $Y$                 |  $X$                  | $\Delta Y = \beta_{1}  \hspace{.2cm}\Delta X$|
+| `Lin-Log`  | $Y_{i} = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $Y$           |  $\log(X)$            | $\Delta Y = (\beta_{1} / 100) \% \hspace{.2cm}\Delta X$|
+| `Log-Lin`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $\log(Y)$     |  $X$                  | $\%\Delta Y = (100 \beta_{1}) \hspace{.2cm}\Delta X$|
+| `Log-Log`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $\log(Y)$|  $\log(X)$           | $\%\Delta Y = \beta_{1}\% \hspace{.2cm}\Delta X$||
 ||||||
 
 <!--```{r, echo=FALSE, out.width="100%", fig.align = "center"} -->
@@ -46,7 +49,6 @@ Dentro de las transformaciones más empleadas están:
 
 </center>
 
-</div>
 
 
 
@@ -55,8 +57,9 @@ Dentro de las transformaciones más empleadas están:
 
 ### <span style="color:#FF7F00">**Ejemplo**</span> 
 
+</br>
 
-#### **Transformación de variables**
+### <span style="color:#034a94">**Transformación de variables**</span>
 
 ```{r}
 library(paqueteMET)
@@ -73,7 +76,47 @@ library(stargazer)
 stargazer(modelo1, modelo2, modelo3, modelo4, type="text", df=FALSE)
 ```
 
+</br></br>
 
+### <span style="color:#034a94">**Transformación Box-Cox**</span>
 
+</br>
+
+La transformación de la variable respuesta $Y$ es útil para dar solución a problemas tanto de validación de suspuesto como también de mejoras en el nivel de ajuste del modelo. Poder detectar cuál de las anteriores trasformaciones es la más apropiada podría se un trabajo de error ensayo, probando una a una las transformaciones, generando una de manda de tiempo.
+
+El método de box-cox permite encontrar el valor de $\lambda$ óptimo para la función :
+
+$$g_{\lambda}(y) = \left \{ \begin{matrix} \dfrac{y^{\lambda}-1}{y} & \mbox{ si } \lambda \neq 0\\ 
+                                     &  \\
+                                     log(y)  & \mbox{ si } \lambda =0 \end{matrix}\right.$$
+
+El valor $\dfrac{y^{\lambda}-1}{y}$ se puede simplificar por $y^{\lambda}$ cuando el modelo es predictivo. El valor máximo de este valor podrá orientar sobre la forma funcional de la variables respuesta.
+
+La función `boxcox()`, del paquete `MASS` nos ayuda a encontrar el valor óptimo de $\lambda$
+
+La siguiente tabla nos ayuda a identificar la transformación apropiada
+
+</br></br>
+
+|                         |           |           |             |           |           |           |            |
+|:------------------------|:----------|:----------|:------------|:----------|:----------|:----------|:-----------|
+| $\lambda \hspace{1.5cm}$|   -2      |  -1       |   -0.5      |      0    |  0.5      |    1      |  2         |
+| Transformación          | $1/y^{2}$ | $1/y$     | $1/\sqrt{y}$| $log(y)$  | $\sqrt{y}$|   $y$     | $y^{2}$    |
+
+</br></br>
+
+```{r}
+library(paqueteMET)
+data(biomasa)
+modelo1=lm(bio_total ~ diametro, data=biomasa)
+summary(modelo1)
+par(mfrow = c(1,2))
+boxcox(lm(biomasa$bio_total ~ biomasa$diametro, data=biomasa), lambda = -3:3)
+#Se repite el proceso pero esta vez entrechando el rango de valores de lambda 
+bc<-boxcox(lm(biomasa$bio_total ~ biomasa$diametro), lambda = -1:1)
+(lambda <- bc$x[which.max(bc$y)])
+```
+
+El resultado  ($\lambda =0$) indica que la variable dependiente debe estar en escala logarítmica
 
 

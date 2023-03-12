@@ -11,9 +11,8 @@
 
 <meta name="author" content="Métodos y Simulación Estadística" />
 
-<meta name="date" content="2023-03-10" />
 
-<title> Análisis de correlación</title>
+<title> Código R - Correlación</title>
 
 <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -326,18 +325,25 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><span style="color:#034a94">
-<strong>Análisis de correlación</strong></span></h1>
+<h1 class="title toc-ignore"><span style="color:#034a94"> <strong>Código
+R - Correlación</strong></span></h1>
 <h4 class="author">Métodos y Simulación Estadística</h4>
-<h4 class="date">2023-03-10</h4>
 
 </div>
 
 
 <p></br></br></br></p>
-<div id="matriz-de-correlaciones" class="section level4">
-<h4><span style="color:#034a94"><strong>Matriz de
-correlaciones</strong></span></h4>
+<div id="matriz-de-varianzas-covarianzas" class="section level3">
+<h3><span style="color:#034a94"><strong>Matriz de varianzas
+covarianzas</strong></span></h3>
+<p></br></p>
+<p>Esta matriz presenta las varianzas de las variables en su diagonal
+principal y las covarianzas por fuera de ella, siendo una matriz
+diagonal.</p>
+<p><span class="math inline">\(\sigma_{x_i,x_i} =
+\sigma^2_{x_i}\)</span> y <span class="math inline">\(\sigma_{x_i,x_j} =
+\sigma_{x_j,x_i}\)</span> para todo <span class="math inline">\(i \neq
+j\)</span></p>
 <pre class="r"><code>library(paqueteMET)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data</code></pre>
@@ -350,6 +356,40 @@ head(biomasa) # primeros 6 registros de la data</code></pre>
 4 FINCA_1 GENOTIPO_1      8.08    0.91      8.99        29.5      3.2    4.3
 5 FINCA_1 GENOTIPO_1      5.58    1.41      6.99        22.5      2.2    3.3
 6 FINCA_1 GENOTIPO_2     18.5     0.84     19.3         34.2      6.3    7.9</code></pre>
+<pre class="r"><code>cov(biomasa[,3:8]) %&gt;%  # matriz de correlaciones 
+  round(.,3      )</code></pre>
+<pre><code>            bio_aerea bio_sub bio_total area_foliar diametro altura
+bio_aerea      69.433  -1.497    67.936      84.435   11.058 12.913
+bio_sub        -1.497   0.102    -1.394      -2.213   -0.303 -0.317
+bio_total      67.936  -1.394    66.542      82.222   10.755 12.597
+area_foliar    84.435  -2.213    82.222     137.272   12.526 12.049
+diametro       11.058  -0.303    10.755      12.526    2.108  2.444
+altura         12.913  -0.317    12.597      12.049    2.444  3.238</code></pre>
+<p></br></br></br></p>
+<p>Para presentar el código para los diferentes indicadores utilizamos
+la base de datos <code>biomasa</code> contenida en
+<code>paqueteMET</code></p>
+<pre class="r"><code>library(paqueteMET)
+data(biomasa) # data contenida en  paqueteMET
+head(biomasa) # primeros 6 registros de la data</code></pre>
+<pre><code># A tibble: 6 × 8
+  finca   mg         bio_aerea bio_sub bio_total area_foliar diametro altura
+  &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 FINCA_1 GENOTIPO_1     12.8     0.93     13.7         44.5      4.7    5  
+2 FINCA_1 GENOTIPO_1     13.9     0.69     14.6         39.7      5.3    5.6
+3 FINCA_1 GENOTIPO_1     15.1     0.78     15.9         45.6      4.8    5.8
+4 FINCA_1 GENOTIPO_1      8.08    0.91      8.99        29.5      3.2    4.3
+5 FINCA_1 GENOTIPO_1      5.58    1.41      6.99        22.5      2.2    3.3
+6 FINCA_1 GENOTIPO_2     18.5     0.84     19.3         34.2      6.3    7.9</code></pre>
+</div>
+<div id="matriz-de-correlaciones" class="section level3">
+<h3><span style="color:#034a94"><strong>Matriz de
+correlaciones</strong></span></h3>
+<p></br></p>
+<p>Presenta las correlaciones entre pares de variables <span
+class="math inline">\(\rho_{x_i,x_j} = \rho_{x_j,x_i}\)</span> y en la
+diagonal presenta 1 dado que <span class="math inline">\(\rho_{x_1, x_1}
+=1\)</span></p>
 <pre class="r"><code>cor(biomasa[,3:8]) %&gt;%  # matriz de correlaciones 
   round(.,3      )</code></pre>
 <pre><code>            bio_aerea bio_sub bio_total area_foliar diametro altura
@@ -366,13 +406,20 @@ class="section level3">
 <h3><span style="color:#034a94"><strong>Matriz de correlaciones - otra
 alternativa</strong></span></h3>
 <p></br></p>
+<p>El paquete GGally ofrece una alternativa que combina indocadores de
+correlación y gráficos en una sola matriz.</p>
 <pre class="r"><code>library(GGally)
 ggpairs(biomasa[,5:8], title=&quot;Biomasa&quot;) </code></pre>
-<p><img src="recurso130_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="recurso130_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p></br></br></br></p>
-<div id="visualización-tabla-de-contingencia" class="section level4">
-<h4><span style="color:#034a94"><strong>Visualización tabla de
-contingencia</strong></span></h4>
+</div>
+<div id="visualización-tabla-de-contingencia" class="section level3">
+<h3><span style="color:#034a94"><strong>Visualización tabla de
+contingencia</strong></span></h3>
+<p></br></p>
+<p>Para mostrar el calculo de los indicadores de correlación Phi y V de
+Cramer utilizamos la siguiente tabla <span class="math inline">\(2
+\times 2\)</span> simulada.</p>
 <p></br></p>
 <pre class="r"><code>library(tidyverse)
 tabla = c(80,9,30,21) %&gt;% 
@@ -382,10 +429,9 @@ rownames(tabla)=c(&quot;si&quot;, &quot;no&quot;)
 
 
 mosaicplot(tabla, cex = 1.1, col = c(&quot;#8ECAE6&quot;,&quot;#023047&quot;), main = &quot;Proyectos aprobados sistema alimentario&quot;)</code></pre>
-<p><img src="recurso130_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="recurso130_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Fuente : Ejemplo simulado para fines académicos</p>
 <p></br></br></p>
-</div>
 </div>
 <div id="coeficiente-phi" class="section level3">
 <h3><span style="color:#034a94"><strong>Coeficiente

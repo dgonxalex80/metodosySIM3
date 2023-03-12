@@ -1,11 +1,5 @@
 ---
-title: "Código R - correlación"
-author: "dgonzalez"
-date: "2023-03-10"
-output: html_document
----
----
-title: <span style="color:#034a94"> **Análisis de correlación**</span>
+title: <span style="color:#034a94"> **Código R - Correlación**</span>
 author: "Métodos y Simulación Estadística"
 output: html_document
 css: style.css
@@ -74,15 +68,47 @@ tabla <- table(X, Y)
 
 </br></br></br>
 
-#### <span style="color:#034a94">**Matriz de correlaciones**</span>
+### <span style="color:#034a94">**Matriz de varianzas covarianzas**</span>
+
+</br>
+
+
+Esta matriz presenta las varianzas de las variables en su diagonal principal y las covarianzas por fuera de ella, siendo una matriz diagonal.
+
+$\sigma_{x_i,x_i} = \sigma^2_{x_i}$ y $\sigma_{x_i,x_j} = \sigma_{x_j,x_i}$ para todo $i \neq j$
 
 ```{r}
 library(paqueteMET)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data
+cov(biomasa[,3:8]) %>%  # matriz de correlaciones 
+  round(.,3      )
+```
+</br></br></br>
+
+Para presentar el código para los diferentes indicadores utilizamos la base de datos `biomasa` contenida en `paqueteMET`
+
+
+```{r}
+library(paqueteMET)
+data(biomasa) # data contenida en  paqueteMET
+head(biomasa) # primeros 6 registros de la data
+```
+
+
+
+
+
+### <span style="color:#034a94">**Matriz de correlaciones**</span>
+
+</br>
+
+Presenta las correlaciones entre pares de variables $\rho_{x_i,x_j} = \rho_{x_j,x_i}$ y en la diagonal presenta 1 dado que $\rho_{x_1, x_1} =1$
+
+
+```{r}
 cor(biomasa[,3:8]) %>%  # matriz de correlaciones 
   round(.,3      )
-
 ```
 
 
@@ -91,6 +117,9 @@ cor(biomasa[,3:8]) %>%  # matriz de correlaciones
 ### <span style="color:#034a94">**Matriz de correlaciones - otra alternativa**</span>
 
 </br>
+
+El paquete GGally ofrece una alternativa que combina indocadores de correlación y gráficos en una sola matriz.
+
 
 ```{r, message=FALSE, warning=FALSE}
 library(GGally)
@@ -102,7 +131,11 @@ ggpairs(biomasa[,5:8], title="Biomasa")
 
 
 
-#### <span style="color:#034a94">**Visualización tabla de contingencia**</span>
+### <span style="color:#034a94">**Visualización tabla de contingencia**</span>
+
+</br>
+
+Para mostrar el calculo de los indicadores de correlación Phi y V de Cramer utilizamos la siguiente tabla $2 \times 2$ simulada.
 
 </br>
 

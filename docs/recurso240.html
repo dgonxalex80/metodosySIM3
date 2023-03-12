@@ -334,14 +334,14 @@ $(document).ready(function () {
 
 <p></br></br></p>
 <div id="transformación-de-variables" class="section level2">
-<h2><strong>Transformación de variables</strong></h2>
+<h2><span style="color:#034a94"><strong>Transformación de
+variables</strong></span></h2>
 <p></br></p>
 <p>En algunos casos el modelo lineal no es apropiado para ajustar los
 datos y por tanto no cumple los supuestos sobre los errores. Es
 necesario entonces probar otro tipo de modelo transformando las
 variables.</p>
 <p>Dentro de las transformaciones más empleadas están:</p>
-<div class="content-box-blue">
 <center>
 <table>
 <colgroup>
@@ -353,57 +353,57 @@ variables.</p>
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">Modelo</th>
-<th align="center">Regresión</th>
+<th align="left">Modelo</th>
+<th align="left">Regresión</th>
 <th align="center">Variable dependiente</th>
 <th align="center">Variable independiente</th>
-<th align="center">Interpretación de <span
+<th align="left">Interpretación de <span
 class="math inline">\(\beta_{1}\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><code>Lin-Lin</code></td>
-<td align="center"><span class="math inline">\(Y_{i} = \beta_{0}+
+<td align="left"><code>Lin-Lin</code></td>
+<td align="left"><span class="math inline">\(Y_{i} = \beta_{0}+
 \beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(Y\)</span></td>
 <td align="center"><span class="math inline">\(X\)</span></td>
-<td align="center"><span class="math inline">\(\Delta Y = \beta_{1}
-\Delta X\)</span></td>
+<td align="left"><span class="math inline">\(\Delta Y = \beta_{1}
+\hspace{.2cm}\Delta X\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><code>Lin-Log</code></td>
-<td align="center"><span class="math inline">\(Y_{i} = \beta_{0}+
+<td align="left"><code>Lin-Log</code></td>
+<td align="left"><span class="math inline">\(Y_{i} = \beta_{0}+
 \beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(Y\)</span></td>
 <td align="center"><span class="math inline">\(\log(X)\)</span></td>
-<td align="center"><span class="math inline">\(\Delta Y =
-\Bigg(\dfrac{\beta_{1}}{100}\Bigg) \% \Delta X\)</span></td>
+<td align="left"><span class="math inline">\(\Delta Y = (\beta_{1} /
+100) \% \hspace{.2cm}\Delta X\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><code>Log-Lin</code></td>
-<td align="center"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
+<td align="left"><code>Log-Lin</code></td>
+<td align="left"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
 \beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(\log(Y)\)</span></td>
 <td align="center"><span class="math inline">\(X\)</span></td>
-<td align="center"><span class="math inline">\(\%\Delta Y = (100
-\beta_{1}) \Delta X\)</span></td>
+<td align="left"><span class="math inline">\(\%\Delta Y = (100
+\beta_{1}) \hspace{.2cm}\Delta X\)</span></td>
 </tr>
 <tr class="even">
-<td align="center"><code>Log-Log</code></td>
-<td align="center"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
+<td align="left"><code>Log-Log</code></td>
+<td align="left"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
 \beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(\log(Y)\)</span></td>
 <td align="center"><span class="math inline">\(\log(X)\)</span></td>
-<td align="center"><span class="math inline">\(\%\Delta Y = \beta_{1}\%
-\Delta X\)</span></td>
+<td align="left"><span class="math inline">\(\%\Delta Y = \beta_{1}\%
+\hspace{.2cm}\Delta X\)</span></td>
 </tr>
 <tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>
@@ -411,12 +411,14 @@ class="math inline">\(\beta_{1}\)</span></th>
 <!--knitr::include_graphics("img/interpreta.png") -->
 <!--``` -->
 </center>
-</div>
 <p></br></br></p>
 <div id="ejemplo" class="section level3">
 <h3><span style="color:#FF7F00"><strong>Ejemplo</strong></span></h3>
-<div id="transformación-de-variables-1" class="section level4">
-<h4><strong>Transformación de variables</strong></h4>
+<p></br></p>
+</div>
+<div id="transformación-de-variables-1" class="section level3">
+<h3><span style="color:#034a94"><strong>Transformación de
+variables</strong></span></h3>
 <pre class="r"><code>library(paqueteMET)
 data(&quot;biomasa&quot;)
 modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
@@ -449,7 +451,103 @@ Residual Std. Error   3.435      4.362      0.145      0.162
 F Statistic         413.961*** 223.224*** 687.562*** 532.232***
 ===============================================================
 Note:                               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p></br></br></p>
 </div>
+<div id="transformación-box-cox" class="section level3">
+<h3><span style="color:#034a94"><strong>Transformación
+Box-Cox</strong></span></h3>
+<p></br></p>
+<p>La transformación de la variable respuesta <span
+class="math inline">\(Y\)</span> es útil para dar solución a problemas
+tanto de validación de suspuesto como también de mejoras en el nivel de
+ajuste del modelo. Poder detectar cuál de las anteriores trasformaciones
+es la más apropiada podría se un trabajo de error ensayo, probando una a
+una las transformaciones, generando una de manda de tiempo.</p>
+<p>El método de box-cox permite encontrar el valor de <span
+class="math inline">\(\lambda\)</span> óptimo para la función :</p>
+<p><span class="math display">\[g_{\lambda}(y) = \left \{ \begin{matrix}
+\dfrac{y^{\lambda}-1}{y} &amp; \mbox{ si } \lambda \neq 0\\
+                                     &amp;  \\
+                                     log(y)  &amp; \mbox{ si } \lambda
+=0 \end{matrix}\right.\]</span></p>
+<p>El valor <span
+class="math inline">\(\dfrac{y^{\lambda}-1}{y}\)</span> se puede
+simplificar por <span class="math inline">\(y^{\lambda}\)</span> cuando
+el modelo es predictivo. El valor máximo de este valor podrá orientar
+sobre la forma funcional de la variables respuesta.</p>
+<p>La función <code>boxcox()</code>, del paquete <code>MASS</code> nos
+ayuda a encontrar el valor óptimo de <span
+class="math inline">\(\lambda\)</span></p>
+<p>La siguiente tabla nos ayuda a identificar la transformación
+apropiada</p>
+<p></br></br></p>
+<table style="width:100%;">
+<colgroup>
+<col width="23%" />
+<col width="10%" />
+<col width="10%" />
+<col width="12%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\lambda
+\hspace{1.5cm}\)</span></td>
+<td align="left">-2</td>
+<td align="left">-1</td>
+<td align="left">-0.5</td>
+<td align="left">0</td>
+<td align="left">0.5</td>
+<td align="left">1</td>
+<td align="left">2</td>
+</tr>
+<tr class="even">
+<td align="left">Transformación</td>
+<td align="left"><span class="math inline">\(1/y^{2}\)</span></td>
+<td align="left"><span class="math inline">\(1/y\)</span></td>
+<td align="left"><span class="math inline">\(1/\sqrt{y}\)</span></td>
+<td align="left"><span class="math inline">\(log(y)\)</span></td>
+<td align="left"><span class="math inline">\(\sqrt{y}\)</span></td>
+<td align="left"><span class="math inline">\(y\)</span></td>
+<td align="left"><span class="math inline">\(y^{2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p></br></br></p>
+<pre class="r"><code>library(paqueteMET)
+data(biomasa)
+modelo1=lm(bio_total ~ diametro, data=biomasa)
+summary(modelo1)</code></pre>
+<pre><code>
+Call:
+lm(formula = bio_total ~ diametro, data = biomasa)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.3775 -2.6594  0.0237  1.8758 11.9876 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -9.0203     1.4129  -6.384 7.86e-09 ***
+diametro      5.1026     0.2508  20.346  &lt; 2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 3.435 on 88 degrees of freedom
+Multiple R-squared:  0.8247,    Adjusted R-squared:  0.8227 
+F-statistic:   414 on 1 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre class="r"><code>par(mfrow = c(1,2))
+boxcox(lm(biomasa$bio_total ~ biomasa$diametro, data=biomasa), lambda = -3:3)
+#Se repite el proceso pero esta vez entrechando el rango de valores de lambda 
+bc&lt;-boxcox(lm(biomasa$bio_total ~ biomasa$diametro), lambda = -1:1)</code></pre>
+<p><img src="recurso240_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>(lambda &lt;- bc$x[which.max(bc$y)])</code></pre>
+<pre><code>[1] 0.07070707</code></pre>
+<p>El resultado (<span class="math inline">\(\lambda =0\)</span>) indica
+que la variable dependiente debe estar en escala logarítmica</p>
 </div>
 </div>
 
