@@ -140,6 +140,8 @@ knitr::include_graphics("img/Rho2.png")
 
 ### <span style="color:#FF7F00">**Ejemplo**</span> 
 
+</br>
+
 Se cuenta con la información de una muestra aleatoria de 6 pueblos del departamento, donde se observaron las variables número de policías y número de delitos
 registrados durante el mes pasado, la información obtenida se presenta a continuación:
 
@@ -175,7 +177,9 @@ Por lo tanto, el resultado obtenido del coeficiente de correlación $r = −0.83
 
 </br></br>
 
-## **Pruebas de hipótesis sobre $\rho$**
+## <span style="color:#034a94">**Pruebas de hipótesis sobre $\rho$**
+
+</br>
 
 Es importante verificar si de $\rho$ es igual a cero o se puede considerar diferente de cero, a partir de la muestra de estudio. Para ello se utiliza un estadístico de prueba con distribución t-Studen con $v=n-2$ grados de libertad
 

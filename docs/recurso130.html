@@ -390,7 +390,9 @@ correlaciones</strong></span></h3>
 class="math inline">\(\rho_{x_i,x_j} = \rho_{x_j,x_i}\)</span> y en la
 diagonal presenta 1 dado que <span class="math inline">\(\rho_{x_1, x_1}
 =1\)</span></p>
-<pre class="r"><code>cor(biomasa[,3:8]) %&gt;%  # matriz de correlaciones 
+<pre class="r"><code>library(paqueteMET)
+data(biomasa) # data contenida en  paqueteMET
+cor(biomasa[,3:8]) %&gt;%  # matriz de correlaciones 
   round(.,3      )</code></pre>
 <pre><code>            bio_aerea bio_sub bio_total area_foliar diametro altura
 bio_aerea       1.000  -0.561     0.999       0.865    0.914  0.861
@@ -406,7 +408,7 @@ class="section level3">
 <h3><span style="color:#034a94"><strong>Matriz de correlaciones - otra
 alternativa</strong></span></h3>
 <p></br></p>
-<p>El paquete GGally ofrece una alternativa que combina indocadores de
+<p>El paquete GGally ofrece una alternativa que combina indicadores de
 correlación y gráficos en una sola matriz.</p>
 <pre class="r"><code>library(GGally)
 ggpairs(biomasa[,5:8], title=&quot;Biomasa&quot;) </code></pre>

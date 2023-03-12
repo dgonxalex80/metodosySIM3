@@ -107,6 +107,8 @@ Presenta las correlaciones entre pares de variables $\rho_{x_i,x_j} = \rho_{x_j,
 
 
 ```{r}
+library(paqueteMET)
+data(biomasa) # data contenida en  paqueteMET
 cor(biomasa[,3:8]) %>%  # matriz de correlaciones 
   round(.,3      )
 ```
@@ -118,7 +120,7 @@ cor(biomasa[,3:8]) %>%  # matriz de correlaciones
 
 </br>
 
-El paquete GGally ofrece una alternativa que combina indocadores de correlación y gráficos en una sola matriz.
+El paquete GGally ofrece una alternativa que combina indicadores de correlación y gráficos en una sola matriz.
 
 
 ```{r, message=FALSE, warning=FALSE}
