@@ -17,7 +17,7 @@ library(tidyverse)
 # install.packages("PerformanceAnalytics")
 library(PerformanceAnalytics)
 
-
+library(MASS)
 #install.packages("devtools") # solo una vez
 # devtools::install_github("dgonxalex80/paqueteMET") # descarga paqueteDEG
 library(paqueteMET) # activa paqueteMET
