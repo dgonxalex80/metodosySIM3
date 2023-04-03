@@ -73,9 +73,9 @@ $$
 
 </br></br>
 
-<div class="content-box-blue">
+<div class="content-box-gray">
 
-### <span style="color:#FF7F00">**Resumen**</span> 
+### <span style="color:#686868">**Resumen**</span> 
 
 
 $$
@@ -267,7 +267,7 @@ summary(modelo1)
 
 
 
-</br>
+</br></br>
 
 
 
@@ -277,6 +277,7 @@ summary(modelo1)
 confint(object = modelo1, parm="diametro", level = 0.95)
 ```
 
+</br></br>
 
 #### **Predicción de $E[Y|x_{o}]$**
 

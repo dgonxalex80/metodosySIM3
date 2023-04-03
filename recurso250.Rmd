@@ -113,7 +113,7 @@ Este resultado muestra el valor del coeficiente de determinación ($R^2$) que co
 
 </br></br>
 
-### <span style="color:#FF7F00">**Normalidad**</span>
+### <span style="color:#034A94">**Normalidad**</span>
 
 </br>
 
@@ -168,7 +168,7 @@ lillie.test(modelo$residuals)
 
 </br></br>
 
-### <span style="color:#FF7F00">**Varianza contante**</span>
+### <span style="color:#034A94">**Varianza contante**</span>
 
 </br>
 
@@ -200,7 +200,7 @@ gqtest(modelo)
 
 </br></br>
 
-### <span style="color:#FF7F00">**No autocorrelación de errores**</span>
+### <span style="color:#034A94">**No autocorrelación de errores**</span>
 
 </br>
 

@@ -388,8 +388,8 @@ c_i) Y_i\right]} = {\sum^n_{i=1} (m_i + x_0\, c_i)^2\ V(Y_i)}\nonumber\\
 \end{aligned}
 \]</span></p>
 <p></br></br></p>
-<div id="resumen" class="section level3 content-box-blue">
-<h3><span style="color:#FF7F00"><strong>Resumen</strong></span></h3>
+<div id="resumen" class="section level3 content-box-gray">
+<h3><span style="color:#686868"><strong>Resumen</strong></span></h3>
 <p><span class="math display">\[
 \widehat{Y}_0 \sim N\left(E[Y\vert x_0], \ \sigma^2\left[\frac{1}{n} +
 \frac{(x_0 - \bar{x})^2}{S_{xx}}\right]\right)
@@ -575,12 +575,13 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 3.435 on 88 degrees of freedom
 Multiple R-squared:  0.8247,    Adjusted R-squared:  0.8227 
 F-statistic:   414 on 1 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p></br></p>
+<p></br></br></p>
 <div id="inferencia-sobre-los-parámetros" class="section level4">
 <h4><strong>Inferencia sobre los parámetros</strong></h4>
 <pre class="r"><code>confint(object = modelo1, parm=&quot;diametro&quot;, level = 0.95)</code></pre>
 <pre><code>            2.5 %  97.5 %
 diametro 4.604185 5.60097</code></pre>
+<p></br></br></p>
 </div>
 <div id="predicción-de-eyx_o" class="section level4">
 <h4><strong>Predicción de <span

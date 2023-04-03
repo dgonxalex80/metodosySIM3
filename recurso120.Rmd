@@ -87,7 +87,7 @@ $$\gamma_{s} = \dfrac{ \sum_{i=1}^{n}\Big[\big(  R_{i}(x) - \overline{R}(x)\big)
 
 </br></br>
 
-<div class="content-box-yellow">
+<div class="content-box-gray">
 ### <span style="color:#686868">**Nota**</span>
 
 Los rangos se obtienen al ordenar los datos y asignarles a cada valor el número del orden correspondiente ($1,2,3,4,5...n$) $R_{i}(x)$ y $R_{i}(y)$
@@ -125,7 +125,7 @@ cor(biomasa[,3:8]) %>%  # matriz de correlaciones
 ```
 </br></br>
 
-<div class="content-box-yellow">
+<div class="content-box-gray">
 ### <span style="color:#686868">**Nota**</span> 
 
 </br>

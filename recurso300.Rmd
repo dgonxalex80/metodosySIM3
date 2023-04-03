@@ -25,7 +25,7 @@ modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 
 </br></br>
 
-Despues de estimar el modelo por el método de MCO y haber verificado el cumplimiento de los supuestos podemos realizar inferencias sobre los resultados obtenidos.
+Después de estimar el modelo por el método de MCO y haber verificado el cumplimiento de los supuestos podemos realizar inferencias sobre los resultados obtenidos.
 
 * Intervalos de confianza sobre el intercepto ($\beta_{0}$) y sobre la pendiente ($\beta_{1}$). 
 * Pruebas de hipótesis sobre los parámetros $\beta_{0}$ y $\beta_{1}$, con el fin de validar si los valores estimados a partir de la muestra son estadísticamente significativos ($Ho:  \beta_{i} =0$ vs $Ha: \beta_{i} \neq 0$).

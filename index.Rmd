@@ -1,5 +1,5 @@
 ---
-title : <span style="color:#686868"> **Experiencia**</span>
+title : <span style="color:#034A94"> **Experiencia**</span>
 author: "Métodos y Simulación Estadística"
 css: style.css
 ---

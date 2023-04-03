@@ -25,23 +25,33 @@ El método **MCO**, es un método matemático que tiene solución única, sin em
 
 </br>
 
-* <span style="color:#FF7F00">**Normalidad**</span> , los errores   siguen una distribución normal ($\varepsilon_{i} \sim N(0, \sigma^2)$)
+### <span style="color:#034A94">**Normalidad**</span> 
+
+Los errores   siguen una distribución normal ($\varepsilon_{i} \sim N(0, \sigma^2)$)
 
 </br>
 
-* <span style="color:#FF7F00">**Homoscedasticidad**</span>, la varianza al rededor de la linea de regresión, para cualquier valor constante ($V[\varepsilon] = \sigma^2$)
+### <span style="color:#034A94">**Homoscedasticidad**</span>
+
+La varianza al rededor de la linea de regresión, para cualquier valor constante ($V[\varepsilon] = \sigma^2$)
 
 </br>
 
-* <span style="color:#FF7F00">**Linealidad**</span>,  la relación entre la variable dependiente y las variables independientes y el error es lineal. Es decir que las variables pueden tener cualquier forma pero los parametros deben garantizar una relacion lineal ($y_{i}= \beta_{0}+ \beta_{1} x_{i} + \varepsilon_{i}$)
+###  <span style="color:#034A94">**Linealidad**</span>
+
+La relación entre la variable dependiente y las variables independientes y el error es lineal. Es decir que las variables pueden tener cualquier forma pero los parametros deben garantizar una relacion lineal ($y_{i}= \beta_{0}+ \beta_{1} x_{i} + \varepsilon_{i}$)
 
 </br>
 
-* <span style="color:#FF7F00">**No autocorrelación**</span>, los errores que corresponden a diferentes individuos o difente tiempo deben ser independintes unos de otros ($Cov[\varepsilon_{i},  \varepsilon_{j}] = 0$)
+###  <span style="color:#034A94">**No autocorrelación**</span>
+
+Los errores que corresponden a diferentes individuos o diferentes tiempo deben ser independintes unos de otros ($Cov[\varepsilon_{i},  \varepsilon_{j}] = 0$)
 
 </br>
 
-* <span style="color:#FF7F00">**Outliers**</span>, aunque no es un supuesto formal, se espera que la data no contenga datos atípicos que generen sesgos en los estimadores de los coeficientes
+### <span style="color:#034A94">**Outliers**</span>  
+
+Aunque no es un supuesto formal, se espera que la data no contenga datos atípicos que generen sesgos en los estimadores de los coeficientes
 
 
 </br></br>

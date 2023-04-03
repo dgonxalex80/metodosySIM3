@@ -98,10 +98,12 @@ La siguiente tabla nos ayuda a identificar la transformación apropiada
 
 </br></br>
 
+<div class="content-box-blue">
 |                         |           |           |             |           |           |           |            |
 |:------------------------|:----------|:----------|:------------|:----------|:----------|:----------|:-----------|
 | $\lambda \hspace{1.5cm}$|   -2      |  -1       |   -0.5      |      0    |  0.5      |    1      |  2         |
 | Transformación          | $1/y^{2}$ | $1/y$     | $1/\sqrt{y}$| $log(y)$  | $\sqrt{y}$|   $y$     | $y^{2}$    |
+</div>
 
 </br></br>
 

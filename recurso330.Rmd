@@ -30,7 +30,7 @@ summary(modelo1)
 
 </br></br>
 
-### **Intervalos de confianza del 95%**
+### <span style="color:#034a94">**Intervalos de confianza del 95%**</span>
 
 ```{r}
 confint(modelo1)
@@ -38,7 +38,7 @@ confint(modelo1)
 
 </br></br>
 
-### **Inferencia sobre los parámetros**
+### <span style="color:#034a94">**Inferencia sobre los parámetros**</span>
 
 ```{r}
 confint(object = modelo1, parm="diametro", level = 0.95)
@@ -46,7 +46,7 @@ confint(object = modelo1, parm="diametro", level = 0.95)
 
 </br></br>
 
-### **Predicción de $E[Y|x_{o}]$**
+### <span style="color:#034a94">**Predicción de $E[Y|x_{o}]$**</span>
 
 ```{r}
 predict(modelo1, data.frame(diametro=20), interval = "confidence", level = 0.95)
@@ -54,7 +54,7 @@ predict(modelo1, data.frame(diametro=20), interval = "confidence", level = 0.95)
 
 </br></br>
 
-### **Predicción de  $Y_{0}$**
+### <span style="color:#034a94">**Predicción de  $Y_{0}$**</span>
 
 
 ```{r}

@@ -127,7 +127,7 @@ El estadístico de prueba es la  ecuación  y el valor observado de éste (${T_0
 
 </br></br>
 
-<div class="content-box-yellow">
+<div class="content-box-gray">
 ### <span style="color:#686868">**Nota:**</span>
 
 Observe que si la pendiente es significativa, entonces el modelo de RLS entre la predictora y la respuesta, también lo es.

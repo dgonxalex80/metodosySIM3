@@ -365,7 +365,8 @@ F-statistic:   414 on 1 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p></br></br></p>
 </div>
 <div id="intervalos-de-confianza-del-95" class="section level3">
-<h3><strong>Intervalos de confianza del 95%</strong></h3>
+<h3><span style="color:#034a94"><strong>Intervalos de confianza del
+95%</strong></span></h3>
 <pre class="r"><code>confint(modelo1)</code></pre>
 <pre><code>                 2.5 %    97.5 %
 (Intercept) -11.828041 -6.212476
@@ -373,23 +374,24 @@ diametro      4.604185  5.600970</code></pre>
 <p></br></br></p>
 </div>
 <div id="inferencia-sobre-los-parámetros" class="section level3">
-<h3><strong>Inferencia sobre los parámetros</strong></h3>
+<h3><span style="color:#034a94"><strong>Inferencia sobre los
+parámetros</strong></span></h3>
 <pre class="r"><code>confint(object = modelo1, parm=&quot;diametro&quot;, level = 0.95)</code></pre>
 <pre><code>            2.5 %  97.5 %
 diametro 4.604185 5.60097</code></pre>
 <p></br></br></p>
 </div>
 <div id="predicción-de-eyx_o" class="section level3">
-<h3><strong>Predicción de <span
-class="math inline">\(E[Y|x_{o}]\)</span></strong></h3>
+<h3><span style="color:#034a94"><strong>Predicción de <span
+class="math inline">\(E[Y|x_{o}]\)</span></strong></span></h3>
 <pre class="r"><code>predict(modelo1, data.frame(diametro=20), interval = &quot;confidence&quot;, level = 0.95)</code></pre>
 <pre><code>       fit      lwr      upr
 1 93.03129 85.74187 100.3207</code></pre>
 <p></br></br></p>
 </div>
 <div id="predicción-de-y_0" class="section level3">
-<h3><strong>Predicción de <span
-class="math inline">\(Y_{0}\)</span></strong></h3>
+<h3><span style="color:#034a94"><strong>Predicción de <span
+class="math inline">\(Y_{0}\)</span></strong></span></h3>
 <pre class="r"><code>predict(modelo1, data.frame(diametro=20), interval = &quot;prediction&quot;, level = 0.95)</code></pre>
 <pre><code>       fit      lwr      upr
 1 93.03129 83.04478 103.0178</code></pre>
