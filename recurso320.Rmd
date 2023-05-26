@@ -117,8 +117,6 @@ dfe$y <- 250 + 0.5*(dfe$x - 150)^2 + 0.0053*(dfe$x - 150)^3 + rnorm(36, sd = 35)
 lm1 <- summary(lm(y ~ x, dfe))
 ```
 
-<center>
-
 
 ```{r, echo = F, fig.align = 'center', fig.show = "hold", out.width = "90%"}
 par(mar = c(4, 4, .1, .1))
@@ -150,8 +148,8 @@ text(72.5, mean(c(882.1, 1126.9)), "error", col = 'brown', cex = 1)
 text(167.5, mean(c(305.3, -12.1)), "error", col = 'brown', cex = 1)
 ```
 
-Figura : Ilustración de puntos de interpolación y extrapolación
-
+<center>
+**Figura 3.12** Ilustración de puntos de interpolación y extrapolación
 </center>
 
 

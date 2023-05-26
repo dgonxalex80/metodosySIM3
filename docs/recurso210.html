@@ -351,7 +351,11 @@ métodos</p>
 <!--  -->
 <!-- ``` -->
 <p></br></p>
-<p><img src="img/plotlm1.png" width="80%" style="display: block; margin: auto;" /></p>
+<img src="img/plotlm1.png" width="80%" style="display: block; margin: auto;" />
+<center>
+<strong>Figura 3.9</strong> Identificación de residuales
+</center>
+<p><br/><br/></p>
 <p>La diferencia entre el valor de <span
 class="math inline">\(y\)</span> asociado con un valor de <span
 class="math inline">\(x_{0}\)</span> y el valor estimado por la recta de
@@ -429,6 +433,145 @@ x_{i}^{2} - \bigg(\displaystyle\sum_{i=1}^{n}  x_{i}\bigg)^{2}} &amp;
 <p></br></br></p>
 <div id="ejemplo" class="section level3">
 <h3><span style="color:#FF7F00"><strong>Ejemplo</strong></span></h3>
+<p>Con el fin de estimar la relación existente entre el nivel de
+ingresos de una persona y el nivel de consumo, un investigador recolectó
+la siguiente información:</p>
+<p><br/></p>
+<table style="width:100%;">
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">id</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+<th align="right">5</th>
+<th align="right">6</th>
+<th align="right">7</th>
+<th align="right">8</th>
+<th align="right">9</th>
+<th align="right">10</th>
+<th align="right">11</th>
+<th align="right">12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ing</td>
+<td align="right">24.3</td>
+<td align="right">12.5</td>
+<td align="right">31.2</td>
+<td align="right">28.0</td>
+<td align="right">35.1</td>
+<td align="right">10.5</td>
+<td align="right">23.2</td>
+<td align="right">10.0</td>
+<td align="right">8.5</td>
+<td align="right">15.9</td>
+<td align="right">14.7</td>
+<td align="right">9.2</td>
+</tr>
+<tr class="even">
+<td align="left">Con</td>
+<td align="right">16.2</td>
+<td align="right">8.5</td>
+<td align="right">15.0</td>
+<td align="right">17.0</td>
+<td align="right">24.2</td>
+<td align="right">11.2</td>
+<td align="right">15.0</td>
+<td align="right">7.1</td>
+<td align="right">3.5</td>
+<td align="right">11.5</td>
+<td align="right">10.7</td>
+<td align="right">9.2</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<p>Donde :</p>
+<ul>
+<li><p><strong>Id</strong> : identificador del hogar</p></li>
+<li><p><strong>x</strong> : Ingresos familiares</p></li>
+<li><p><strong>y</strong> : Consumo en viveres</p></li>
+</ul>
+<!-- ```{r } -->
+<!-- id= 1:12 -->
+<!-- x <- c(24.3, 12.5, 31.2, 28.0, 35.1, 10.5, 23.2,  10.0, 8.5, 15.9, 14.7, 9.2) -->
+<!-- y <- c(16.2, 8.5, 15.0, 17.0, 24.2, 11.2, 15.0, 7.1, 3.5, 11.5, 10.7, 9.2) -->
+<!-- xy=data.frame(id, x, y, x^2, y^2, x*y) -->
+<!-- apply(xy, 2,sum) -->
+<!-- ``` -->
+<pre>
+id       x       y         x2        y2         xy
+ 1       24.3    16.2      590.49    262.44     393.66
+ 2       12.5     8.5      156.25     72.25     106.25
+ 3       31.2    15.0      973.44    225.00     468.00
+ 4       28.0    17.0      784.00    289.00     476.00
+ 5       35.1    24.2     1232.01    585.64     849.42
+ 6       10.5    11.2      110.25    125.44     117.60
+ 7       23.2    15.0      538.24    225.00     348.00
+ 8       10.0     7.1      100.00     50.41      71.00
+ 9        8.5     3.5       72.25     12.25      29.75
+10       15.9    11.5      252.81    132.25     182.85
+11       14.7    10.7      216.09    114.49     157.29
+12        9.2     9.2       84.64     84.64      84.64
+
+suma   223.10  149.10     5110.47   2178.81    3284.46 
+</pre>
+<p><br/></p>
+<p><span class="math display">\[\widehat{\beta_{1}} = \dfrac{12
+\times3284.46 - (223.10 \times 149.10)}{12 \times 5110.47 - (223.10)^2}
+= \dfrac{6149.31}{11552.03} = 0.5323142 \]</span> <br/></p>
+<p><span class="math display">\[\widehat{\beta_{0}} = 12.425 - 0.5323142
+\times 18.59167 = 2.528392\]</span></p>
+<p><br/></p>
+<p>Modelo estimado :</p>
+<p><span class="math display">\[\widehat{y_{i}} =2.528392 + 2.528392
+\hspace{.2cm} x_{i}\]</span></p>
+<p><br/><br/></p>
+</div>
+<div id="validación-de-forma-computacional" class="section level3">
+<h3><span style="color:#034a94"><strong>Validación de forma
+computacional</strong><span></h3>
+<p><br/></p>
+<pre class="r"><code>id &lt;- 1:12
+x &lt;- c(24.3, 12.5, 31.2, 28.0, 35.1, 10.5, 23.2,  10.0, 8.5, 15.9, 14.7, 9.2) 
+y &lt;- c(16.2, 8.5, 15.0, 17.0, 24.2, 11.2, 15.0, 7.1, 3.5, 11.5, 10.7, 9.2) 
+summary(lm(y~ x ))</code></pre>
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.1366 -0.6996  0.2343  0.9959  3.0823 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  2.52839    1.53789   1.644    0.131    
+x            0.53231    0.07452   7.143 3.13e-05 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.312 on 10 degrees of freedom
+Multiple R-squared:  0.8361,    Adjusted R-squared:  0.8197 
+F-statistic: 51.02 on 1 and 10 DF,  p-value: 3.131e-05</code></pre>
 </div>
 </div>
 

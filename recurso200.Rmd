@@ -94,8 +94,11 @@ ggplot(biomasa, aes(x=altura , y=bio_total))+
   geom_point(size=2, colour=c3)+
   labs(title = "", y= "biomasa total (tn) ", x= "altura (m) ") 
 ```
+<center>
+**Figura 3.8** Ddiagrama de dispersión total biomasa y altura
+</center>
 
-Se observa en el diagrama que existe una relación positiva y fuerte entre las dos variables
+Se observa en el diagrama que existe una relación lineal  positiva fuerte entre las dos variables, indicando que entre mayor sea la altura del árbol, mayor será la biomasa
 
 </br></br>
 

@@ -68,7 +68,7 @@ tabla <- table(X, Y)
 
 </br></br></br>
 
-### <span style="color:#034a94">**Matriz de varianzas covarianzas**</span>
+## <span style="color:#034a94">**Matriz de varianzas covarianzas**</span>
 
 </br>
 
@@ -97,9 +97,9 @@ head(biomasa) # primeros 6 registros de la data
 
 
 
+</br></br>
 
-
-### <span style="color:#034a94">**Matriz de correlaciones**</span>
+## <span style="color:#034a94">**Matriz de correlaciones**</span>
 
 </br>
 
@@ -116,7 +116,7 @@ cor(biomasa[,3:8]) %>%  # matriz de correlaciones
 
 </br></br></br>
 
-### <span style="color:#034a94">**Matriz de correlaciones - otra alternativa**</span>
+## <span style="color:#034a94">**Matriz de correlaciones - otra alternativa**</span>
 
 </br>
 
@@ -133,7 +133,7 @@ ggpairs(biomasa[,5:8], title="Biomasa")
 
 
 
-### <span style="color:#034a94">**Visualización tabla de contingencia**</span>
+## <span style="color:#034a94">**Visualización tabla de contingencia**</span>
 
 </br>
 
@@ -157,7 +157,7 @@ Fuente : Ejemplo simulado para fines académicos
 
 </br></br>
 
-### <span style="color:#034a94">**Coeficiente Phi**</span>
+## <span style="color:#034a94">**Coeficiente Phi**</span>
 
 </br>
 
@@ -169,7 +169,7 @@ cat("Coeficiente Phi         :", Phi(tabla), "\n")
 
 </br></br>
 
-### <span style="color:#034a94">**Coeficiente V de Cramer**</span>
+## <span style="color:#034a94">**Coeficiente V de Cramer**</span>
 
 </br>
 

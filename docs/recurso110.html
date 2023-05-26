@@ -343,20 +343,24 @@ variables. El coeficiente de correlación presenta las siguientes
 características:</p>
 <p></br></p>
 <ul>
-<li>Sólo toma valores entre <span class="math inline">\(-1\)</span> y
-<span class="math inline">\(1\)</span>.</li>
+<li>Toma valores entre <span class="math inline">\(-1\)</span> y <span
+class="math inline">\(1\)</span>.</li>
 <li>Cuanto más cerca esté de <span class="math inline">\(1\)</span> o
 <span class="math inline">\(-1\)</span> mejor será el grado de relación
-lineal. Siempre y cuando no existan observaciones anómalas.</li>
+lineal. Siempre y cuando no existan observaciones anómalas o
+atípicas.</li>
+<li>Valores cercanos a <span class="math inline">\(0\)</span> indican la
+no relación lineal entre las variables</li>
 </ul>
 <p></br></br></p>
 <center>
 <p><img src="img/correlacion2.png" width="100%" style="display: block; margin: auto;" /></p>
 </center>
 <p></br></br></p>
-<p>Un valor cercano a 1 indica asociación directa o positiva y un valor
-cercano a -1 indica asociación inversa o negativa. Si el valor es
-cercano a 0 indica una asociación débil.</p>
+<p>Un valor cercano a <span class="math inline">\(1\)</span> indica
+asociación directa o positiva y un valor cercano a -1 indica asociación
+inversa o negativa. Si el valor es cercano a <span
+class="math inline">\(0\)</span> indica una asociación débil.</p>
 <ul>
 <li>Se denota con la letra <span class="math inline">\(r\)</span> y su
 fórmula de cálculo es la siguiente:</li>
@@ -383,7 +387,12 @@ intervalo o de razón y normalidad de las variables.</p>
 <p>Los valores obtenidos del coeficiente de correlación permiten
 clasificar la relación lineal entre las variables de la siguiente
 forma:</p>
-<p></br></br></p>
+</br></br>
+<center>
+<strong>Tabla 3.1</strong> Clasificación de la relación lineal entre
+variables por medio del coeficiente de correlación.
+</center>
+<p><br/></p>
 <table>
 <thead>
 <tr class="header">
@@ -419,12 +428,36 @@ forma:</p>
 </tr>
 </tbody>
 </table>
-<p>Tabla 1: Clasificación de la relación lineal entre variables por
-medio del coeficiente de correlación.</p>
 <p></br></br></p>
-<p><img src="img/Rho1.png" width="100%" style="display: block; margin: auto;" /></p>
+<img src="img/Rho1.png" width="100%" style="display: block; margin: auto;" />
+<center>
+<strong>Figura 3.4</strong> Correlaciones negativas (a) <span
+class="math inline">\(\rho = -1.0\)</span>. <span
+class="math inline">\(\hspace{.5cm}\)</span> (b) <span
+class="math inline">\(\rho = -0.90\)</span>. <br/> (c) <span
+class="math inline">\(\rho = -0.75\)</span>. <span
+class="math inline">\(\hspace{.5cm}\)</span>(d) <span
+class="math inline">\(\rho = -0.50\)</span>. <span
+class="math inline">\(\hspace{.5cm}\)</span> (e) <span
+class="math inline">\(\rho = -0.25\)</span>. <span
+class="math inline">\(\hspace{.5cm}\)</span> (f) <span
+class="math inline">\(\rho = 0.0\)</span>.
+</center>
 <p></br></p>
-<p><img src="img/Rho2.png" width="100%" style="display: block; margin: auto;" /></p>
+<img src="img/Rho2.png" width="100%" style="display: block; margin: auto;" />
+<center>
+<strong>Figura 3.5</strong> Correlaciones positivas (a) <span
+class="math inline">\(\rho = 0.10\)</span>.<span
+class="math inline">\(\hspace{.5cm}\)</span> (b) <span
+class="math inline">\(\rho = 0.25\)</span>. <br/> (c) <span
+class="math inline">\(\rho = 0.50\)</span>.<span
+class="math inline">\(\hspace{.5cm}\)</span> (d) <span
+class="math inline">\(\rho = 0.75\)</span>. <span
+class="math inline">\(\hspace{.5cm}\)</span> (e) <span
+class="math inline">\(\rho = 0.90\)</span>. <span
+class="math inline">\(\hspace{.5cm}\)</span> (f) <span
+class="math inline">\(\rho = 1.0\)</span>.
+</center>
 <p></br></br></p>
 <div id="ejemplo" class="section level3">
 <h3><span style="color:#FF7F00"><strong>Ejemplo</strong></span></h3>

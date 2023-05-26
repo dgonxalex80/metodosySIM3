@@ -38,5 +38,9 @@ Estos resultados están basados en la distribución normal de los errores, la ex
 ```{r, echo=FALSE, out.width="100%", fig.align = "center"}
 knitr::include_graphics("img/distribuciones.png")
 ```
+<center>
+**Figura 3.11** Relacion entre distirbuciones muestrales
+</center>
+
 
 </br>

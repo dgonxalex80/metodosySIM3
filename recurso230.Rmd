@@ -27,7 +27,7 @@ El método **MCO**, es un método matemático que tiene solución única, sin em
 
 ### <span style="color:#034A94">**Normalidad**</span> 
 
-Los errores   siguen una distribución normal ($\varepsilon_{i} \sim N(0, \sigma^2)$)
+Los errores   siguen una distribución normal $(\varepsilon_{i} \sim N(0, \sigma^2))$
 
 </br>
 

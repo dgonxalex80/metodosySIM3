@@ -343,11 +343,68 @@ necesario entonces probar otro tipo de modelo transformando las
 variables.</p>
 <p>Dentro de las transformaciones más empleadas están:</p>
 <center>
+<strong>Tabla 3.2</strong> Funciones linealizables
+</center>
 <table>
 <colgroup>
-<col width="7%" />
+<col width="32%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">función linealizable</th>
+<th align="left">Transformación</th>
+<th align="left">forma lineal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(y= \beta_{0}
+x^{\beta_{1}}\)</span></td>
+<td align="left"><span class="math inline">\(y^*=\log(y)\)</span>, <span
+class="math inline">\(x^*=log(x)\)</span></td>
+<td align="left"><span class="math inline">\(y^*= \log (\beta_{0}) +
+\beta_{1} x^*\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(y = \beta_{0}
+e^{\beta_{1}x}\)</span></td>
+<td align="left"><span class="math inline">\(y^*=\ln(y)\)</span></td>
+<td align="left"><span class="math inline">\(y^* = \ln(\beta_{0}) +
+\beta_{1} x\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(y = \beta_{0} + \beta_{1}
+log (x)\)</span></td>
+<td align="left"><span class="math inline">\(x^*=\log(x)\)</span></td>
+<td align="left"><span class="math inline">\(y^* = \beta_{0} + \beta_{1}
+x\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(y = \dfrac{x}{\beta_{0}x
+-\beta_{1}}\)</span></td>
+<td align="left"><span class="math inline">\(y^*=\dfrac{1}{y}\)</span>,
+<span class="math inline">\(x^*=\dfrac{1}{x}\)</span></td>
+<td align="left"><span class="math inline">\(y^* = \beta_{0} + \beta_{1}
+x^*\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><br/><br/></p>
+<center>
+<p><strong>Tabla 3.3</strong> Transformación de variables e
+interpretación de <span class="math inline">\(\beta_{1}\)</span></p>
+<table>
+<colgroup>
+<col width="8%" />
 <col width="39%" />
-<col width="14%" />
+<col width="13%" />
 <col width="16%" />
 <col width="22%" />
 </colgroup>
@@ -364,8 +421,8 @@ class="math inline">\(\beta_{1}\)</span></th>
 <tbody>
 <tr class="odd">
 <td align="left"><code>Lin-Lin</code></td>
-<td align="left"><span class="math inline">\(Y_{i} = \beta_{0}+
-\beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
+<td align="left"><span class="math inline">\(\hspace{.8cm} Y_{i} =
+\beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(Y\)</span></td>
 <td align="center"><span class="math inline">\(X\)</span></td>
 <td align="left"><span class="math inline">\(\Delta Y = \beta_{1}
@@ -373,8 +430,8 @@ class="math inline">\(\beta_{1}\)</span></th>
 </tr>
 <tr class="even">
 <td align="left"><code>Lin-Log</code></td>
-<td align="left"><span class="math inline">\(Y_{i} = \beta_{0}+
-\beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
+<td align="left"><span class="math inline">\(\hspace{.8cm} Y_{i} =
+\beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(Y\)</span></td>
 <td align="center"><span class="math inline">\(\log(X)\)</span></td>
 <td align="left"><span class="math inline">\(\Delta Y = (\beta_{1} /
@@ -382,8 +439,8 @@ class="math inline">\(\beta_{1}\)</span></th>
 </tr>
 <tr class="odd">
 <td align="left"><code>Log-Lin</code></td>
-<td align="left"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
-\beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
+<td align="left"><span class="math inline">\(\hspace{.8cm} \log(Y_{i}) =
+\beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(\log(Y)\)</span></td>
 <td align="center"><span class="math inline">\(X\)</span></td>
 <td align="left"><span class="math inline">\(\%\Delta Y = (100
@@ -391,8 +448,8 @@ class="math inline">\(\beta_{1}\)</span></th>
 </tr>
 <tr class="even">
 <td align="left"><code>Log-Log</code></td>
-<td align="left"><span class="math inline">\(\log(Y_{i}) = \beta_{0}+
-\beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
+<td align="left"><span class="math inline">\(\hspace{.8cm} \log(Y_{i}) =
+\beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}\)</span></td>
 <td align="center"><span class="math inline">\(\log(Y)\)</span></td>
 <td align="center"><span class="math inline">\(\log(X)\)</span></td>
 <td align="left"><span class="math inline">\(\%\Delta Y = \beta_{1}\%
@@ -522,32 +579,18 @@ apropiada</p>
 <pre class="r"><code>library(paqueteMET)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
-summary(modelo1)</code></pre>
-<pre><code>
-Call:
-lm(formula = bio_total ~ diametro, data = biomasa)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--6.3775 -2.6594  0.0237  1.8758 11.9876 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  -9.0203     1.4129  -6.384 7.86e-09 ***
-diametro      5.1026     0.2508  20.346  &lt; 2e-16 ***
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 3.435 on 88 degrees of freedom
-Multiple R-squared:  0.8247,    Adjusted R-squared:  0.8227 
-F-statistic:   414 on 1 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
-<pre class="r"><code>par(mfrow = c(1,2))
+summary(modelo1)
+par(mfrow = c(1,2))
 boxcox(lm(biomasa$bio_total ~ biomasa$diametro, data=biomasa), lambda = -3:3)
 #Se repite el proceso pero esta vez entrechando el rango de valores de lambda 
-bc&lt;-boxcox(lm(biomasa$bio_total ~ biomasa$diametro), lambda = -1:1)</code></pre>
-<p><img src="recurso240_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<pre class="r"><code>(lambda &lt;- bc$x[which.max(bc$y)])</code></pre>
-<pre><code>[1] 0.07070707</code></pre>
+bc&lt;-boxcox(lm(biomasa$bio_total ~ biomasa$diametro), lambda = -1:1)
+(lambda &lt;- bc$x[which.max(bc$y)])</code></pre>
+<p><img src="img/box_cox.png" width="100%" style="display: block; margin: auto;" /></p>
+<center>
+<strong>Figura 3.10</strong> Valo0r optimo de <span
+class="math inline">\(\lambda\)</span>
+</center>
+<p><br/><br/></p>
 <p>El resultado (<span class="math inline">\(\lambda =0\)</span>) indica
 que la variable dependiente debe estar en escala logarítmica</p>
 </div>

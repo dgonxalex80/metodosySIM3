@@ -74,9 +74,9 @@ Es una medida de la magnitud de la *asociación lineal** entre dos variables. In
 
 </br>
 
-* Sólo toma valores entre $-1$ y $1$.
-* Cuanto más cerca esté de $1$ o $-1$ mejor será el grado de relación lineal. Siempre y cuando no existan observaciones anómalas.
-
+* Toma valores entre $-1$ y $1$.
+* Cuanto más cerca esté de $1$ o $-1$ mejor será el grado de relación lineal. Siempre y cuando no existan observaciones anómalas o atípicas.
+* Valores cercanos a $0$  indican la no relación lineal entre las variables
 
 </br></br>
 
@@ -90,7 +90,7 @@ knitr::include_graphics("img/correlacion2.png")
 
 </br></br>
 
-Un valor cercano a 1 indica asociación directa o positiva y un valor cercano a -1 indica asociación inversa o negativa. Si el valor es cercano a 0 indica una asociación débil.
+Un valor cercano a $1$ indica asociación directa o positiva y un valor cercano a -1 indica asociación inversa o negativa. Si el valor es cercano a $0$ indica una asociación débil.
 
 * Se denota con la letra $r$ y su fórmula de cálculo es la siguiente:
 
@@ -112,6 +112,10 @@ Este indicador fué propuesto por Karl Pearson por lo que se conoce como **coefi
 Los valores obtenidos del coeficiente de correlación permiten clasificar la relación lineal entre las variables de la siguiente forma:
 
 </br></br>
+<center>
+**Tabla 3.1** Clasificación de la relación lineal entre variables por medio del coeficiente de correlación.
+</center>
+<br/>
 
 | Coeficiente de corelación  | Relación lineal             |
 |:--------------------------:|:---------------------------:|
@@ -121,21 +125,23 @@ Los valores obtenidos del coeficiente de correlación permiten clasificar la rel
 | $-0.8 < r \leq -0.3$       |  Negativa debil             |
 | $-1.0 \leq r \leq -0.8$    |  Negativa fuerte            |
 
-Tabla 1: Clasificación de la relación lineal entre variables por medio del coeficiente de correlación.
-
 </br></br>
 
 
 ```{r, echo=FALSE, out.width="100%", fig.align = "center"}
 knitr::include_graphics("img/Rho1.png")
 ```
-
+<center>
+**Figura 3.4**  Correlaciones negativas (a) $\rho = -1.0$. $\hspace{.5cm}$ (b) $\rho = -0.90$. <br/> (c) $\rho = -0.75$.  $\hspace{.5cm}$(d) $\rho = -0.50$. $\hspace{.5cm}$ (e) $\rho = -0.25$. $\hspace{.5cm}$ (f) $\rho = 0.0$.
+</center>
 </br>
 
 ```{r, echo=FALSE, out.width="100%", fig.align = "center"}
 knitr::include_graphics("img/Rho2.png")
 ```
-
+<center>
+**Figura 3.5**  Correlaciones positivas  (a) $\rho = 0.10$.$\hspace{.5cm}$ (b) $\rho = 0.25$.  <br/> (c) $\rho = 0.50$.$\hspace{.5cm}$  (d) $\rho = 0.75$. $\hspace{.5cm}$ (e) $\rho = 0.90$. $\hspace{.5cm}$ (f) $\rho = 1.0$.
+</center>
 </br></br>
 
 ### <span style="color:#FF7F00">**Ejemplo**</span> 

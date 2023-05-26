@@ -237,6 +237,12 @@ library(stargazer)
 stargazer(modelo1, modelo2, modelo3, modelo4, type="text", df=FALSE)
 ```
 
+<br/>
+
+Los mejores indicadores los tiene el modelo (3) : log - lin
+
+
+$$\widehat{\log(bio-total_{i})} = 1.328 + 0.278 \hspace{.3cm} diametro_{i}$$
 
 
 

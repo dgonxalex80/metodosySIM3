@@ -33,14 +33,30 @@ En algunos casos el modelo lineal no es apropiado para ajustar los datos y por t
 
 Dentro de las transformaciones más empleadas están:
 
+<center>
+**Tabla 3.2**  Funciones linealizables
+</center>
+
+| función linealizable                  | Transformación                          | forma lineal   |
+|:--------------------------------------|:----------------------------------------|:----------------------------------------|
+| $y= \beta_{0} x^{\beta_{1}}$          | $y^*=\log(y)$,  $x^*=log(x)$             | $y^*=  \log (\beta_{0}) + \beta_{1} x^*$|
+| $y = \beta_{0} e^{\beta_{1}x}$        | $y^*=\ln(y)$                             | $y^* = \ln(\beta_{0}) + \beta_{1} x$|
+| $y = \beta_{0} + \beta_{1} log (x)$   | $x^*=\log(x)$                            |  $y^* = \beta_{0} + \beta_{1} x$|
+| $y = \dfrac{x}{\beta_{0}x -\beta_{1}}$| $y^*=\dfrac{1}{y}$,  $x^*=\dfrac{1}{x}$ |  $y^* = \beta_{0} + \beta_{1} x^*$|
+|                                       |                                         |                                   |
+
+
+<br/><br/>
 
 <center>
-| Modelo   |  Regresión                                             | Variable dependiente| Variable independiente| Interpretación de $\beta_{1}$  |
-|:---------|:-------------------------------------------------------|:------------------:|:---------------------:|:-------------------------------|
-| `Lin-Lin`  | $Y_{i} = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $Y$                 |  $X$                  | $\Delta Y = \beta_{1}  \hspace{.2cm}\Delta X$|
-| `Lin-Log`  | $Y_{i} = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $Y$           |  $\log(X)$            | $\Delta Y = (\beta_{1} / 100) \% \hspace{.2cm}\Delta X$|
-| `Log-Lin`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $\log(Y)$     |  $X$                  | $\%\Delta Y = (100 \beta_{1}) \hspace{.2cm}\Delta X$|
-| `Log-Log`  | $\log(Y_{i}) = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $\log(Y)$|  $\log(X)$           | $\%\Delta Y = \beta_{1}\% \hspace{.2cm}\Delta X$||
+**Tabla 3.3** Transformación de variables e interpretación de $\beta_{1}$ 
+
+| Modelo    |  Regresión                                             | Variable dependiente| Variable independiente| Interpretación de $\beta_{1}$  |
+|:-----------|:-------------------------------------------------------|:------------------:|:---------------------:|:-------------------------------|
+| `Lin-Lin` | $\hspace{.8cm} Y_{i} = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $Y$                 |  $X$                  | $\Delta Y = \beta_{1}  \hspace{.2cm}\Delta X$|
+| `Lin-Log` | $\hspace{.8cm} Y_{i} = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $Y$           |  $\log(X)$            | $\Delta Y = (\beta_{1} / 100) \% \hspace{.2cm}\Delta X$|
+| `Log-Lin` | $\hspace{.8cm} \log(Y_{i}) = \beta_{0}+ \beta_{1} X_{i} + \varepsilon_{i}$| $\log(Y)$     |  $X$                  | $\%\Delta Y = (100 \beta_{1}) \hspace{.2cm}\Delta X$|
+| `Log-Log` | $\hspace{.8cm} \log(Y_{i}) = \beta_{0}+ \beta_{1} \log(X_{i}) + \varepsilon_{i}$| $\log(Y)$|  $\log(X)$           | $\%\Delta Y = \beta_{1}\% \hspace{.2cm}\Delta X$||
 ||||||
 
 <!--```{r, echo=FALSE, out.width="100%", fig.align = "center"} -->
@@ -107,7 +123,7 @@ La siguiente tabla nos ayuda a identificar la transformación apropiada
 
 </br></br>
 
-```{r}
+```{r, eval=FALSE}
 library(paqueteMET)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
@@ -118,6 +134,19 @@ boxcox(lm(biomasa$bio_total ~ biomasa$diametro, data=biomasa), lambda = -3:3)
 bc<-boxcox(lm(biomasa$bio_total ~ biomasa$diametro), lambda = -1:1)
 (lambda <- bc$x[which.max(bc$y)])
 ```
+
+
+
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("img/box_cox.png")
+```
+
+<center>
+**Figura 3.10**  Valo0r optimo de $\lambda$
+</center>
+
+<br/><br/>
+
 
 El resultado  ($\lambda =0$) indica que la variable dependiente debe estar en escala logarítmica
 
