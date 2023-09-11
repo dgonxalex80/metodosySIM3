@@ -35,6 +35,25 @@ En esta unidad se introduce el **modelo de regresión lineal simple** como aplic
 Finalmente a través de una actividad se aplican los conceptos tratados
 
 
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE}
+# Cargar la biblioteca ggplot2 (debe estar instalada previamente)
+library(ggplot2)
+
+# Crear un conjunto de datos de ejemplo
+set.seed(123)
+x <- rnorm(100)
+y <- 2 * x + rnorm(100)
+
+# Crear un marco de datos con los datos
+data <- data.frame(x = x, y = y)
+
+# Crear el gráfico de dispersión con la línea de regresión
+ggplot(data, aes(x = x, y = y)) +
+  geom_point(color = "#FF7F00", size = 3) +  # Personalizar color y tamaño de los puntos
+  geom_smooth(method = "lm", se = FALSE) +    # Agregar la línea de regresión
+  labs(x = "Variable independiente", y = "Variable dependiente", title = "Regresión Lineal Simple")
+
+```
 
 
 
