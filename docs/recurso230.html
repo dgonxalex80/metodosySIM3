@@ -14,7 +14,7 @@
 
 <title> Supuestos del modelo</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -334,9 +334,10 @@ $(document).ready(function () {
 
 <p></br></br></p>
 <p>El método <strong>MCO</strong>, es un método matemático que tiene
-solución única, sin embargo, si se desea realizar inferencia estadística
-como intervalos de confianza y pruebas de hipótesis es necesario validar
-los siguientes supuestos:</p>
+solución única, sin embargo, si se desea realizar <strong>inferencia
+estadística</strong> como intervalos de confianza y pruebas de hipótesis
+sobre las estimaciones, es necesario validar los siguientes
+supuestos:</p>
 <p></br></p>
 <div id="normalidad" class="section level3">
 <h3><span style="color:#034A94"><strong>Normalidad</strong></span></h3>
@@ -376,6 +377,15 @@ class="math inline">\(Cov[\varepsilon_{i}, \varepsilon_{j}] =
 datos atípicos que generen sesgos en los estimadores de los
 coeficientes</p>
 <p></br></br></p>
+<p>Para estas verificaciones se emplean pruebas de hipótesis :</p>
+<p></br></p>
+<ul>
+<li>Normalidad : <code>shapiro.test()</code></li>
+<li>Homoscedasticidad : <code>lmtest::bptest()</code></li>
+<li>No autocorrelación : <code>lmtest::dwtest()</code></li>
+<li>outliers : visualización gráfica - <code>boxplot()</code>,
+<code>plot()</code></li>
+</ul>
 </div>
 
 

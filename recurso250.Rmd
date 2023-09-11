@@ -20,7 +20,7 @@ c3="#034A94"
 c4="#686868"
 
 library(ggplot2)
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 ```
@@ -34,7 +34,7 @@ A continuación se presenta el código en R para estimar el modelo y validar los
 ### <span style="color:#034a94">**Estimación MCO**</span>
 
 ```{r, eval=FALSE}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo)
@@ -140,6 +140,8 @@ shapiro.test(modelo$residuals)
 
 ```{r, message=FALSE, warning=FALSE}
 # install.packages("normtets")
+# devtools::install_github("UBC-MDS/noRmtest", build_opts = c("--no-resave-data", "--no-manual"))
+# https://cran.r-project.org/src/contrib/Archive/normtest/
  library(normtest)
 normtest::jb.norm.test(modelo$residuals)
 ```
@@ -152,8 +154,7 @@ normtest::jb.norm.test(modelo$residuals)
 
 ```{r, message=FALSE, warning=FALSE}
 # install.packages("nortets")
- library(nortest)
-ad.test(modelo$residuals)
+nortest::ad.test(modelo$residuals)
 ```
 
 </br></br>
@@ -163,7 +164,7 @@ ad.test(modelo$residuals)
 </br>
 
 ```{r}
-lillie.test(modelo$residuals)
+nortest::lillie.test(modelo$residuals)
 ```
 
 </br></br>
@@ -183,8 +184,7 @@ $Ha : V[\varepsilon_{i}] \neq \sigma^2$
 </br>
 
 ```{r, message=FALSE, warning=FALSE}
-library(lmtest)
-bptest(modelo)
+lmtest::bptest(modelo)
 ```
 
 </br></br>
@@ -194,8 +194,7 @@ bptest(modelo)
 </br>
 
 ```{r, message=FALSE, warning=FALSE}
-library(lmtest)
-gqtest(modelo)
+lmtest::gqtest(modelo)
 ```
 
 </br></br>
@@ -215,7 +214,7 @@ $Ha : E[\varepsilon_{i}, \varepsilon_{j}] \neq  0$
 </br>
 
 ```{r, message=FALSE, warning=FALSE}
-dwtest(modelo)
+lmtest::dwtest(modelo)
 ```
 
 </br></br>
@@ -223,7 +222,7 @@ dwtest(modelo)
 ### <span style="color:#034a94">**Transformación de variables**</span>
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data("biomasa")
 modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
 modelo2=lm(bio_total ~ log(diametro), data=biomasa)      # Lin - Log

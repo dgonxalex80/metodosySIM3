@@ -17,7 +17,7 @@ c3="#034A94"
 c4="#686868"
 
 library(ggplot2)
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 ```
@@ -257,7 +257,7 @@ Para el modelo $\text{bio_total} = \beta_{0} + \beta_{1} \hspace{.3cm} \text{dia
 </br>
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)
@@ -294,7 +294,13 @@ predict(modelo1, data.frame(diametro=20), interval = "prediction", level = 0.95)
 
 </br></br>
 
+Los resultados anteriores se pueden interpretar como:
 
+* $(85.74187 \hspace{0.2cm}, \hspace{0.2cm}100.3207)$ : Con una confianza del 95%, el promedio de biomasa contenida en árboles que tienen en promedio 20 cm de diámetro, está entre : $80.7$ y $100.3$ ton.
+
+</br>
+
+* $(83.04478 \hspace{0.2cm},\hspace{0.2cm}  103.0178)$ : Con una confianza del 95% el promedio de biomasa de un árbol que tiene diámetro de 2 cm está entre : 83 y 103 ton. 
 
 
 

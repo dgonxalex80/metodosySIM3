@@ -17,7 +17,7 @@ library(tidyverse)
 library(MASS)
 
 library(ggplot2)
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 ```
@@ -31,7 +31,65 @@ modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 
 En algunos casos el modelo lineal no es apropiado para ajustar los datos y por tanto no cumple los supuestos sobre los errores. Es necesario entonces probar otro tipo de modelo transformando las variables. 
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+library(ggplot2)
+
+# Crear un conjunto de datos para x
+x <- seq(0.1, 5, by = 0.1)
+
+# Parámetros para las funciones
+beta0 <- 1
+beta1 <- 0.5
+
+# Calcular los valores de y para las cuatro funciones
+y1 <- beta0 * x^beta1
+y2 <- beta0 * exp(beta1 * x)
+y3 <- beta0 + beta1 * log(x)
+y4 <- x / (beta0 * x - beta1)
+
+# Crear un data frame con los datos
+df <- data.frame(x, y1, y2, y3, y4)
+
+# Crear el gráfico de 2x2
+p1 <- ggplot(df, aes(x)) +
+  geom_line(aes(y = y1), color =  "#FF7F00", linetype = "solid", size = 2) +
+  labs(title = expression(paste("Función ", y == beta[0]*x^beta[1])),
+       x = "x",
+       y = "y") +
+  theme_minimal()
+
+p2 <- ggplot(df, aes(x)) +
+  geom_line(aes(y = y2), color = "#FF7F00", linetype = "solid", size = 2) +
+  labs(title = expression(paste("Función ", y == beta[0]*e^(beta[1]*x))),
+       x = "x",
+       y = "y") +
+  theme_minimal()
+
+p3 <- ggplot(df, aes(x)) +
+  geom_line(aes(y = y3), color =  "#FF7F00", linetype = "solid", size = 2) +
+  labs(title = expression(paste("Función ", y == beta[0] + beta[1]*log(x))),
+       x = "x",
+       y = "y") +
+  theme_minimal()
+
+p4 <- ggplot(df, aes(x)) +
+  geom_line(aes(y = y4), color =  "#FF7F00", linetype = "solid", size = 2) +
+  labs(title = expression(paste("Función ", y == frac(x, beta[0]*x - beta[1]))),
+       x = "x",
+       y = "y") +
+  theme_minimal()
+
+# Organizar los gráficos en una cuadrícula de 2x2
+library(gridExtra)
+grid.arrange(p1, p2, p3, p4, ncol = 2, nrow = 2)
+```
+
+</br></br>
+
+
 Dentro de las transformaciones más empleadas están:
+
+</br>
 
 <center>
 **Tabla 3.2**  Funciones linealizables
@@ -66,8 +124,6 @@ Dentro de las transformaciones más empleadas están:
 </center>
 
 
-
-
 </br></br>
 
 
@@ -75,10 +131,35 @@ Dentro de las transformaciones más empleadas están:
 
 </br>
 
+
+
+```{r, echo=FALSE, fig.align='center'}
+library(paqueteMETODOS)
+library(ggplot2)
+data("biomasa")
+
+# Crear el gráfico con ggplot2
+ggplot(biomasa, aes(x = diametro, y = bio_total)) +
+  geom_point(color = "#FF7F00", size =2) +  # Usar puntos para representar los datos
+  labs(title = "Gráfico de Biomasa",
+       x = "Diámetro",
+       y = "Biomasa Total") +
+  theme_minimal()
+
+
+
+```
+
+</br>
+
+Como se puede observar existe una leve curvatura de los puntos que permite sospechar que existen mejores ajustes que el de la línea recta.
+
+</br></br>
+
 ### <span style="color:#034a94">**Transformación de variables**</span>
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data("biomasa")
 modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
 modelo2=lm(bio_total ~ log(diametro), data=biomasa)      # Lin - Log
@@ -86,8 +167,9 @@ modelo3=lm(log(bio_total) ~ diametro, data=biomasa)      # Log - Lin
 modelo4=lm(log(bio_total) ~ log(diametro), data=biomasa) # Log - Log
 ```
 
+</br></br>
 
-```{r, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(stargazer)
 stargazer(modelo1, modelo2, modelo3, modelo4, type="text", df=FALSE)
 ```
@@ -123,8 +205,8 @@ La siguiente tabla nos ayuda a identificar la transformación apropiada
 
 </br></br>
 
-```{r, eval=FALSE}
-library(paqueteMET)
+```{r, eval=FALSE, message=FALSE, warning=FALSE, fig.align='center'}
+library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)
@@ -142,7 +224,7 @@ knitr::include_graphics("img/box_cox.png")
 ```
 
 <center>
-**Figura 3.10**  Valo0r optimo de $\lambda$
+**Figura 3.10**  Valor optimo de $\lambda$
 </center>
 
 <br/><br/>

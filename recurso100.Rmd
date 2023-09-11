@@ -19,8 +19,8 @@ library(PerformanceAnalytics)
 
 
 #install.packages("devtools") # solo una vez
-# devtools::install_github("dgonxalex80/paqueteMET") # descarga paqueteDEG
-library(paqueteMET) # activa paqueteMET
+devtools::install_github("dgonxalex80/paqueteMETODOS") # descarga paqueteDEG
+library(paqueteMETODOS) # activa paqueteMET
 data("biomasa") # carga la base biomasa
 
 gen.corr.data<- function(rho,n){

@@ -14,7 +14,7 @@
 
 <title>Otros indicadores de correlación</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -379,7 +379,7 @@ nominal</p></li>
 <p></br></br></p>
 <div id="código-r" class="section level3">
 <h3><span style="color:#686868"><strong>Código R</strong></span></h3>
-<pre class="r"><code>library(paqueteMET)
+<pre class="r"><code>library(paqueteMETODOS)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data</code></pre>
 <pre><code># A tibble: 6 × 8
@@ -482,8 +482,13 @@ contingencia 2x2. <span class="math inline">\(\phi =
 </ul>
 <p></br></br></p>
 <pre class="r"><code># install.packages(&quot;DescTools&quot;)
-library(DescTools)
-cat(&quot;Coeficiente Phi : &quot;, Phi(tabla)) </code></pre>
+library(DescTools)</code></pre>
+<pre><code>
+Attaching package: &#39;DescTools&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:psych&#39;:
+
+    AUC, ICC, SD</code></pre>
+<pre class="r"><code>cat(&quot;Coeficiente Phi : &quot;, Phi(tabla)) </code></pre>
 <pre><code>Coeficiente Phi :  0.3643192</code></pre>
 <p><br/><br/></p>
 </div>

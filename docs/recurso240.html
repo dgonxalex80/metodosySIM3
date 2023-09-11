@@ -14,7 +14,7 @@
 
 <title> Transformaciones</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -341,7 +341,10 @@ variables</strong></span></h2>
 datos y por tanto no cumple los supuestos sobre los errores. Es
 necesario entonces probar otro tipo de modelo transformando las
 variables.</p>
+<p><img src="recurso240_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p></br></br></p>
 <p>Dentro de las transformaciones más empleadas están:</p>
+<p></br></p>
 <center>
 <strong>Tabla 3.2</strong> Funciones linealizables
 </center>
@@ -472,18 +475,23 @@ class="math inline">\(\beta_{1}\)</span></th>
 <div id="ejemplo" class="section level3">
 <h3><span style="color:#FF7F00"><strong>Ejemplo</strong></span></h3>
 <p></br></p>
+<p><img src="recurso240_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p></br></p>
+<p>Como se puede observar existe una leve curvatura de los puntos que
+permite sospechar que existen mejores ajustes que el de la línea
+recta.</p>
+<p></br></br></p>
 </div>
 <div id="transformación-de-variables-1" class="section level3">
 <h3><span style="color:#034a94"><strong>Transformación de
 variables</strong></span></h3>
-<pre class="r"><code>library(paqueteMET)
+<pre class="r"><code>library(paqueteMETODOS)
 data(&quot;biomasa&quot;)
 modelo1=lm(bio_total ~ diametro, data=biomasa)           # Lin - Lin
 modelo2=lm(bio_total ~ log(diametro), data=biomasa)      # Lin - Log
 modelo3=lm(log(bio_total) ~ diametro, data=biomasa)      # Log - Lin
 modelo4=lm(log(bio_total) ~ log(diametro), data=biomasa) # Log - Log</code></pre>
-<pre class="r"><code>library(stargazer)
-stargazer(modelo1, modelo2, modelo3, modelo4, type=&quot;text&quot;, df=FALSE)</code></pre>
+<p></br></br></p>
 <pre><code>
 ===============================================================
                                 Dependent variable:            
@@ -576,7 +584,7 @@ apropiada</p>
 </table>
 </div>
 <p></br></br></p>
-<pre class="r"><code>library(paqueteMET)
+<pre class="r"><code>library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)
@@ -587,7 +595,7 @@ bc&lt;-boxcox(lm(biomasa$bio_total ~ biomasa$diametro), lambda = -1:1)
 (lambda &lt;- bc$x[which.max(bc$y)])</code></pre>
 <p><img src="img/box_cox.png" width="100%" style="display: block; margin: auto;" /></p>
 <center>
-<strong>Figura 3.10</strong> Valo0r optimo de <span
+<strong>Figura 3.10</strong> Valor optimo de <span
 class="math inline">\(\lambda\)</span>
 </center>
 <p><br/><br/></p>

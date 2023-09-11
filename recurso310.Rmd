@@ -17,7 +17,7 @@ c3="#034A94"
 c4="#686868"
 
 library(ggplot2)
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 
@@ -146,7 +146,7 @@ Para el modelo $\text{bio_total} = \beta_{0} + \beta_{1} \hspace{.3cm} \text{dia
 </br>
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)
@@ -158,4 +158,17 @@ summary(modelo1)
 ```{r}
 confint(modelo1)
 ```
+
+En los anteriores resultados se puede observar:
+
+* Las pruebas de hipótesis sobre los coeficientes ($H_o:\beta_{0} = 0$ y $H_o :\beta_{1} = 0$) se rechazan dado que el valor-p en cada caso es cero
+* El intervalo de confianza para la pendiente $\beta_{1}$ se puede interpretar como: Por cada unidad aducional (cm) en el diámetro del árbol, la cantidad de biomasa total estimada aumenta entre 4.6 y 5.6 ton con una confianza del 95% 
+
+
+</br></br>
+
+### <span style="color:#686868">**Nota**</span>
+
+Las estimaciones anteriores solo son validas para el bosque o lugar donde se recogieron los datos. No es posible realizar extrapolaciones de los resultados.
+
 

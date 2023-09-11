@@ -20,7 +20,7 @@ library(PerformanceAnalytics)
 library(MASS)
 #install.packages("devtools") # solo una vez
 # devtools::install_github("dgonxalex80/paqueteMET") # descarga paqueteDEG
-library(paqueteMET) # activa paqueteMET
+library(paqueteMETODOS) # activa paqueteMET
 data("biomasa") # carga la base biomasa
 
 gen.corr.data<- function(rho,n){
@@ -72,13 +72,30 @@ tabla <- table(X, Y)
 
 </br>
 
+$$
+\mathbf{V} =
+\begin{bmatrix}
+  \sigma_{1}^2 & \sigma_{12} & \sigma_{13} & \ldots & \sigma_{1n} \\
+  \sigma_{21} & \sigma_{2}^2 & \sigma_{23} & \ldots & \sigma_{2n} \\
+  \sigma_{31} & \sigma_{32} & \sigma_{3}^2 & \ldots & \sigma_{3n} \\
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  \sigma_{n1} & \sigma_{n2} & \sigma_{n3} & \ldots & \sigma_{n}^2 \\
+\end{bmatrix}
+$$
 
-Esta matriz presenta las varianzas de las variables en su diagonal principal y las covarianzas por fuera de ella, siendo una matriz diagonal.
+Esta matriz simétrica presenta las varianzas de las variables en su diagonal principal y las covarianzas por fuera de ella, siendo tambien una matriz diagonal.
 
-$\sigma_{x_i,x_i} = \sigma^2_{x_i}$ y $\sigma_{x_i,x_j} = \sigma_{x_j,x_i}$ para todo $i \neq j$
+Donde:
+
+* $\sigma_{i}^2$  es la varianza de la variable $x_i$.
+* $\sigma_{ij}$ es la covarianza entre las variables $x_i$ y $x_j$.
+* $\sigma_{x_i,x_i} = \sigma^2_{x_i}$, indicando que la covarianza de $x_i$ y $x_j$ es la varianza de $x_i$ 
+* $\sigma_{x_i,x_j} = \sigma_{x_j,x_i}$ para todo $i \neq j$, indicando que la covarianza de $x_i$ con $x_j$ es igual a la covarianza entre $x_j$ y $x_i$
+
+</br></br>
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data
 cov(biomasa[,3:8]) %>%  # matriz de correlaciones 
@@ -86,11 +103,11 @@ cov(biomasa[,3:8]) %>%  # matriz de correlaciones
 ```
 </br></br></br>
 
-Para presentar el código para los diferentes indicadores utilizamos la base de datos `biomasa` contenida en `paqueteMET`
+Para presentar el código para los diferentes indicadores utilizamos la base de datos `biomasa` contenida en `paqueteMETODOS`
 
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data
 ```
@@ -107,8 +124,8 @@ Presenta las correlaciones entre pares de variables $\rho_{x_i,x_j} = \rho_{x_j,
 
 
 ```{r}
-library(paqueteMET)
-data(biomasa) # data contenida en  paqueteMET
+library(paqueteMETODOS)
+data(biomasa) # data contenida en  paqueteMETODOS
 cor(biomasa[,3:8]) %>%  # matriz de correlaciones 
   round(.,3      )
 ```

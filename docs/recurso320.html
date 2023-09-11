@@ -14,7 +14,7 @@
 
 <title> Predicción de la variable respuesta</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -554,7 +554,7 @@ entonces se rechaza <span class="math inline">\(H_0\)</span>.</p>
 \beta_{0} + \beta_{1} \hspace{.3cm} \text{diametro} +
 \varepsilon\)</span></p>
 <p></br></p>
-<pre class="r"><code>library(paqueteMET)
+<pre class="r"><code>library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)</code></pre>
@@ -599,6 +599,20 @@ class="math inline">\(Y_{0}\)</span></strong></h4>
 <pre><code>       fit      lwr      upr
 1 93.03129 83.04478 103.0178</code></pre>
 <p></br></br></p>
+<p>Los resultados anteriores se pueden interpretar como:</p>
+<ul>
+<li><span class="math inline">\((85.74187 \hspace{0.2cm},
+\hspace{0.2cm}100.3207)\)</span> : Con una confianza del 95%, el
+promedio de biomasa contenida en árboles que tienen en promedio 20 cm de
+diámetro, está entre : <span class="math inline">\(80.7\)</span> y <span
+class="math inline">\(100.3\)</span> ton.</li>
+</ul>
+<p></br></p>
+<ul>
+<li><span class="math inline">\((83.04478 \hspace{0.2cm},\hspace{0.2cm}
+103.0178)\)</span> : Con una confianza del 95% el promedio de biomasa de
+un árbol que tiene diámetro de 2 cm está entre : 83 y 103 ton.</li>
+</ul>
 </div>
 </div>
 </div>

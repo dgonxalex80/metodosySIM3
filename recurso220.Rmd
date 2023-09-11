@@ -14,7 +14,7 @@ c3="#034A94"
 c4="#686868"
 
 library(ggplot2)
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 ```
@@ -86,6 +86,8 @@ Que conincide con las ecuaciones normales $(1)$ y $(2)$ .
 
 En conclusión la solución obtenida por el método de mínimos cuadrados y la obtenida por el método de máxima verosimilitud son iguales
 
+</br>
+
 De la ecuación $(1)$ se obtiene :
 
 <div class="content-box-blue">
@@ -99,6 +101,8 @@ $$
 
 </br></br>
 
+De la ecuación $(2)$ se obtiene :
+
 <div class="content-box-blue">
 $$
 \begin{aligned}
@@ -107,4 +111,9 @@ $$
 $$
 
 </div>
+
+</br>
+
+Que constituyen los estimadores del intercepto y la pendiente de mínimos cuadrados
+
 

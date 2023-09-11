@@ -22,7 +22,7 @@ Para el modelo $\text{bio_total} = \beta_{0} + \beta_{1} \hspace{.3cm} \text{dia
 </br>
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)

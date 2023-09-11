@@ -14,7 +14,7 @@
 
 <title> Predicción de parámetros o coeficientes</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -502,7 +502,7 @@ RLS entre la predictora y la respuesta, también lo es.</p>
 \beta_{0} + \beta_{1} \hspace{.3cm} \text{diametro} +
 \varepsilon\)</span></p>
 <p></br></p>
-<pre class="r"><code>library(paqueteMET)
+<pre class="r"><code>library(paqueteMETODOS)
 data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)</code></pre>
@@ -530,6 +530,25 @@ F-statistic:   414 on 1 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre><code>                 2.5 %    97.5 %
 (Intercept) -11.828041 -6.212476
 diametro      4.604185  5.600970</code></pre>
+<p>En los anteriores resultados se puede observar:</p>
+<ul>
+<li>Las pruebas de hipótesis sobre los coeficientes (<span
+class="math inline">\(H_o:\beta_{0} = 0\)</span> y <span
+class="math inline">\(H_o :\beta_{1} = 0\)</span>) se rechazan dado que
+el valor-p en cada caso es cero</li>
+<li>El intervalo de confianza para la pendiente <span
+class="math inline">\(\beta_{1}\)</span> se puede interpretar como: Por
+cada unidad aducional (cm) en el diámetro del árbol, la cantidad de
+biomasa total estimada aumenta entre 4.6 y 5.6 ton con una confianza del
+95%</li>
+</ul>
+<p></br></br></p>
+</div>
+<div id="nota-1" class="section level3">
+<h3><span style="color:#686868"><strong>Nota</strong></span></h3>
+<p>Las estimaciones anteriores solo son validas para el bosque o lugar
+donde se recogieron los datos. No es posible realizar extrapolaciones de
+los resultados.</p>
 </div>
 </div>
 </div>

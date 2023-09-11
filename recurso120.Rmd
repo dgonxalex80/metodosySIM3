@@ -20,7 +20,7 @@ library(PerformanceAnalytics)
 
 #install.packages("devtools") # solo una vez
 # devtools::install_github("dgonxalex80/paqueteMET") # descarga paqueteDEG
-library(paqueteMET) # activa paqueteMET
+library(paqueteMETODOS) # activa paqueteMET
 data("biomasa") # carga la base biomasa
 
 gen.corr.data<- function(rho,n){
@@ -116,7 +116,7 @@ Para el caso de variables cualitativas existen varios indicadores para medir el 
 
 
 ```{r}
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data
 cor(biomasa[,3:8]) %>%  # matriz de correlaciones 

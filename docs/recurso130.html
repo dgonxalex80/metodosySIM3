@@ -14,7 +14,7 @@
 
 <title> Código R - Correlación</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -337,14 +337,45 @@ R - Correlación</strong></span></h1>
 <h2><span style="color:#034a94"><strong>Matriz de varianzas
 covarianzas</strong></span></h2>
 <p></br></p>
-<p>Esta matriz presenta las varianzas de las variables en su diagonal
-principal y las covarianzas por fuera de ella, siendo una matriz
-diagonal.</p>
-<p><span class="math inline">\(\sigma_{x_i,x_i} =
-\sigma^2_{x_i}\)</span> y <span class="math inline">\(\sigma_{x_i,x_j} =
+<p><span class="math display">\[
+\mathbf{V} =
+\begin{bmatrix}
+  \sigma_{1}^2 &amp; \sigma_{12} &amp; \sigma_{13} &amp; \ldots &amp;
+\sigma_{1n} \\
+  \sigma_{21} &amp; \sigma_{2}^2 &amp; \sigma_{23} &amp; \ldots &amp;
+\sigma_{2n} \\
+  \sigma_{31} &amp; \sigma_{32} &amp; \sigma_{3}^2 &amp; \ldots &amp;
+\sigma_{3n} \\
+  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  \sigma_{n1} &amp; \sigma_{n2} &amp; \sigma_{n3} &amp; \ldots &amp;
+\sigma_{n}^2 \\
+\end{bmatrix}
+\]</span></p>
+<p>Esta matriz simétrica presenta las varianzas de las variables en su
+diagonal principal y las covarianzas por fuera de ella, siendo tambien
+una matriz diagonal.</p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\sigma_{i}^2\)</span> es la varianza de
+la variable <span class="math inline">\(x_i\)</span>.</li>
+<li><span class="math inline">\(\sigma_{ij}\)</span> es la covarianza
+entre las variables <span class="math inline">\(x_i\)</span> y <span
+class="math inline">\(x_j\)</span>.</li>
+<li><span class="math inline">\(\sigma_{x_i,x_i} =
+\sigma^2_{x_i}\)</span>, indicando que la covarianza de <span
+class="math inline">\(x_i\)</span> y <span
+class="math inline">\(x_j\)</span> es la varianza de <span
+class="math inline">\(x_i\)</span></li>
+<li><span class="math inline">\(\sigma_{x_i,x_j} =
 \sigma_{x_j,x_i}\)</span> para todo <span class="math inline">\(i \neq
-j\)</span></p>
-<pre class="r"><code>library(paqueteMET)
+j\)</span>, indicando que la covarianza de <span
+class="math inline">\(x_i\)</span> con <span
+class="math inline">\(x_j\)</span> es igual a la covarianza entre <span
+class="math inline">\(x_j\)</span> y <span
+class="math inline">\(x_i\)</span></li>
+</ul>
+<p></br></br></p>
+<pre class="r"><code>library(paqueteMETODOS)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data</code></pre>
 <pre><code># A tibble: 6 × 8
@@ -368,8 +399,8 @@ altura         12.913  -0.317    12.597      12.049    2.444  3.238</code></pre>
 <p></br></br></br></p>
 <p>Para presentar el código para los diferentes indicadores utilizamos
 la base de datos <code>biomasa</code> contenida en
-<code>paqueteMET</code></p>
-<pre class="r"><code>library(paqueteMET)
+<code>paqueteMETODOS</code></p>
+<pre class="r"><code>library(paqueteMETODOS)
 data(biomasa) # data contenida en  paqueteMET
 head(biomasa) # primeros 6 registros de la data</code></pre>
 <pre><code># A tibble: 6 × 8
@@ -391,8 +422,8 @@ correlaciones</strong></span></h2>
 class="math inline">\(\rho_{x_i,x_j} = \rho_{x_j,x_i}\)</span> y en la
 diagonal presenta 1 dado que <span class="math inline">\(\rho_{x_1, x_1}
 =1\)</span></p>
-<pre class="r"><code>library(paqueteMET)
-data(biomasa) # data contenida en  paqueteMET
+<pre class="r"><code>library(paqueteMETODOS)
+data(biomasa) # data contenida en  paqueteMETODOS
 cor(biomasa[,3:8]) %&gt;%  # matriz de correlaciones 
   round(.,3      )</code></pre>
 <pre><code>            bio_aerea bio_sub bio_total area_foliar diametro altura

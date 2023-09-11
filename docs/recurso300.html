@@ -14,7 +14,7 @@
 
 <title> Predicción con el modelo de RLS</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -336,28 +336,55 @@ $(document).ready(function () {
 <p>Después de estimar el modelo por el método de MCO y haber verificado
 el cumplimiento de los supuestos podemos realizar inferencias sobre los
 resultados obtenidos.</p>
+<p>En este caso es posible que estemos ineresados en estimar el valor de
+la mendiente o el intercepto, pero además requerimos realizar pruebas de
+hipotesis sobre los valores estimados y sobre los valores
+pronosticados.</p>
+<p></br></p>
 <ul>
-<li>Intervalos de confianza sobre el intercepto (<span
+<li><p>Intervalos de confianza sobre el intercepto (<span
 class="math inline">\(\beta_{0}\)</span>) y sobre la pendiente (<span
-class="math inline">\(\beta_{1}\)</span>).</li>
-<li>Pruebas de hipótesis sobre los parámetros <span
+class="math inline">\(\beta_{1}\)</span>).</p></li>
+<li><p>Pruebas de hipótesis sobre los parámetros <span
 class="math inline">\(\beta_{0}\)</span> y <span
 class="math inline">\(\beta_{1}\)</span>, con el fin de validar si los
 valores estimados a partir de la muestra son estadísticamente
 significativos (<span class="math inline">\(Ho: \beta_{i} =0\)</span> vs
-<span class="math inline">\(Ha: \beta_{i} \neq 0\)</span>).</li>
-<li>Intervalos de confianza sobre la respuesta media para un determinado
-valor de la variable independiente (<span
-class="math inline">\(\widehat{y_{i}}\)</span>)</li>
+<span class="math inline">\(Ha: \beta_{i} \neq 0\)</span>).</p></li>
+<li><p>Intervalos de confianza sobre la respuesta media para un
+determinado valor de la variable independiente (<span
+class="math inline">\(\widehat{y_{i}}\)</span>)</p></li>
 </ul>
+<p></br></p>
 <p>Estos resultados están basados en la distribución normal de los
 errores, la existencia de homoscedasticidad (varianza constante de los
-errores) y la no correlación de errores (independencia de errores)</p>
+errores) , la no correlación de errores (independencia de errores) y la
+no existencia de multicolinealidad (relación fuerte entre las variables
+independientes)</p>
 <p></br></p>
 <img src="img/distribuciones.png" width="100%" style="display: block; margin: auto;" />
 <center>
-<strong>Figura 3.11</strong> Relacion entre distirbuciones muestrales
+<strong>Figura 3.11</strong> Relación entre distirbuciones muestrales
 </center>
+<p></br></br></p>
+<p>Se parte de una variable condistribución normal <span
+class="math inline">\(X\)</span>, con media <span
+class="math inline">\(\mu\)</span> y varianza <span
+class="math inline">\(\sigma^2\)</span>. Esta variable se puede
+estandarizar, restandole su media y dividiendola por su desviación
+estandar, transformandola en otra variable denominada <span
+class="math inline">\(Z\)</span>. A esta variable se le denomina normal
+estandar dado que tiene media cero y varianza uno.</p>
+<p>La suma de <span class="math inline">\(n\)</span> variables normales
+estandar, cada una de ellas elevadas al cuadrado, originan una variable
+<span class="math inline">\(\chi^2\)</span> (chi-cuadrado).</p>
+<p>La razón de una variable normal estandar con la raiz cuadrada de una
+variable chi-cuadrado sobre sus grados de libertad, da origen a un
+variable T con distribución t-Student.</p>
+<p>Por último la razón de dos variables chi-cuadrado, origina una
+variable F con distribución F-Fisher</p>
+<p>A este grupo de distribuciones se les denomina distribuciones de
+probabilidad muestrales</p>
 <p></br></p>
 
 

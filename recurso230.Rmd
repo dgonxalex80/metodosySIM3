@@ -14,14 +14,14 @@ c3="#034A94"
 c4="#686868"
 
 library(ggplot2)
-library(paqueteMET)
+library(paqueteMETODOS)
 data(biomasa)
 modelo=lm(log(bio_total) ~ diametro, data=biomasa)
 ```
 
 </br></br>
 
-El método **MCO**, es un método matemático que tiene solución única, sin embargo, si se desea realizar inferencia estadística como intervalos de confianza y pruebas de hipótesis es necesario validar los siguientes supuestos:
+El método **MCO**, es un método matemático que tiene solución única, sin embargo, si se desea realizar **inferencia estadística** como intervalos de confianza y pruebas de hipótesis sobre las estimaciones, es necesario validar los siguientes supuestos:
 
 </br>
 
@@ -56,6 +56,14 @@ Aunque no es un supuesto formal, se espera que la data no contenga datos atípic
 
 </br></br>
 
+Para estas verificaciones se emplean pruebas de hipótesis :
+
+</br>
+
+* Normalidad : `shapiro.test()`
+* Homoscedasticidad : `lmtest::bptest()`
+* No autocorrelación : `lmtest::dwtest()` 
+* outliers : visualización gráfica - `boxplot()`, `plot()` 
 
 
 
