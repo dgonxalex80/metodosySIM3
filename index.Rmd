@@ -1,6 +1,7 @@
 ---
-title : <span style="color:#034A94"> **Experiencia**</span>
+title: <span style="color:#034A94"> **Experiencia**</span>
 author: "Métodos y Simulación Estadística"
+output: html_document
 css: style.css
 ---
 
@@ -32,8 +33,30 @@ En esta unidad se introduce el **modelo de regresión lineal simple** como aplic
 
 </br>
 
-Finalmente a través de una actividad se aplican los conceptos tratados
+Finalmente a través de una actividad se aplican los conceptos tratados en las unidades anteriores.
 
+</br></br>
+
+## <span style="color:#034A94">**Pasos para construir un modelo de Regresión Lineal Simple**</span>
+
+</br></br></br>
+
+
+```{r, echo=FALSE, out.width="80%", fig.align = "center"}
+knitr::include_graphics("img/flujoMRLS.png")
+```
+
+</br></br></br>
+
+## <span style="color:#034A94">**Modelo estadístico**</span>
+<div class="content-box-blue">
+
+$$Y = \beta_{0} + \beta_{1} X +  \varepsilon $$
+</div>
+
+</br></br></br>
+
+## <span style="color:#034A94">**Visualización del modelo**</span>
 
 ```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE}
 # Cargar la biblioteca ggplot2 (debe estar instalada previamente)
@@ -54,10 +77,6 @@ ggplot(data, aes(x = x, y = y)) +
   labs(x = "Variable independiente", y = "Variable dependiente", title = "Regresión Lineal Simple")
 
 ```
-
-
-
-
 
 
 
