@@ -52,11 +52,11 @@ El establecimiento de la correlación entre las dos variables es importante, per
 
 </br>
 
+
 <div class="content-box-blue">
 
 $$Y = \beta_{0} + \beta_{1} X +  \varepsilon $$
 </div>
-
 Donde :
 
 * $Y$ : variable dependiente o respuesta
