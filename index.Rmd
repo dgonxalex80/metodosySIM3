@@ -31,7 +31,35 @@ En esta unidad se introduce el **modelo de regresión lineal simple** como aplic
 * Concepto de variable aleatoria
 * Inferencia estadística : intervalos de confianza y pruebas de hipótesis paramétricas y no paramétricas
 
+</br></br>
+
+Contenido de la unidad: 
+
+* **Correlación**
+  * Análisis de correlación
+  * Ceficiente de Pearson
+  * Otros coeficientes
+  * Código R - correlaciones
+  
+</br>  
+  
+* **Modelo**
+  * Modelo de regresión lineal simple
+  * Estimación de parámetros por el método de mínimos cuadrados ordinarios
+  * Estimación de parámetros por el método de máxima verosimilitud
+  * Supuestos del modelo
+  * Transformaciones
+  * Código R - estimación
+
 </br>
+
+* **Predicción**
+  * Inferencia sobre el modelo
+  * Inferencia sobre los parámetros
+  * Inferencia sobre la variable respuesta
+  * Código R - inferencia
+
+</br></br>
 
 Finalmente a través de una actividad se aplican los conceptos tratados en las unidades anteriores.
 

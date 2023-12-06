@@ -1,8 +1,10 @@
 ---
 title: "Codigo R - MRLS"
-author: "dgonzalez"
-date: "2023-03-10"
-output: html_document
+author: "Métodos y Simulación Estadística"
+output:
+  html_document:
+    code_folding: hide
+    css: style.css
 ---
 ---
 title: <span style="color:#034a94"> **Código R - Modelo**</span>
