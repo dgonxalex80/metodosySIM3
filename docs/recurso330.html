@@ -352,8 +352,56 @@ R - Predicción</strong></span></h1>
 \beta_{0} + \beta_{1} \hspace{.3cm} \text{diametro} +
 \varepsilon\)</span></p>
 <p></br></p>
-<pre class="r"><code>library(paqueteMETODOS)
-data(biomasa)
+<pre class="r"><code>library(paqueteMETODOS)</code></pre>
+<pre><code>Loading required package: cubature</code></pre>
+<pre><code>Loading required package: dplyr</code></pre>
+<pre><code>
+Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    filter, lag</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    intersect, setdiff, setequal, union</code></pre>
+<pre><code>Loading required package: flextable</code></pre>
+<pre><code>Loading required package: ggplot2</code></pre>
+<pre><code>Loading required package: lmtest</code></pre>
+<pre><code>Loading required package: zoo</code></pre>
+<pre><code>
+Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    as.Date, as.Date.numeric</code></pre>
+<pre><code>Loading required package: MASS</code></pre>
+<pre><code>
+Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:dplyr&#39;:
+
+    select</code></pre>
+<pre><code>Loading required package: psych</code></pre>
+<pre><code>
+Attaching package: &#39;psych&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:ggplot2&#39;:
+
+    %+%, alpha</code></pre>
+<pre><code>Loading required package: summarytools</code></pre>
+<pre><code>Loading required package: randtests</code></pre>
+<pre><code>Loading required package: rapportools</code></pre>
+<pre><code>
+Attaching package: &#39;rapportools&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:summarytools&#39;:
+
+    label, label&lt;-</code></pre>
+<pre><code>The following object is masked from &#39;package:dplyr&#39;:
+
+    n</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    IQR, median, sd, var</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    max, mean, min, range, sum</code></pre>
+<pre class="r"><code>data(biomasa)
 modelo1=lm(bio_total ~ diametro, data=biomasa)
 summary(modelo1)</code></pre>
 <pre><code>
